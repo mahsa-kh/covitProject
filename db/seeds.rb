@@ -1,10 +1,10 @@
 require "faker"
+Business.destroy_all
+Order.destroy_all
 OrderItem.destroy_all
 BusinessOffer.destroy_all
-Order.destroy_all
-Business.destroy_all
-Category.destroy_all
 User.destroy_all
+Category.destroy_all
 
 
 
@@ -26,6 +26,28 @@ User.destroy_all
 # puts "Business Offers Created"
 
 
+puts "Users Creation"
+  # validates :first_name, :last_name, :email, :password, presence: true
+  # validates :email, presence: true, uniqueness: true
+  # t.string "email", default: "", null: false
+  # t.string "encrypted_password", default: "", null: false
+  # t.string "first_name"
+  # t.string "last_name"
+  # t.boolean "owner", default: false
+  5.times do
+    user = User.new(
+      first_name: Faker::Name.first_name, 
+      last_name: Faker::Name.last_name, 
+      email: Faker::Internet.email, 
+      password: Faker::Alphanumeric.alpha(number: 10),
+      owner: Faker::Boolean.boolean,
+    )
+    user.save!
+  end
+puts "Users Created"
+
+
+
 
 
 puts "Categories Creation"
@@ -36,7 +58,7 @@ puts "Categories Creation"
     category = Category.new(
       category_name: Faker::Restaurant.name,
     )
-    category.save
+    category.save!
   end
 puts "Categories Created"
 
@@ -60,19 +82,21 @@ puts "Businesses Creation"
     business = Business.new(
       name: Faker::Company.industry,
       website: Faker::Internet.url,
-      address: Faker::Address.full_addressFaker::Address.street_address,
+      address: Faker::Address.full_address,
       instagram: Faker::Internet.url,
       description: Faker::Company.catch_phrase,
       )
+    business.user = User.all.sample
+    business.category = Category.all.sample
+    business.save!  
       2.times do 
         business_offer = BusinessOffer.new(
         offer_amount: Faker::Commerce.price,
-        discount: Faker::Number.within(range: 1..10)
+        discount: Faker::Number.within(range: 1..10),
         business: business  # shopping_list.user = user
         )
-        business_offer.save
+        business_offer.save!
       end
-    business.save
   end
 puts "Businesses Created"
 
@@ -120,17 +144,21 @@ puts "Orders Creation"
       confirmation_no: Faker::Number.number(digits: 10), # it's a number not a text
       payment_no: Faker::Number.number(digits: 10), # it's a number not a text
       paid: Faker::Boolean.boolean,
-      owner_paid: Faker::Boolean.boolean
+      owner_paid: Faker::Boolean.boolean,
+      user_id: (User.all).sample.id
       )
+    order.save!
       2.times do
         order_item = OrderItem.new(
           quantity:  Faker::Number.within(range: 1..10),
           gift: Faker::Boolean.boolean,
           gift_email: Faker::Internet.email,
+          business_offer_id: (BusinessOffer.all).sample.id,  # Since ORDER ITEMS needs also 
+          # business_offer_id: we write "business_offer_id: (BusinessOffer.all).sample.id"
+          order: order  # They are already nested therefore we use "order:order"
         )
-        order_item.save
+        order_item.save!
       end
-    order.save
   end
 puts "Orders Created"
 
@@ -138,27 +166,5 @@ puts "Orders Created"
 
 
 
-
-
-
-puts "Users Creation"
-  # validates :first_name, :last_name, :email, :password, presence: true
-  # validates :email, presence: true, uniqueness: true
-  # t.string "email", default: "", null: false
-  # t.string "encrypted_password", default: "", null: false
-  # t.string "first_name"
-  # t.string "last_name"
-  # t.boolean "owner", default: false
-  5.times do
-    user = User.new(
-      first_name: Faker::Name.first_name, 
-      last_name: Faker::Name.last_name, 
-      email: Faker::Internet.email, 
-      password: Faker::Alphanumeric.alpha(number: 10),
-      owner: Faker::Boolean.boolean,
-    )
-    user.save
-  end
-puts "Users Created"
 
 
