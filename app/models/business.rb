@@ -1,5 +1,6 @@
 class Business < ApplicationRecord
   belongs_to :user, dependent: :destroy
+  belongs_to :category
   has_many :business_offers
   has_many :order_items, through: :business_offers
   validates :name, :description, :category, presence: true

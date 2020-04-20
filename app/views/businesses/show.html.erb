@@ -1,2 +1,25 @@
 <h1>Businesses#show</h1>
 <p>Find me in app/views/businesses/show.html.erb</p>
+Business info:
+<%= @business.name%>
+
+<%= @business.description%>
+<%= @business.instagram%>
+<%= @business.address%>
+<%= @business.website%>
+
+
+
+Offers:
+<% @business.business_offers.each do |business_offer| %>
+   PAY  <%= (business_offer.offer_amount * (100 - business_offer.discount))/100 %> FOR <%= business_offer.offer_amount %>
+   DISCOUNT: <%= business_offer.discount %>
+<% end %>
+
+
+
+<%= simple_form_for([@order, @order_item]) do |f| %>
+  <%= f.input :quantity %>
+  <%= f.input :business_offer, collection: @business.business_offers%>
+  <%= f.submit %>
+<% end %>

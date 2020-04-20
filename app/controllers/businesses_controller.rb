@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+  before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
   end
 
@@ -9,6 +10,12 @@ class BusinessesController < ApplicationController
   end
 
   def show
+    if current_user.orders.last.paid
+      @order = Order.create(paid: false, user_id: current_user.id)
+    else
+      @order = current_user.orders.last
+    end
+      @order_item = OrderItem.new
   end
 
   def edit
@@ -25,4 +32,14 @@ class BusinessesController < ApplicationController
 
   def view_orders
   end
+
+
+  def set_business
+    @business = Business.find(params[:id])
+  end
+
+  def sbusiness_params
+    params.require(:business).permit(:name, :address, :website, :instagram, :description, :category_id)
+  end
+
 end
