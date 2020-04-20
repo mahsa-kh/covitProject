@@ -6,7 +6,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    if current_user.orders.last.paid
+    if current_user.order.last.paid
       @order = Order.create(paid: false, user_id: current_user.id)
     else
       @order = current_user.orders.last

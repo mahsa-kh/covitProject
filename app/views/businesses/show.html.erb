@@ -23,3 +23,10 @@ Offers:
   <%= f.input :business_offer, collection: @business.business_offers%>
   <%= f.submit %>
 <% end %>
+
+
+<!-- app/views/pages/contact.html.erb -->
+<form action="/" method="post">
+  <input type="text" name="member" placeholder="Who are you looking for?">
+  <input type="submit">
+</form>
