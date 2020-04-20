@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-  get 'orders/new'
-  get 'orders/index'
-  get 'businesses/index'
-  get 'businesses/new'
-  get 'businesses/create'
-  get 'businesses/show'
-  get 'businesses/edit'
-  get 'businesses/update'
-  get 'businesses/destroy'
+
   devise_for :users
   root to: 'pages#home'
 

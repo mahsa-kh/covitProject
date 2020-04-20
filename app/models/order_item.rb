@@ -1,3 +1,3 @@
 class OrderItem < ApplicationRecord
-  belongs_to :BusinessOffer
+  belongs_to :business_offer
 end
