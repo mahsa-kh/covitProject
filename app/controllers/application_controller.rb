@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, except: :home
 
@@ -16,7 +15,6 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
-
   end
 
   protected
@@ -24,11 +22,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     # return the path based on resource
     if resource.owner
-      # if resource.owner.businesses
-          return business_path(@business)
-      # else
+      if resource.businesses.size > 0
+        return business_path(@business)
+      else
         return new_business_path
-      # end
+      end
     else
       return root_path
     end
