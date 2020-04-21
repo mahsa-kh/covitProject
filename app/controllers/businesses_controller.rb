@@ -27,3 +27,4 @@ class BusinessesController < ApplicationController
   def view_orders
   end
 end
+
