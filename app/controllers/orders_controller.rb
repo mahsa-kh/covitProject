@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :set_order, only: [:total_calculator, :update_total_amount, :update_total_amount_checkout]
+before_action :set_order, only: [:total_calculator, :update_total_amount, :update_total_amount_checkout, :update]
 before_action :total_calculator, only: [:update_total_amount, :update_total_amount_checkout]
 
   def index
@@ -19,6 +19,8 @@ before_action :total_calculator, only: [:update_total_amount, :update_total_amou
   end
 
   def update
+    @order.update(gift: true)
+    @order.update(order_params)
   end
 
   def destroy
@@ -40,10 +42,16 @@ def total_calculator
   @order_items.each do |order_item|
       business_offer = BusinessOffer.find(order_item.business_offer_id)
       #This needs to be total of dicscounted amount:
-      updated_total_amount += business_offer.offer_amount
+      updated_total_amount += business_offer.offer_amount * order_item.quantity
   end
   @order.update(total_amount: updated_total_amount, order_date: Date.new)
+  cookies[:total_amount] = updated_total_amount
 end
+
+
+ def order_params
+    params.require(:order).permit(:gift_email, :gift_message)
+  end
 
 end
 

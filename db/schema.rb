@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_125534) do
+ActiveRecord::Schema.define(version: 2020_04_21_140419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(version: 2020_04_20_125534) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "order_id", null: false
-    t.boolean "gift"
-    t.text "gift_email"
     t.index ["business_offer_id"], name: "index_order_items_on_business_offer_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
@@ -67,6 +65,9 @@ ActiveRecord::Schema.define(version: 2020_04_20_125534) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.integer "total_amount"
+    t.text "gift_message"
+    t.text "gift_email"
+    t.boolean "gift"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

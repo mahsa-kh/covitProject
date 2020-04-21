@@ -17,7 +17,20 @@ Here is your shopping bag:
 <% end %>
 
 <br>
-TOTAL: <%= @order.total_amount %>
+TOTAL: <%= cookies[:total_amount] %>
+<br>
+
+<% if !@order.gift %>
+              <%= simple_form_for(@order) do |order| %>
+                <%= order.check_box :gift%> Send as a gift!<br>
+                <%= order.input_field :gift_email, placeholder: 'email address'  %>
+                <%= order.input_field :gift_message, placeholder: 'type your message..'  %>
+                <%= order.submit "send as a gift" %>
+              <% end %>
+<% else %>
+Your order will be sent as a gift to: <%= @order.gift_email %>
+<% end %>
 <br>
 <%= link_to "PROCEED WITH PAYMENT", "#"%> <br>
 <%= link_to "GO BACK", root_path %>
+
