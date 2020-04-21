@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   get "/businesses/:user_id/view_orders", to: "businesses#view_orders", as: "view_business_orders"
   get "/businesses/:user_id/view_hisotry", to: "businesses#view_hisotry", as: "view_business_hisotry"
   post "/businesses/:business_id//business_offers/:id", to: "business_offers#add_to_bag", as: "add_offer_to_bag"
-  get "/orders/:business_id/", to: "orders#update_total_amount", as: "update_total_amount"
+  get "/orders/:business_id/increase", to: "orders#update_total_amount", as: "update_total_amount"
+  get "/orders/:business_id/decrease", to: "orders#update_total_amount_checkout", as: "update_total_amount_checkout"
 
 
 
