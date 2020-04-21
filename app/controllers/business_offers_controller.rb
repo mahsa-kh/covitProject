@@ -24,8 +24,9 @@ before_action :set_order, only: [:add_to_bag]
 
   def add_to_bag
      #WHEN USER CLICKS ON 'ADD TO BAG' WE GET HERE: send business_offer_id as param
+     # Route to this method: /businesses/:business_id/business_offers/:id
      @order.add_item_quantity(params[:id])
-     redirect_to update_total_amount_path(@order.id)
+     redirect_to update_total_amount_path(params[:business_id])
   end
 end
 

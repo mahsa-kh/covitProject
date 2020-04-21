@@ -3,58 +3,23 @@
 Business info:
 <%= @business.name%>
 
-<%= @business.description%>
-<%= @business.instagram%>
-<%= @business.address%>
-<%= @business.website%>
+<%= @business.description%> <br>
+<%= @business.instagram%> <br>
+<%= @business.address%> <br>
+<%= @business.website%> <br>
+
 
 
 
 Offers:
 <% @business.business_offers.each do |business_offer| %>
-   PAY  <%= (business_offer.offer_amount * (100 - business_offer.discount))/100 %> FOR <%= business_offer.offer_amount %>
-   DISCOUNT: <%= business_offer.discount %>
-<% end %>
-
-              <%= simple_form_for([@business, @business_offers], remote: true, do |item| %>
-                <%= item.input :offer_amount, as :boolean  %>
-                <%= item.submit "ADD TO BAG"%>
-              <% end %>
+  <%= link_to add_offer_to_bag_path(@business), method: :post, remote:true  do %>
+    <p>Credit: <%= business_offer.offer_amount %> -- Pay Only:  <%= ((business_offer.offer_amount * (100 - business_offer.discount))/100) %></p>
+  <% end %>
+<%end%>
 
 
 
 
-  THE ROUTE OF THE FORM :  add_offer_to_bag
-<!--
-<%= simple_form_for([@order, @order_item]) do |f| %>
-  <%= f.input :quantity %>
-  <%= f.input :business_offer, collection: @business.business_offers%>
-  <%= f.submit %>
-<% end %>
-
-<%= form_tag( { :action => :create, }, { :method => :post }) %>
-<%= text_field :modelname, :attribute_name, options %>
-<%= text_field "order_item", "name", "size" => 20 %>
-<input type = "text" id = "person_name" name = "person[name]"
-   size = "20" value = "<%= @person.name %>" />
-
-
-   <%= hidden_field ... %>
-
-
-   <%= check_box :modelname, :attribute,options,on_value,off_value%>
-Have a look at the following example −
-
-check_box("post", "validated")
-This will generate the following code −
-
-<input type = "checkbox" id = "post_validate" name = "post[validated]"
-   value = "1" checked = "checked" />
-<input name = "post[validated]" type = "hidden" value = "0" />
-
-
-
-
-
-<%= end_form_tag %>
- -->
+<%= link_to "PROCEED WITH CHECKOUT", order_path(cookies[:order_id])%> <br>
+<%= link_to "GO BACK", root_path %>

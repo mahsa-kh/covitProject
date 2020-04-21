@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+before_action :set_order, only: [:update_total_amount]
 
   def index
   end
@@ -24,18 +24,18 @@ class OrdersController < ApplicationController
 
   def update_total_amount
 
-      @order = Order.find(params[:id])
+
       @order_items = OrderItem.where("order_id = ?", @order.id)
       @order.update(total_amount: 0)
-
-     for @order_items.each do |order_item|
+      updated_total_amount = 0
+     @order_items.each do |order_item|
       business_offer = BusinessOffer.find(order_item.business_offer_id)
       #This needs to be total of dicscounted amount:
       updated_total_amount += business_offer.offer_amount
      end
      @order.update(total_amount: updated_total_amount)
 
-      redirect_to root, notice: "Your order is added to the bag"
+      redirect_to business_path(params[:business_id]), notice: "Your order is added to the bag"
   end
 
 
