@@ -23,8 +23,12 @@ class Order < ApplicationRecord
   def decrease_item_quantity(business_offer_id)
       @order_item = OrderItem.where("order_id = ? AND business_offer_id = ?", self.id, business_offer_id.to_i).first
       if !@order_item.nil?
-        @order_item.quantity -= 1
-        @order_item.save
+        if @order_item.quantity == 0
+          @order_item.quantity = 0
+        else
+          @order_item.quantity -= 1
+          @order_item.save
+        end
       end
       @order_item
   end
