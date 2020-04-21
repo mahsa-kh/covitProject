@@ -3,6 +3,7 @@ class BusinessesController < ApplicationController
   end
 
   def new
+    @business = Business.new
   end
 
   def create

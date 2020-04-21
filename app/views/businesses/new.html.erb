@@ -1,2 +1,12 @@
 <h1>Businesses#new</h1>
 <p>Find me in app/views/businesses/new.html.erb</p>
+
+<%= simple_form_for @business do |f| %>
+  <%= f.input :name, placeholder: 'Name of Your Business', error: 'Username is mandatory, please specify one' %>
+  <%= f.input :address, placeholder: 'Address of Your Business', hint: 'No special characters.' %>
+  <%= f.input :instagram, placeholder: 'Instagram Profile Link' %>
+  <%= f.input :website, placeholder: 'Your Website url' %>
+  <%= f.input :logo, placeholder: 'Upload Your Logo Here' %>
+  <%= f.input :description, placeholder: 'Write a catchy description here...' %>
+  <%= f.button :submit %>
+<% end %>
