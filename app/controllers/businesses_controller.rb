@@ -10,17 +10,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find(1)
-    if current_user.orders.nil?
-      if current_user.orders.last.paid
-        @order = Order.create(paid: false, user_id: current_user.id)
-      end
-    elsif !current_user.orders.nil?
-         @order = Order.create(paid: false, user_id: current_user.id)
-    else
-      @order = current_user.orders.last
-    end
-      @order_item = OrderItem.new
+    @business = Business.find(4)
   end
 
   def edit

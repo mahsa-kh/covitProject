@@ -1,20 +1,21 @@
 Here is your shopping bag:
 
 <% @order.order_items.each do |order_item|%>
+<br>
  item: <%= order_item.business_offer.offer_amount %> -- Quantity:   <%= order_item.quantity %>
   <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
     Delete
   <% end %>
-  <br>
-    <%= link_to add_offer_to_bag_path(order_item.business_offer.business_id), method: :post, remote:true  do %>
+
+    <%= link_to add_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post do %>
       +
     <% end %>
-    <br>
-  <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
-    -
-  <% end %>
+
+  <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post do %>
+      -
+    <% end %>
 <% end %>
 
-
+<br>
 <%= link_to "PROCEED WITH PAYMENT", "#"%> <br>
 <%= link_to "GO BACK", root_path %>

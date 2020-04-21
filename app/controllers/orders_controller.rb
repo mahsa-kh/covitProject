@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :set_order, only: [:update_total_amount]
+before_action :set_order, only: [:total_calculator, :update_total_amount, :update_total_amount_checkout]
 before_action :total_calculator, only: [:update_total_amount, :update_total_amount_checkout]
 
   def index
@@ -44,8 +44,6 @@ def total_calculator
   end
   @order.update(total_amount: updated_total_amount, order_date: Date.new)
 end
-
-
 
 end
 

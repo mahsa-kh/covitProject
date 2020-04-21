@@ -1,5 +1,5 @@
 class BusinessOffersController < ApplicationController
-before_action :set_order, only: [:add_to_bag]
+before_action :set_order, only: [:add_to_bag, :remove_from_bag]
   # this method is the same as view_user_history or view_user_orders mentioned in trello
   def index
   end
