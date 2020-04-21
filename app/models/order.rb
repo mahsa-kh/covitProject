@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   # belongs_to :order_item
   has_many :order_items, dependent: :destroy
   belongs_to :user
-
+  monetize :total_amount_cents
 
   def add_item_quantity(business_offer_id)
       @order_item = OrderItem.where("order_id = ? AND business_offer_id = ?", self.id, business_offer_id.to_i).first

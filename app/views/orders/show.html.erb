@@ -2,7 +2,10 @@ Here is your shopping bag:
 
 <% @order.order_items.each do |order_item|%>
 <br>
- item: <%= order_item.business_offer.offer_amount %> -- Quantity:   <%= order_item.quantity %>
+ item: <%= order_item.business_offer.offer_amount %>
+<p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
+
+  -- Quantity:   <%= order_item.quantity %>
   <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
     Delete
   <% end %>
@@ -17,7 +20,7 @@ Here is your shopping bag:
 <% end %>
 
 <br>
-TOTAL: <%= cookies[:total_amount] %>
+TOTAL: <%= @order.total_amount_cents %>
 <br>
 
 <% if !@order.gift %>
@@ -29,8 +32,19 @@ TOTAL: <%= cookies[:total_amount] %>
               <% end %>
 <% else %>
 Your order will be sent as a gift to: <%= @order.gift_email %>
+
 <% end %>
 <br>
-<%= link_to "PROCEED WITH PAYMENT", "#"%> <br>
+<button id="pay" class="btn btn-primary">Pay</button>
+    <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        var paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @order.checkout_session_id %>'
+          });
+        });
+      </script>
 <%= link_to "GO BACK", root_path %>
 

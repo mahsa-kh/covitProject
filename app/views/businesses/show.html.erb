@@ -14,7 +14,9 @@ Business info:
 Offers:
 <% @business.business_offers.each do |business_offer| %>
   <%= link_to add_offer_to_bag_path(@business, business_offer.id), method: :post do %>
-    <p>Credit: <%= business_offer.offer_amount %> -- Pay Only:  <%= ((business_offer.offer_amount * (100 - business_offer.discount))/100) %></p>
+    <p>Credit: <%= business_offer.offer_amount %> -- Pay Only:
+<p>Amount: <%= humanized_money_with_symbol(business_offer.price) %></p>
+      <%= ((business_offer.offer_amount * (100 - business_offer.discount))/100) %></p>
   <% end %>
 <%end%>
 
