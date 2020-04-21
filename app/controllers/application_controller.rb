@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_order
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, except: :home
+  # before_action :set_order
 
   protected
 
@@ -25,9 +25,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_order
-
-    if current_user.orders.last.nil? || current_user.orders.last.paid
-      @order = Order.create(paid: false, user_id: current_user.id)
+    if current_user.orders.nil? || current_user.orders.last.nil? || current_user.orders.last.paid
+      @order = Order.create(paid: false, user_id: current_user.id, owner_paid: false)
       cookies.delete(:order_id)
       cookies[:order_id] = @order.id
     else
