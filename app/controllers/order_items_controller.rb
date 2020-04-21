@@ -8,17 +8,6 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-
-
-
-  def create
-
-  end
-    # if current_user.order.last.paid
-    #   @order = Order.create(paid: false, user_id: current_user.id)
-    # else
-    #   @order = current_user.orders.last
-    # end
   end
 
   def show

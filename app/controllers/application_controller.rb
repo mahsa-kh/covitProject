@@ -35,13 +35,6 @@ class ApplicationController < ActionController::Base
       cookies.delete(:order_id)
       cookies[:order_id] = @order.id
     end
-    # cookies.delete(:order_id)
-    # !cookies[:order_id].nil? ? order_id = cookies[:order_id].to_i : order_id = 0
-
-    # @order = Order.find(order_id)
-    # rescue ActiveRecord::RecordNotFound
-    # @order = Order.create
-    # cookies[:order_id] = @order.id
   end
 
 end
