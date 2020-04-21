@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     # return the path based on resource
     if resource.owner
+      @business = Business.find_by(user_id: resource.id)
       if resource.businesses.size > 0
         return business_path(@business)
       else
