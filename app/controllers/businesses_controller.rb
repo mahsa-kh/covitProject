@@ -4,9 +4,17 @@ class BusinessesController < ApplicationController
 
   def new
     @business = Business.new
+    @category = Category.new
   end
 
   def create
+    # business_params
+    @business = Business.new(user: current_user)
+    if @business.save!
+      redirect_to new_business_business_offer_path(@business)
+    else
+      render :new
+    end
   end
 
   def show
@@ -26,5 +34,10 @@ class BusinessesController < ApplicationController
 
   def view_orders
   end
-end
 
+  private
+
+  def business_params
+    params.require(:business).permit(:name, :address, :instagram, :website, :photo, :description, :category)
+  end
+end
