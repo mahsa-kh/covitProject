@@ -35,6 +35,7 @@ class BusinessesController < ApplicationController
   end
 
   def view_orders
+    @order = Order.all
   end
 
   private

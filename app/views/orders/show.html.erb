@@ -1,0 +1,11 @@
+<h4>My Orders:</h4>
+  <%if !@order.empty? %>
+    <% @order.each do |ord| %>
+      <p>Order Created at: <%=  ord.order_date %> </p>
+      <p>Order Created at: <%=  ord.exp_date %> </p>
+      <p>Confirmation num: <%=  ord.confirmation_no %> </p>
+      <p>Payment num: <%=  ord.payment_no %> </p>
+      <p>Paid: <%=  ord.paid %> </p>
+      <p>Money received: <%=  ord.owner_paid %> </p>
+    <% end %>
+  <% end %>
