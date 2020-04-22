@@ -8,8 +8,10 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    # business_params
-    @business = Business.new(user: current_user)
+    @business = Business.new(business_params)
+    @business.user_id = current_user.id
+    @business.category = Business.find(params[:category_id])
+    # raise
     if @business.save!
       redirect_to new_business_business_offer_path(@business)
     else
@@ -38,6 +40,6 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :address, :instagram, :website, :photo, :description, :category)
+    params.require(:business).permit(:name, :address, :instagram, :website, :photo, :description, :category_id)
   end
 end

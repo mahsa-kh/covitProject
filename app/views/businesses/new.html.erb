@@ -7,7 +7,7 @@
   <%= f.input :instagram, placeholder: 'Instagram Profile Link' %>
   <%= f.input :website, placeholder: 'Your Website url' %>
   <%= f.input :photo, as: :file %>
-  <%= f.input :category_name, collection: [ "Cafe", "Restaurant", "Gym", "Beauty Salon"] %>
+  <%= f.input :category_id, collection: Category.all %>
   <%= f.input :description, as: :text, placeholder: 'Write a catchy description here...', input_html: { maxlength: 200 }, hint: 'Max 200 characters.'  %>
   <%= f.button :submit %>
 <% end %>
