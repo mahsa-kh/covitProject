@@ -3,6 +3,30 @@ before_action :set_order, only: [:total_calculator, :update_total_amount_cents, 
 before_action :total_calculator, only: [:update_total_amount_cents, :update_total_amount_cents_checkout]
 
   def index
+    if current_user.owner
+      business = Business.where("user_id = ?", current_user.id).last
+      @order_items = business.order_items
+      @orders = []
+      @order_items.each do |order_item|
+
+        if params[:query].present?
+          sql_query = "order_date ILIKE :query OR exp_date ILIKE :query OR state ILIKE :query AND order_id = #{order_item.order_id}"
+          orders = Order.where(sql_query, query: "%#{params[:query]}%")
+          @orders.push(orders)
+        else
+          order = Order.find(order_item.order_id)
+          @orders.push(order)
+        end
+      end
+    else
+      # @orders = Order.where("user_id = ?", current_user.id)
+      if params[:query].present?
+        sql_query = "order_date ILIKE :query OR exp_date ILIKE :query OR state ILIKE :query AND user_id = #{current_user.id}"
+        @orders = Order.where(sql_query, query: "%#{params[:query]}%")
+      else
+        @orders = Order.where("user_id = ?", current_user.id)
+      end
+    end
   end
 
   def new

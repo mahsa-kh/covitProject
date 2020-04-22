@@ -16,7 +16,7 @@ Category.destroy_all
 #   # validates :offer_amount, :discount, presence: true
 #   # t.integer "offer_amount"
 #   # t.integer "discount"
-#   2.times do 
+#   2.times do
 #     business_offer = BusinessOffer.new(
 #       offer_amount: Faker::Commerce.price,
 #       discount: Faker::Number.within(range: 1..10)
@@ -34,16 +34,34 @@ puts "Users Creation"
   # t.string "first_name"
   # t.string "last_name"
   # t.boolean "owner", default: false
-  5.times do
-    user = User.new(
-      first_name: Faker::Name.first_name, 
-      last_name: Faker::Name.last_name, 
-      email: Faker::Internet.email, 
-      password: Faker::Alphanumeric.alpha(number: 10),
-      owner: Faker::Boolean.boolean,
+
+    user1 = User.new(
+      first_name: "User1-Customer",
+      last_name: "User1-Customer",
+      email: "User1-Customer@gmail.com",
+      password: "User1-Customer",
+      owner: flase,
     )
-    user.save!
-  end
+    user1.save!
+
+
+    user2 = User.new(
+      first_name: "User2-Customer",
+      last_name: "User2-Customer",
+      email: "User2-Customer@gmail.com",
+      password: "User2-Customer",
+      owner: flase,
+    )
+    user2.save!
+
+    user3 = User.new(
+      first_name: "User3-Owner",
+      last_name: "User3-Owner",
+      email: "User3-Owner@gmail.com",
+      password: "User3-Owner",
+      owner: true,
+    )
+    user3.save!
 puts "Users Created"
 
 
@@ -54,12 +72,11 @@ puts "Categories Creation"
   # has_many :businesses
   # validates :category_name, uniqueness: true
   # t.text "category_name"
-  3.times do
-    category = Category.new(
-      category_name: Faker::Restaurant.name,
-    )
-    category.save!
-  end
+
+    Category.create(category_name: "Cafe")
+    Category.create(category_name: "Gym")
+    Category.create(category_name: "Resturaunt")
+
 puts "Categories Created"
 
 
@@ -78,18 +95,22 @@ puts "Businesses Creation"
   # t.text "address"
   # t.text "instagram"
   # t.text "description"
-  5.times do
-    business = Business.new(
-      name: Faker::Company.industry,
-      website: Faker::Internet.url,
-      address: Faker::Address.full_address,
-      instagram: Faker::Internet.url,
-      description: Faker::Company.catch_phrase,
+
+    business = Business.create(
+      name: "User3-Business",
+      website: "User3-Business.com",
+      address: "User3-Business@gmail.com",
+      instagram: "insta:User3-Business",
+      description: "some description about User3-Business",
       )
+
+
+
+
     business.user = User.all.sample
     business.category = Category.all.sample
-    business.save!  
-      2.times do 
+    business.save!
+      2.times do
         business_offer = BusinessOffer.new(
         offer_amount: Faker::Commerce.price,
         discount: Faker::Number.within(range: 1..10),
@@ -153,7 +174,7 @@ puts "Orders Creation"
           quantity:  Faker::Number.within(range: 1..10),
           gift: Faker::Boolean.boolean,
           gift_email: Faker::Internet.email,
-          business_offer_id: (BusinessOffer.all).sample.id,  # Since ORDER ITEMS needs also 
+          business_offer_id: (BusinessOffer.all).sample.id,  # Since ORDER ITEMS needs also
           # business_offer_id: we write "business_offer_id: (BusinessOffer.all).sample.id"
           order: order  # They are already nested therefore we use "order:order"
         )

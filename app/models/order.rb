@@ -27,8 +27,8 @@ class Order < ApplicationRecord
           @order_item.quantity = 0
         else
           @order_item.quantity -= 1
-          @order_item.save
         end
+        @order_item.save
       end
       @order_item
   end

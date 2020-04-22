@@ -34,8 +34,6 @@ class ApplicationController < ActionController::Base
       cookies.delete(:order_id)
       cookies[:order_id] = @order.id
     end
-
-
   end
 
 end
