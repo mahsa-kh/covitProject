@@ -3,7 +3,6 @@ class BusinessesController < ApplicationController
   end
 
   def new
-    @category = Category.new
     @business = Business.new
   end
 
