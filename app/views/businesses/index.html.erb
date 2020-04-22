@@ -1,3 +1,18 @@
 <h1>Businesses#index</h1>
 <p>Find me in app/views/businesses/index.html.erb</p>
 
+<% @businesses.each do |business| %>
+
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text"><%= business.description %></p>
+    <p><strong><%= business.name %></strong></p>
+    <p><strong><%= business.category.category_name %></strong></p>
+    <p><b><%= business.business_offers[0].discount %></b></p>
+  </div>
+</div>
+
+
+<% end %>

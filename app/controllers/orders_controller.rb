@@ -68,7 +68,7 @@ def total_calculator
   @order_items.each do |order_item|
       business_offer = BusinessOffer.find(order_item.business_offer_id)
       #This needs to be total of dicscounted amount:
-      updated_total_amount_cents += business_offer.price * order_item.quantity
+      updated_total_amount_cents += business_offer.price * order_item.quantity * 100
   end
   @order.update(total_amount_cents: updated_total_amount_cents, order_date: Date.new)
 
