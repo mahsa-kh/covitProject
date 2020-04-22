@@ -6,4 +6,11 @@ class Business < ApplicationRecord
   validates :name, :description, :address, :category_id, :photo, presence: true
   validates :instagram, :name, uniqueness: true
   has_one_attached :photo
+
+  def highest_offer
+    business_offer = self.business_offers
+    sorted = business_offer.sort_by { |k| k["discount"] }.last
+  end
+
 end
+

@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
   def index
+    @business = Business.all
   end
 
   def new
@@ -42,4 +43,5 @@ class BusinessesController < ApplicationController
   def business_params
     params.require(:business).permit(:name, :address, :instagram, :website, :photo, :description, :category_id)
   end
+
 end

@@ -86,8 +86,8 @@ puts "Businesses Creation"
       instagram: Faker::Internet.url,
       description: Faker::Company.catch_phrase,
       )
-    business.user = User.all.sample
-    business.category = Category.all.sample
+    business.user = User.all.sample  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+    business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
     business.save!  
       2.times do 
         business_offer = BusinessOffer.new(
@@ -145,7 +145,7 @@ puts "Orders Creation"
       payment_no: Faker::Number.number(digits: 10), # it's a number not a text
       paid: Faker::Boolean.boolean,
       owner_paid: Faker::Boolean.boolean,
-      user_id: (User.all).sample.id
+      user_id: (User.all).sample.id  # It's the same that writing business.user = User.all.sample
       )
     order.save!
       2.times do
