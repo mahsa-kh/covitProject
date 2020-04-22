@@ -1,8 +1,6 @@
- <% @business.each do |bus| %>
- <p> Business name: <%= bus.name %>  </p>
- Best Discount: <%= bus.highest_offer.discount %> %  </p>
-  <%end%>
-
-
+<% @business.each do |bus| %>
+  <p> Business name: <%= link_to bus.name, business_path(@business) %> </p>
+  <p> Best Discount: <%= bus.highest_offer.discount %> %  </p>
+<%end%>
 
  

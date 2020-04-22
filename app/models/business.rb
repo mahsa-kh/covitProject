@@ -10,5 +10,5 @@ class Business < ApplicationRecord
     business_offer = self.business_offers
     sorted = business_offer.sort_by { |k| k["discount"] }.last
   end
-
 end
+
