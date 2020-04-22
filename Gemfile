@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'money-rails'
 gem 'stripe'
+gem 'stripe_event'
 
 group :development, :test do
   gem 'pry-byebug'

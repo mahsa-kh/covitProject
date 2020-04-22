@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   def set_order
     if current_user.orders.nil? || current_user.orders.last.nil? || current_user.orders.last.paid
       @order = Order.create(paid: false, user_id: current_user.id, owner_paid: false, gift: false)
+      @order.update(confirmation_no: "CH#{@order.id}Ke120")
       cookies.delete(:order_id)
       cookies[:order_id] = @order.id
     else
