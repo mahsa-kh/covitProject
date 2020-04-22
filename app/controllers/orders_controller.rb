@@ -10,9 +10,11 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
       @order_items.each do |order_item|
 
         if params[:query].present?
-          sql_query = "order_date ILIKE :query OR exp_date ILIKE :query OR state ILIKE :query AND order_id = #{order_item.order_id}"
-          orders = Order.where(sql_query, query: "%#{params[:query]}%")
-          @orders.push(orders)
+          sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR state ILIKE :query AND id = #{order_item.order_id}"
+          all_orders = Order.where(sql_query, query: "%#{params[:query]}%")
+          all_orders.each do |order|
+            @orders.push(order)
+          end
         else
           order = Order.find(order_item.order_id)
           @orders.push(order)
@@ -21,7 +23,7 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
     else
       # @orders = Order.where("user_id = ?", current_user.id)
       if params[:query].present?
-        sql_query = "order_date ILIKE :query OR exp_date ILIKE :query OR state ILIKE :query AND user_id = #{current_user.id}"
+        sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT)  ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR state ILIKE :query AND user_id = #{current_user.id}"
         @orders = Order.where(sql_query, query: "%#{params[:query]}%")
       else
         @orders = Order.where("user_id = ?", current_user.id)
