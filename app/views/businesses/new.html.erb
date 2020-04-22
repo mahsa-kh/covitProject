@@ -7,7 +7,10 @@
   <%= f.input :instagram, placeholder: 'Instagram Profile Link' %>
   <%= f.input :website, placeholder: 'Your Website url' %>
   <%= f.input :photo, as: :file %>
-  <%= f.input :category_id, collection: Category.all %>
+  <%= f.input :category_id, collection: Category.all, label_method:
+              lambda {
+               |category| "#{category.category_name}"
+              } %>
   <%= f.input :description, as: :text, placeholder: 'Write a catchy description here...', input_html: { maxlength: 200 }, hint: 'Max 200 characters.'  %>
   <%= f.button :submit %>
 <% end %>
