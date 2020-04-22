@@ -1,7 +1,8 @@
 class BusinessOffersController < ApplicationController
-  before_action :set_business, only: [:new, :create] 
+  before_action :set_business, only: [:new, :create, :edit] 
   
   def index
+    @business_offer = BusinessOffer.all
   end
 
   def new
@@ -13,7 +14,6 @@ class BusinessOffersController < ApplicationController
   def create
     @business_offer = BusinessOffer.new(business_offer_params)
     @business_offer.business_id = params[:business_id]
-  
         if @business_offer.save
           redirect_to new_business_business_offer_path
         else
@@ -27,12 +27,22 @@ class BusinessOffersController < ApplicationController
 
   end
 
-  def edit
 
+  def edit
+     @business_offer = BusinessOffer.find(params[:id])
   end
 
   def update
+    @business_offer = BusinessOffer.find(params[:id])
+      if @business_offer.update(business_offer_params)
+        flash[:alert] = "Bravo!"
+        redirect_to business_path(@business_offer.business_id)
+      else
+        flash[:alert] = "Can't update business offer, please try again"
+        render :edit
+      end
   end
+
 
   def destroy
   end
