@@ -1,7 +1,12 @@
 class BusinessesController < ApplicationController
   def index
-    @business = Business.all
-  end
+    if params[:category].present?
+      @category = Category.find_by(category_name: params[:category])
+      @businesses = @category ? Business.where(category: @category) : Business.all
+    else
+      @businesses = Business.all
+    end
+ end
 
   def new
     @business = Business.new
