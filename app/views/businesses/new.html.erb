@@ -6,6 +6,7 @@
   <%= f.input :address, placeholder: 'Address of Your Business', required: true %>
   <%= f.input :instagram, placeholder: 'Instagram Profile Link', required: true %>
   <%= f.input :website, placeholder: 'Your Website url', required: true %>
+  <%= f.input :employee_no, placeholder: 'Number of employee we can help', required: true %>
   <%= f.input :photo, as: :file, required: true  %>
   <%= f.input :category_id, collection: Category.all, label_method:
               lambda {
