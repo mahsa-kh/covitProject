@@ -1,2 +1,24 @@
-<h1>Businesses#new</h1>
-<p>Find me in app/views/businesses/new.html.erb</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-6">
+      <div class="form-inputs">
+        <h2>Create A New Business</h2>
+        <%= simple_form_for @business do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :name, placeholder: 'Name of Your Business', error: 'Name is mandatory, please specify one', required: true %>
+          <%= f.input :address, required: true, as: :search, input_html: {id: "b_address"}, placeholder: 'Address of Your Business' %>
+          <%= f.input :instagram, placeholder: 'Instagram Profile Link', required: true %>
+          <%= f.input :website, placeholder: 'Your Website url', required: true %>
+          <%= f.input :employee_no, placeholder: 'Number of employee we can help', required: true %>
+          <%= f.input :photo, as: :file, required: true  %>
+          <%= f.input :category_id, collection: Category.all, label_method:
+                      lambda {
+                       |category| "#{category.category_name}"
+                      }, required: true %>
+          <%= f.input :description, as: :text, placeholder: 'Write a catchy description here...', input_html: { maxlength: 200 }, hint: 'Max 200 characters.', required: true  %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
