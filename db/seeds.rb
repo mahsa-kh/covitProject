@@ -2,8 +2,8 @@ require 'open-uri'
 require "faker"
 Business.destroy_all
 Order.destroy_all
-OrderItem.destroy_all
 BusinessOffer.destroy_all
+OrderItem.destroy_all
 User.destroy_all
 Category.destroy_all
 
