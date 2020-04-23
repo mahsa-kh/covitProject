@@ -85,6 +85,7 @@ puts "Businesses Creation"
       address: Faker::Address.full_address,
       instagram: Faker::Internet.url,
       description: Faker::Company.catch_phrase,
+      employee_no: Faker::Number.within(range: 1..10),
       )
     business.user = User.all.sample  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
     business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
