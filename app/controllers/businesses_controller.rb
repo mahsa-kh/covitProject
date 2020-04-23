@@ -6,7 +6,17 @@ class BusinessesController < ApplicationController
     else
       @businesses = Business.all
     end
- end
+
+    @user = current_user # given by DEVICE!!
+    @orders = @user.orders
+    show_alert = @orders.any? do |ord|
+      (Date.today + 10) > ord.exp_date
+    end
+     if show_alert
+       flash[:alert] = "One or more orders are going to expire within 10 days"
+     end
+  end
+
 
   def new
     @business = Business.new
