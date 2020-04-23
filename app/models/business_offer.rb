@@ -4,4 +4,6 @@ class BusinessOffer < ApplicationRecord
   has_many :orders, through: :order_items
   validates :offer_amount, uniqueness: { scope: :business, message: "The amount must be unique" }
   validates :offer_amount, :discount, presence: true
+
+  monetize :price_cents
 end
