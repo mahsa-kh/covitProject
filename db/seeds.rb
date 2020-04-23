@@ -144,7 +144,6 @@ for i in 1..5 do
       order_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
       exp_date: Faker::Date.forward(days: 23),
       confirmation_no: Faker::Number.number(digits: 10), # it's a number not a text
-      payment_no: Faker::Number.number(digits: 10), # it's a number not a text
       paid: Faker::Boolean.boolean,
       owner_paid: Faker::Boolean.boolean,
       user_id: rand(1..2),
@@ -155,8 +154,6 @@ for i in 1..5 do
     for j in 1..4 do
         OrderItem.create(
           quantity:  rand(1..5),
-          gift: Faker::Boolean.boolean,
-          gift_email: Faker::Internet.email,
           business_offer_id: (BusinessOffer.all).sample.id,
           order: order
         )
