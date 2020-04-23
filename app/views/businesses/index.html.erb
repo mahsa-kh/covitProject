@@ -1,6 +1,7 @@
-<% @business.each do |bus| %>
-  <p> Business name: <%= link_to bus.name, business_path(@business) %> </p>
-  <p> Best Discount: <%= bus.highest_offer.discount %> %  </p>
+<% @businesses.each do |bus| %>
+  <p> Business name: <%= link_to bus.name, business_path(bus) %> </p>
+  <p> Best Discount: <%= bus.highest_offer ? "#{bus.highest_offer.discount}%" : "There are no offers yet for this business" %> </p>
+  <p> You are helping: <%= bus.employee_no %> employee</p>
 <%end%>
 
  
