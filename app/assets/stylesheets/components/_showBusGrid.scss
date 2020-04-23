@@ -1,0 +1,55 @@
+.bus-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.main-item {
+  height: 527px;
+  margin: 20px;
+}
+
+.main-item img {
+  width: 260px;
+}
+
+.space-holder {
+  width: 150px;
+}
+
+.bus-content-container {
+  width: 600px;
+  height: 527px;
+  // border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.bus-infos {
+  flex-grow: auto;
+  align-self: flex-start;
+  padding: 16px;
+}
+
+
+
+
+.bus-infos .bus-offers {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.bus-offers .offers {
+  align-self: baseline;
+  margin: 40px;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+
+}

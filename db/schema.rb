@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_143647) do
+ActiveRecord::Schema.define(version: 2020_04_22_124530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_143647) do
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["business_id"], name: "index_business_offers_on_business_id"
   end
 
@@ -71,8 +72,6 @@ ActiveRecord::Schema.define(version: 2020_04_21_143647) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "order_id", null: false
-    t.boolean "gift"
-    t.text "gift_email"
     t.index ["business_offer_id"], name: "index_order_items_on_business_offer_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
@@ -81,13 +80,19 @@ ActiveRecord::Schema.define(version: 2020_04_21_143647) do
     t.date "order_date"
     t.date "exp_date"
     t.text "confirmation_no"
-    t.text "payment_no"
-    t.boolean "paid"
     t.boolean "owner_paid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.integer "total_amount"
+    t.text "gift_message"
+    t.text "gift_email"
+    t.boolean "gift"
+    t.integer "total_amount_cents", default: 0, null: false
+    t.string "total_amount_currency", default: "EUR", null: false
+    t.string "checkout_session_id"
+    t.string "state"
+    t.string "orders"
+    t.boolean "paid"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
