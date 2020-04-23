@@ -1,9 +1,9 @@
+require 'open-uri'
 require "faker"
 Business.destroy_all
 BusinessOffer.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
-
 User.destroy_all
 Category.destroy_all
 
@@ -36,37 +36,47 @@ puts "Users Creation"
   # t.string "last_name"
   # t.boolean "owner", default: false
 
-    user1 = User.new(
-      first_name: "User1-Customer",
-      last_name: "User1-Customer",
-      email: "User1-Customer@gmail.com",
-      password: "User1-Customer",
-      owner: false,
+  5.times do
+    user = User.new(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email,
+      password: Faker::Alphanumeric.alpha(number: 10),
+      owner: Faker::Boolean.boolean,
     )
-    user1.save!
+    user.save!  
+  end
 
+  user1 = User.new(
+    first_name: "User1-Customer",
+    last_name: "User1-Customer",
+    email: "User1-Customer@gmail.com",
+    password: "User1-Customer",
+    owner: false,
+  )
+  user1.save!
 
-    user2 = User.new(
-      first_name: "User2-Customer",
-      last_name: "User2-Customer",
-      email: "User2-Customer@gmail.com",
-      password: "User2-Customer",
-      owner: false,
-    )
-    user2.save!
+  user2 = User.new(
+    first_name: "User2-Customer",
+    last_name: "User2-Customer",
+    email: "User2-Customer@gmail.com",
+    password: "User2-Customer",
+    owner: false,
+  )
+  user2.save!
 
-for i in 1..5 do
-      User.create(
-      first_name: "User#{i}-Owner",
-      last_name: "User#{i}-Owner",
-      email: "User#{i}-Owner@gmail.com",
-      password: "User#{i}-Owner",
-      owner: true,
-    )
-      i += 1;
-end
+  for i in 1..5 do
+        User.create(
+        first_name: "User#{i}-Owner",
+        last_name: "User#{i}-Owner",
+        email: "User#{i}-Owner@gmail.com",
+        password: "User#{i}-Owner",
+        owner: true,
+      )
+        i += 1;
+  end
 
-puts "Users Created"
+  puts "Users Created"
 
 
 
@@ -101,6 +111,11 @@ for i in 3..8 do
       category_id: (Category.all).sample.id,
       user_id: users.sample.id
       )
+
+    business.user = User.all.sample  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+    business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+    file = URI.open('https://source.unsplash.com/800x800/?store')
+    business.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
     business.save!
     for j in 1..4 do
         BusinessOffer.create(
@@ -140,6 +155,8 @@ for i in 1..5 do
     for j in 1..4 do
         OrderItem.create(
           quantity:  rand(1..5),
+          gift: Faker::Boolean.boolean,
+          gift_email: Faker::Internet.email,
           business_offer_id: (BusinessOffer.all).sample.id,
           order: order
         )
