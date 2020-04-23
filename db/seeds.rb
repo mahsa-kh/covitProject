@@ -1,3 +1,4 @@
+require 'open-uri'
 require "faker"
 Business.destroy_all
 Order.destroy_all
@@ -16,7 +17,7 @@ Category.destroy_all
 #   # validates :offer_amount, :discount, presence: true
 #   # t.integer "offer_amount"
 #   # t.integer "discount"
-#   2.times do 
+#   2.times do
 #     business_offer = BusinessOffer.new(
 #       offer_amount: Faker::Commerce.price,
 #       discount: Faker::Number.within(range: 1..10)
@@ -36,9 +37,9 @@ puts "Users Creation"
   # t.boolean "owner", default: false
   5.times do
     user = User.new(
-      first_name: Faker::Name.first_name, 
-      last_name: Faker::Name.last_name, 
-      email: Faker::Internet.email, 
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.email,
       password: Faker::Alphanumeric.alpha(number: 10),
       owner: Faker::Boolean.boolean,
     )
@@ -88,8 +89,10 @@ puts "Businesses Creation"
       )
     business.user = User.all.sample  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
     business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-    business.save!  
-      2.times do 
+    file = URI.open('https://source.unsplash.com/800x800/?restaurant,cafe')
+    business.photo.attach(io: file, content_type: 'image/png')
+    business.save!
+      2.times do
         business_offer = BusinessOffer.new(
         offer_amount: Faker::Commerce.price,
         discount: Faker::Number.within(range: 1..10),
@@ -153,7 +156,7 @@ puts "Orders Creation"
           quantity:  Faker::Number.within(range: 1..10),
           gift: Faker::Boolean.boolean,
           gift_email: Faker::Internet.email,
-          business_offer_id: (BusinessOffer.all).sample.id,  # Since ORDER ITEMS needs also 
+          business_offer_id: (BusinessOffer.all).sample.id,  # Since ORDER ITEMS needs also
           # business_offer_id: we write "business_offer_id: (BusinessOffer.all).sample.id"
           order: order  # They are already nested therefore we use "order:order"
         )
