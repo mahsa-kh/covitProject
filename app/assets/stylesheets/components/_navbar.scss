@@ -1,12 +1,48 @@
-.navbar-lewagon {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  border: 1px solid red;
+  display: flex;
   justify-content: space-between;
-  background: white;
+  background-color: white;
+  height: 58px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.action {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.shop,
+.cart,
+.logo,
+.search {
+  min-width: 100px;
+  margin: 18px;
 }
+
+.tuche {
+  height: 28px;
+}
+
+.shop {
+  border: 2px solid red;
+  background-color: light-blue;
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+}
+
+.cart {
+  border: 2px solid red;
+  background-color: light-blue;
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+}
+
+
