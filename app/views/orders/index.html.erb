@@ -1,2 +1,48 @@
 <h1>Orders#index</h1>
 <p>Find me in app/views/orders/index.html.erb</p>
+<br>
+
+<% if !current_user.owner %>
+
+  <ul class="list-unstyled">
+<% end %>
+
+<br>
+
+<p>you can search based on "Confirmation No:" "Total Amount", "order Date", "Expiry Date" or "State"</p>
+<%= form_tag orders_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an order"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Order No</th>
+      <th scope="col">Date</th>
+      <th scope="col">Order Expiry Date</th>
+      <th scope="col">Payment Amount</th>
+      <th scope="col">Payment Status</th>
+      <th scope="col">Confirmation No</th>
+      <th scope="col">Credit Pack</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @orders.each do |order|%>
+      <tr>
+        <th scope="row"><%= order.id %></th>
+        <th ><%= order.order_date %></th>
+        <td><%= order.exp_date %></td>
+        <td><%= order.total_amount_cents %></td>
+        <td><%= order.state %></td>
+        <td> <%= order.confirmation_no %></td>
+        <td> <%= order.order_items.count %></td>
+      </tr>
+      <%end%>
+  </tbody>
+</table>
+

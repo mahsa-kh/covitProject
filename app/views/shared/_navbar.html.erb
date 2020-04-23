@@ -10,10 +10,21 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <%= form_tag businesses_path, method: :get, class: "navbar navbar-light bg-light" do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control mr-sm-2",
+                placeholder: "enter a keyword"
+              %>
+              <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+            <% end %>
+        </li>
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>
         </li>
+
         <li class="nav-item">
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li>
