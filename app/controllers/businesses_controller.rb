@@ -23,9 +23,14 @@ class BusinessesController < ApplicationController
   end
 
   def edit
+    @business = Business.find(params[:id])
   end
 
   def update
+    @business = Business.find(params[:id])
+    @business.update(business_params)
+
+    redirect_to business_path(@business)
   end
 
   def destroy
