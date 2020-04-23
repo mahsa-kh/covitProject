@@ -30,15 +30,13 @@
 }
 
 .bus-infos {
-  flex-grow: auto;
   align-self: flex-start;
   padding: 16px;
 }
 
 
-
-
 .bus-infos .bus-offers {
+  height: 60px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -47,7 +45,7 @@
 
 .bus-offers .offers {
   align-self: baseline;
-  margin: 40px;
+  margin: 0px;
   font-size: 14px;
   line-height: 16px;
   text-align: center;
