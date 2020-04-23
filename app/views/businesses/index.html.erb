@@ -5,7 +5,7 @@
 
 
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
+  <%= cl_image_tag business.photo.key, height: 300, width: 400, crop: :fill, class: 'card-img-top' %>
   <div class="card-body">
     <p class="card-text"><%= business.description %></p>
     <p><strong><%= business.name %></strong></p>
