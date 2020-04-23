@@ -90,7 +90,7 @@ puts "Businesses Creation"
     business.user = User.all.sample  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
     business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
     file = URI.open('https://source.unsplash.com/800x800/?store')
-    business.photo.attach(io: file, filename: 'business_image.png', content_type: 'image/png')
+    business.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
     business.save!
       2.times do
         business_offer = BusinessOffer.new(
