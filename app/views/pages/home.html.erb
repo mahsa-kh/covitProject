@@ -1,22 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-This will be moved to nav-bar, to profile<%= link_to "GO to orders", orders_path %>
 
+<div class="bus-container">
+  <img src="<%= asset_path('cafe.jpg') %>" alt="" class="main-item">
+  <div class="main-item bus-content-container">
+    <div class="bus-infos">
+      <h1>Clara Cafe</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo lobortis elit nunc, donec sed. Vulputate massa sagittis nunc id. Scelerisque malesuada accumsan duis bibendum mauris. Dignissim tellus est in dictum leo.
+      </p>
+      <h1>Location</h1>
+      <p> <u>Milano - Filippo Juvara - 7 </u></p>
+    </div>
 
-
-
-<% @businesses.each do |business| %>
-
-
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text"><%= business.description %></p>
-    <p><strong><%= business.name %></strong></p>
-    <p><strong><%= business.category.category_name %></strong></p>
-    <p><b><%= business.business_offers[0].discount %></b></p>
+    <div class="bus-infos mt-2">
+      <h1>Offers</h1>
+      <p>Click an offer to add it to your cart </p>
+    </div>
+    <div class="bus-infos bus-offers">
+      <a href="" class="button-secondary-sm offers">500$ <span style="color:#2255FF"> (20%)</span></a>
+      <a href="" class="button-secondary-sm offers">500$ <span style="color:#2255FF"> (20%)</span></a>
+      <a href="" class="button-secondary-sm offers">500$ <span style="color:#2255FF"> (20%)</span></a>
+      <a href="" class="button-secondary-sm offers">500$ <span style="color:#2255FF"> (20%)</span></a>
+    </div>
+    <div class="bus-infos button-primary mt-4">
+      View Cart
+    </div>
   </div>
+  <div class="main-item space-holder">
+  </div>
+
 </div>
 
-
-<% end %>
