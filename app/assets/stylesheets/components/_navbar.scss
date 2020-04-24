@@ -3,18 +3,20 @@
   padding: 0;
 }
 
-.header {
-  border: 1px solid red;
+.navbar {
   display: flex;
   justify-content: space-between;
   background-color: white;
-  height: 58px;
+  border-bottom: 1px solid black;
+  padding-top: 40px;
+  height: 80px;
 }
 
 .action {
-  border: 1px solid red;
   display: flex;
   justify-content: center;
+  margin-left: 40px;
+  height: 40px;
 }
 
 .shop,
@@ -22,27 +24,76 @@
 .logo,
 .search {
   min-width: 100px;
-  margin: 18px;
+  margin: 0px;
 }
 
 .tuche {
   height: 28px;
+  margin-down: 4px;
 }
 
-.shop {
-  border: 2px solid red;
+.action-item {
+  border: 1px solid black;
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
+  border-bottom: 1px solid black;
+    &:last-child {
+      border-left: none;
+  }
+}
+
+.login {
+  margin: 18px;
+}
+
+.action-two {
+  display: flex;
+  justify-content: center;
+}
+
+.action-item-two {
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
+}
+
+.logo_two {
+  height: 24px;
+}
+
+
+.login a {
+  color: black;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+
+
+
+.search-action-item-two {
   background-color: light-blue;
   padding: 17px 38px;
   box-sizing: content;
   line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
 }
 
-.cart {
-  border: 2px solid red;
+.navbar navbar-light bg-light {
   background-color: light-blue;
   padding: 17px 38px;
   box-sizing: content;
   line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
 }
-
-

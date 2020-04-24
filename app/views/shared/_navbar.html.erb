@@ -1,23 +1,35 @@
-<div class="header">
+<div class="navbar">
 
   <div class="action">
-    <div class="shop">
+
+    <div class="shop action-item">
       Shop
     </div>
 
-    <div class="cart">
+    <div class="cart action-item">
       Cart
     </div>
-
   </div>
 
   <div class="logo">
-    <%= image_tag "tuche.jpg", class: "tuche"%>
+    <%= link_to root_path do %>
+      <%= image_tag ('tuche.jpg'), class: "logo_two" %>
+    <% end %>
   </div>
 
 
-  <div class="search">
-    <input type="search" />
-    <a>Logout</a>
+  <div class="action-two">
+
+    <%= form_tag businesses_path, method: :get, class: "bg-light" do %>
+         <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2 border-0", placeholder: "enter a keyword" %>
+    <% end %>
+
+
+
+    <div class="login action-item-two">
+      <%= link_to "Login", new_user_registration_path %>
+    </div>
   </div>
+
 </div>
+
