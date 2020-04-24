@@ -1,12 +1,53 @@
-<h4>My Orders:</h4>
-  <%if !@order.empty? %>
-    <% @order.each do |ord| %>
-      <p>Order Created at: <%=  ord.order_date %> </p>
-      <p>Order Created at: <%=  ord.exp_date %> </p>
-      <p>Confirmation num: <%=  ord.confirmation_no %> </p>
-      <p>Payment num: <%=  ord.payment_no %> </p>
-      <p>Paid: <%=  ord.paid %> </p>
-      <p>Money received: <%=  ord.owner_paid %> </p>
-    <% end %>
+Here is your shopping bag:
+
+<% @order.order_items.each do |order_item|%>
+<br>
+ item: <%= order_item.business_offer.offer_amount %>
+<p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
+
+  -- Quantity:   <%= order_item.quantity %>
+  <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
+    Delete
   <% end %>
+
+    <%= link_to increase_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
+      +
+    <% end %>
+
+
+  <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
+      -
+    <% end %>
+<% end %>
+
+<br>
+TOTAL: <%= @order.total_amount_cents %>
+<br>
+
+<% if !@order.gift %>
+              <%= simple_form_for(@order) do |order| %>
+                <%= order.check_box :gift%> Send as a gift!<br>
+                <%= order.input_field :gift_email, placeholder: 'email address'  %>
+                <%= order.input_field :gift_message, placeholder: 'type your message..'  %>
+                <%= order.submit "send as a gift" %>
+              <% end %>
+<% else %>
+Your order will be sent as a gift to: <%= @order.gift_email %>
+
+<% end %>
+<br>
+<button id="pay" class="btn btn-primary">Pay</button>
+    <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        var paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @order.checkout_session_id %>'
+          });
+        });
+      </script>
+<%= link_to "GO BACK", root_path %>
+
+
 

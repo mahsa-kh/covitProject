@@ -1,6 +1,15 @@
 class BusinessesController < ApplicationController
+  before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
-    if params[:category].present?
+    if params[:query].present?
+            sql_query = " \
+        businesses.name ILIKE :query \
+        OR businesses.description ILIKE :query \
+        OR businesses.address ILIKE :query \
+        OR categories.category_name ILIKE :query \
+      "
+      @businesses = Business.joins(:category).where(sql_query, query: "%#{params[:query]}%")
+    elsif params[:category].present?
       @category = Category.find_by(category_name: params[:category])
       @businesses = @category ? Business.where(category: @category) : Business.all
     else
@@ -16,6 +25,7 @@ class BusinessesController < ApplicationController
        flash[:alert] = "One or more orders are going to expire within 10 days"
      end
   end
+
 
 
   def new
@@ -35,6 +45,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
+    @business = Business.find(params[:id])
   end
 
   def edit
@@ -64,4 +75,7 @@ class BusinessesController < ApplicationController
     params.require(:business).permit(:name, :address, :instagram, :website, :photo, :description, :category_id)
   end
 
+  def set_business
+    # @business = Business.find(params[:id])
+  end
 end
