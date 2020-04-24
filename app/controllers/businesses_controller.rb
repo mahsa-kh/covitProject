@@ -28,6 +28,18 @@ class BusinessesController < ApplicationController
 
 
 
+  def order_history_businesses
+    @orders = Order.where(user: current_user)  # It is the same ---> @orders = current_user.orders
+    @businesses = []
+    @orders.each do |order|
+      order.order_items.each do |order_item|
+        business = order_item.business_offer.business  #  OrderItems belongs_to :business_offer  & BusinessOffers belongs_to :business,
+        @businesses << business unless @businesses.include?(business)
+      end
+    end
+  end
+
+
   def new
     @business = Business.new
   end

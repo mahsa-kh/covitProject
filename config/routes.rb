@@ -35,7 +35,7 @@ mount StripeEvent::Engine, at: '/stripe-webhooks'
   get "/orders/:business_id/increase", to: "orders#update_total_amount_cents", as: "update_total_amount_cents"
   get "/orders/:business_id/decrease", to: "orders#update_total_amount_cents_checkout", as: "update_total_amount_cents_checkout"
 
-
+  get "/businesses/helped", to: "businesses#order_history_businesses", as: "businesses_helped"
 
   # get "/businesses/:user_id/withdraw", to: "businesses#withdraw", as: "withdraw"
   # get "/orders/:user_id/transactions", to: "orders#view_history", as: "view_user_history"
