@@ -1,0 +1,112 @@
+.button-primary {
+  color: white;
+  padding: 8px 24px;
+  background: black;
+  border: 1px solid black;
+  width: 360px;
+  height: 42px;
+
+  left: 0%;
+  right: 0%;
+  top: 21.43%;
+  bottom: 23.81%;
+
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+}
+
+.button-primary:hover {
+  background: white;
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+.button-secondary-banner {
+  color: black;
+  padding: 15px 24px;
+  background: white;
+  width: 400px;
+  height: 52px;
+
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 23px;
+  text-align: center;
+}
+
+.button-secondary-banner:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+.button-secondary{
+  color: black;
+  padding: 8px 24px;
+  background: white;
+  border: 1px solid black;
+  width: 360px;
+  height: 42px;
+
+  left: 0%;
+  right: 0%;
+  top: 21.43%;
+  bottom: 23.81%;
+
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+}
+
+.button-secondary:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+.button-secondary-sm {
+  color: black;
+  padding: 14px;
+  background: white;
+  border: 1px solid black;
+  width: 167px;
+  height: 42px;
+
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.button-secondary-sm:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+
+
+//  FOR THE PLACEMENT OF CERTAIN BUTTONS:
+
+.centerd-btn-layer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 15px;
+}

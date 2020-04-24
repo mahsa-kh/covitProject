@@ -1,0 +1,94 @@
+
+.card {
+  overflow: hidden;
+  background: white;
+  width: 360px;
+  height: 269px;
+  border: 0px;
+}
+
+.card .card-img {
+  height: 215px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card > img {
+  height: 215px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card h2 {
+  font-family: Karla;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card p {
+  font-family: Karla;
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card .card-infos {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-infos .card-empl {
+  position: absolute;
+  right: 8px;
+}
+
+
+.card-infos .discount-bordered{
+  font-family: Karla;
+  position: absolute;
+  right: 15px;
+  top: -195px;
+  // width: 40px;
+  background: white;
+  width: 75px;
+  height: 31px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.link-to {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: black !important;
+  font-weight: lighter;
+}
+
+.link-to-white {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: white !important;
+  font-weight: lighter;
+}
+
+.link-to:hover{
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: black  !important;
+  font-weight: lighter;
+}
+
+.link-to-white:hover{
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: black  !important;
+  font-weight: lighter;
+}
+

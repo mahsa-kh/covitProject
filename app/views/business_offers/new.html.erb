@@ -6,8 +6,8 @@
     </div>
     <div class=".col-sm-12 col-md-4 d-sm-inline-flex d-md-inline-flex">
       <div class="card-add mt-5 center">
-          <% if @business.business_offers.count <= 4 %>
-            <div class="msg mt-3 bl"> Add maximum 5 offers and click on REGISTER. </div>
+          <% if @business.business_offers.count <= 3 %>
+            <div class="msg mt-3 bl"> Add maximum 4 offers and click on REGISTER. </div>
               <div class="card-title">My Offer:</div>
                 <div class="card-form">
                   <%= simple_form_for([@business, @business_offer], remote: true, class: 'form-inline') do |business_offer| %>
@@ -16,7 +16,7 @@
                   <%= business_offer.submit "+" , class: "card-btn" %>
                   <% end %>
           <% else %> 
-          <p>Maximum of 5 credit offer can be added to your page</p>       
+          <p>Maximum of 4 credit offer can be added to your page</p>       
           <% end %>
                   <%  if @business.business_offers.any? %>
                     <%  @business.business_offers.each do |businessoffer| %>
