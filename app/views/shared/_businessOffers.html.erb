@@ -23,14 +23,14 @@
     </div>
       <% if !current_user.orders.last.nil? %>
         <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
-          <div class="bus-infos button-primary mt-4">
+          <div class="bus-infos button-primary mt-1">
             <%= link_to "View Cart", order_path(current_user.orders.last.id) , class: "link-to-white"%>
           </div>
           <div class="bus-infos button-transparent mt-1">
             <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
           </div>
         <%else%>
-          <div class="bus-infos button-primary mt-4">
+          <div class="bus-infos button-primary mt-1">
             <%= link_to "Back to Shops", businesses_path , class: "link-to-white"%>
           </div>
         <%end%>
