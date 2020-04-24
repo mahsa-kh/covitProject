@@ -26,4 +26,23 @@
 
 
 
+ .card-container-compact {
+  flex-grow: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 10;
+}
+
+
+.card-container-compact .card-container-item {
+  flex-grow: auto;
+  width: 350px;
+  height: 269px;
+  margin-top: 10px;
+  margin-top: 10px;
+  align-self: flex-start;
+}
 

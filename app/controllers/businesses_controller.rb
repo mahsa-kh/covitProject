@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
+
     if params[:query].present?
             sql_query = " \
         businesses.name ILIKE :query \
