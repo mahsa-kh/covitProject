@@ -10,6 +10,7 @@ This will be moved to nav-bar, to profile<%= link_to "GO to orders", orders_path
 
 <div class="card-container mt-4">
   <%for i in (0..5) do%>
+  <%= link_to business_path(@businesses[i]), class: "link-to" do %>
     <div class="card-container-item">
       <div class="card">
         <img src=<%= asset_path('cafe1.jpg')%> >
@@ -23,6 +24,7 @@ This will be moved to nav-bar, to profile<%= link_to "GO to orders", orders_path
         </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>
 

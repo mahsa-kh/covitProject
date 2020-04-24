@@ -7,6 +7,7 @@
 }
 
 
+
 .card-container .card-container-item {
   flex-grow: auto;
   width: 360px;
@@ -14,6 +15,13 @@
   margin: 20px;
   align-self: baseline;
 }
+
+
+.card-container .card-container-item:hover {
+
+  opacity: 0.7;
+}
+
 
 
 
