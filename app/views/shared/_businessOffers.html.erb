@@ -2,7 +2,7 @@
   <img src="<%= asset_path('cafe.jpg') %>" alt="" class="main-item">
   <div class="main-item bus-content-container">
     <div class="bus-infos">
-      <h1><%= business.name %> <a href="<%= business.instagram %>" class="link-to"><i class="fab fa-instagram"></i> </a></h1>
+      <h1><%= business.name %> <small><a href="<%= business.instagram %>" class="link-to"><i class="fab fa-instagram"></i></a></small> </h1>
       <p><%= business.description %></p>
       <h1>Location</h1>
       <p> <u><%= business.address %></u></p>
@@ -23,19 +23,16 @@
     </div>
       <% if !current_user.orders.last.nil? %>
         <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
-
-    <div class="bus-infos button-primary mt-4">
-          <%= link_to "View Cart", order_path(current_user.orders.last.id) , class: "link-to-white"%>
-        </div>
-
-    <div class="bus-infos button-secondary mt-1">
-          <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
-        </div>
+          <div class="bus-infos button-primary mt-4">
+            <%= link_to "View Cart", order_path(current_user.orders.last.id) , class: "link-to-white"%>
+          </div>
+          <div class="bus-infos button-transparent mt-1">
+            <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+          </div>
         <%else%>
-
-    <div class="bus-infos button-secondary mt-4">
-          <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
-        </div>
+          <div class="bus-infos button-primary mt-4">
+            <%= link_to "Back to Shops", businesses_path , class: "link-to-white"%>
+          </div>
         <%end%>
       <%end%>
     <!-- </div> -->

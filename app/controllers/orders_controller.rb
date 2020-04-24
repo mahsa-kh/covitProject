@@ -3,6 +3,13 @@ before_action :set_order, only: [:total_calculator, :update_total_amount_cents, 
 before_action :total_calculator, only: [:update_total_amount_cents, :update_total_amount_cents_checkout]
 
   def index
+
+    if params[:payment] == "success"
+    current_user.orders.last.update(exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
+    elsif params[:payment] == "fail"
+    current_user.orders.last.update(state: 'failed', paid: false, owner_paid: false)
+    end
+
     if current_user.owner
       business = Business.where("user_id = ?", current_user.id).last
       @order_items = business.order_items
@@ -39,14 +46,14 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
   end
 
   def show
-   # @user = current_user # given by device!!
-   #  @orders = @user.orders
-   #  show_alert = @orders.any? do |ord|
-   #    (Date.today + 10) > ord.exp_date
-   #  end
-   #   if show_alert
-   #     flash[:alert] = "One or more orders are going to expire within 10 days"
-   #   end
+   @user = current_user # given by device!!
+    @orders = @user.orders
+    show_alert = @orders.any? do |ord|
+      (Date.today + 10) > ord.exp_date if ord.exp_date
+    end
+     if show_alert
+       flash[:alert] = "One or more orders are going to expire within 10 days"
+     end
     @order = Order.find(params[:id])
   end
 
@@ -91,8 +98,8 @@ session = Stripe::Checkout::Session.create(
         currency: 'eur',
         quantity: 1
       }],
-      success_url: orders_url,
-      cancel_url: orders_url
+      success_url:"#{orders_url}?payment=success",
+      cancel_url: "#{orders_url}?payment=fail"
     )
 
 @order.update(checkout_session_id: session.id)
