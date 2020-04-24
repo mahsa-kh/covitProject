@@ -21,9 +21,24 @@
         <%end%>
 
     </div>
+      <% if !current_user.orders.last.nil? %>
+        <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
+
     <div class="bus-infos button-primary mt-4">
-      <%= link_to "View Cart", order_path(cookies[:order_id]) , class: "link-to-white"%>
-    </div>
+          <%= link_to "View Cart", order_path(current_user.orders.last.id) , class: "link-to-white"%>
+        </div>
+
+    <div class="bus-infos button-secondary mt-1">
+          <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+        </div>
+        <%else%>
+
+    <div class="bus-infos button-secondary mt-4">
+          <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+        </div>
+        <%end%>
+      <%end%>
+    <!-- </div> -->
   </div>
   <div class="main-item space-holder">
   </div>
