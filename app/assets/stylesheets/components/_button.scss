@@ -26,22 +26,29 @@
   text-decoration: none;
 }
 
-.button-secondary-nb {
+.button-secondary-banner {
   color: black;
-  padding: 8px 24px;
+  padding: 15px 24px;
   background: white;
-  width: 360px;
-  height: 42px;
+  width: 400px;
+  height: 52px;
 
   font-family: Karla;
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 23px;
   text-align: center;
 }
 
-.button-secondary {
+.button-secondary-banner:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  text-decoration: none;
+}
+
+.button-secondary{
   color: black;
   padding: 8px 24px;
   background: white;
@@ -90,4 +97,15 @@
   color: white;
   border: 1px solid black;
   text-decoration: none;
+}
+
+
+
+//  FOR THE PLACEMENT OF CERTAIN BUTTONS:
+
+.centerd-btn-layer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
