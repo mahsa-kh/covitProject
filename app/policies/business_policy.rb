@@ -10,7 +10,7 @@ class BusinessPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user # Only current_user can edit his/her restaurant
   end
 
   private
