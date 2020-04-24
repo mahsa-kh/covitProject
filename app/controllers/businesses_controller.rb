@@ -45,12 +45,14 @@ class BusinessesController < ApplicationController
 
   def new
     @business = Business.new
+    authorize @business
   end
 
   def create
     # @category = Category.find(params[:id])
     @business = Business.new(business_params)
     @business.user_id = current_user.id
+    authorize @restaurant
     # @business.category_id = params[:category_id]
     if @business.save!
       redirect_to new_business_business_offer_path(@business)
@@ -92,6 +94,7 @@ class BusinessesController < ApplicationController
   end
 
   def set_business
-    # @business = Business.find(params[:id])
+    @business = Business.find(params[:id])
+    authorize @restaurant
   end
 end
