@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   #   sessions: "users/sessions"
   # }
 
-  resources :businesses, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
+  resources :businesses, only: [ :new, :create, :show, :edit, :update, :destroy] do
     resources :business_offers, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 

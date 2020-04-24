@@ -8,6 +8,12 @@
   border: 0px;
 }
 
+.card .card-img {
+  height: 215px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .card > img {
   height: 215px;
   width: 100%;
