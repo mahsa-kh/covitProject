@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
+
     if params[:query].present?
             sql_query = " \
         businesses.name ILIKE :query \
@@ -58,6 +59,7 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @businesses = Business.all
   end
 
   def edit

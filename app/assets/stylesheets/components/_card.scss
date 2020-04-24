@@ -1,11 +1,16 @@
 
-
 .card {
   overflow: hidden;
   background: white;
   width: 360px;
   height: 269px;
   border: 0px;
+}
+
+.card .card-img {
+  height: 215px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card > img {
@@ -58,4 +63,32 @@
   align-items: center;
 }
 
+
+.link-to {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: black !important;
+  font-weight: lighter;
+}
+
+.link-to-white {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: white !important;
+  font-weight: lighter;
+}
+
+.link-to:hover{
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: black  !important;
+  font-weight: lighter;
+}
+
+.link-to-white:hover{
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: black  !important;
+  font-weight: lighter;
+}
 

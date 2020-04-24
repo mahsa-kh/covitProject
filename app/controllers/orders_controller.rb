@@ -31,8 +31,6 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
     end
   end
 
- 
-
   def new
   end
 

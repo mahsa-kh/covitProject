@@ -26,9 +26,6 @@ mount StripeEvent::Engine, at: '/stripe-webhooks'
 
 
 
-
-
-
   post "/businesses/:business_id/business_offers/:id/add", to: "business_offers#add_to_bag", as: "add_offer_to_bag"
   post "/businesses/:business_id/business_offers/:id/remove", to: "business_offers#remove_from_bag", as: "remove_from_bag"
   post "/businesses/:business_id/business_offers/:id/increase", to: "business_offers#increase_to_bag", as: "increase_offer_to_bag"
