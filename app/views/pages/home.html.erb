@@ -4,33 +4,4 @@ This will be moved to nav-bar, to profile<%= link_to "GO to orders", orders_path
 <%= render 'shared/banner' %>
 <div class="heading"><h1>Explore</h1></div>
 
-
-
-
-
-<div class="card-container mt-4">
-  <%for i in (0..5) do%>
-  <%= link_to business_path(@businesses[i]), class: "link-to" do %>
-    <div class="card-container-item">
-      <div class="card">
-        <img src=<%= asset_path('cafe1.jpg')%> >
-        <div class="card-infos">
-          <div>
-            <h2><%= @businesses[i].name %></h2>
-            <p><%= @businesses[i].category.category_name %></p>
-          </div>
-          <p class="card-empl"><u><%= @businesses[i].employee_no %></u> people work here</p>
-          <h2 class="card-user discount-bordered"><%= @businesses[i].business_offers[0].discount %>%</h2>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="centerd-btn-layer mt-4 mb-4">
-  <div class="button-secondary">View All</div>
-</div>
-
-
-
+<%= render "/shared/showSeveralBusCard", businesses: @businesses, number: 6 %>
