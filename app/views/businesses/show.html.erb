@@ -1,2 +1,36 @@
-<h1>Businesses#show</h1>
-<p>Find me in app/views/businesses/show.html.erb</p>
+<%= render "/shared/businessOffers", business: @business %>
+
+
+<div class="bus-container">
+  <img src="<%= asset_path('cafe.jpg') %>" alt="" class="main-item">
+  <div class="main-item bus-content-container">
+    <div class="bus-infos">
+      <h1><%= @business.name %></h1>
+      <p><%= @business.description %></p>
+      <h1>Location</h1>
+      <p> <u><%= @business.address %></u></p>
+    </div>
+
+    <div class="bus-infos mt-2">
+      <h1>Offers</h1>
+      <p>Click an offer to add it to your cart </p>
+    </div>
+    <div class="bus-infos bus-offers">
+
+
+<% @business.business_offers.each do |business_offer| %>
+  <%= link_to add_offer_to_bag_path(@business, business_offer.id), method: :post do %>
+    <a href="" class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#2255FF"> (<%= business_offer.price_cents%> %)</span></a>
+  <% end %>
+<%end%>
+
+    </div>
+    <div class="bus-infos button-primary mt-4">
+      <%= link_to "View Cart", order_path(cookies[:order_id])%>
+    </div>
+  </div>
+  <div class="main-item space-holder">
+  </div>
+
+</div>
+

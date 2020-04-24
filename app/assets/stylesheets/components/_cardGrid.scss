@@ -4,6 +4,8 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: flex-start;
+  margin-right: 45px;
+  margin-left: 45px;
 }
 
 
@@ -12,13 +14,13 @@
   flex-grow: auto;
   width: 360px;
   height: 269px;
-  margin: 20px;
-  align-self: baseline;
+  margin-top: 10px;
+  margin-top: 10px;
+  align-self: flex-start;
 }
 
 
 .card-container .card-container-item:hover {
-
   opacity: 0.7;
 }
 
