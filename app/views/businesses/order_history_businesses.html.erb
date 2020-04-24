@@ -1,0 +1,17 @@
+<h1>Businesses#history</h1>
+
+
+<% @businesses.each do |business| %>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text"><%= business.description %></p>
+    <p><strong><%= business.name %></strong></p>
+    <p><strong><%= business.category.category_name %></strong></p>
+    <p><strong><%= business.employee_no %></strong></p>
+  </div>
+</div>
+
+<% end %>
+
