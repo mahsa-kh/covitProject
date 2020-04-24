@@ -1,6 +1,6 @@
 Here is your shopping bag:
-
-<% @order.order_items.each do |order_item|%>
+ <% order_items = @order.order_items.sort_by { |k| k["id"] }%>
+<% order_items.each do |order_item|%>
 <br>
  item: <%= order_item.business_offer.offer_amount %>
 <p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
