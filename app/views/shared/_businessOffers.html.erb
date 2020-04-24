@@ -12,18 +12,17 @@
       <h1>Offers</h1>
       <p>Click an offer to add it to your cart </p>
     </div>
-    <div class="bus-infos bus-offers">
+    <div class="bus-infos bus-offers mt-2">
 
-
-<% business.business_offers.each do |business_offer| %>
-  <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post do %>
-    <a href="" class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#2255FF"> (<%= business_offer.price_cents%> %)</span></a>
-  <% end %>
-<%end%>
+        <% business.business_offers.each do |business_offer| %>
+          <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post , class: "link-to" do %>
+            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#2255FF"> (<%= business_offer.price_cents%>%)</span></button>
+          <% end %>
+        <%end%>
 
     </div>
     <div class="bus-infos button-primary mt-4">
-      <%= link_to "View Cart", order_path(id: cookies[:order_id])%>
+      <%= link_to "View Cart", order_path(cookies[:order_id]) , class: "link-to-white"%>
     </div>
   </div>
   <div class="main-item space-holder">
