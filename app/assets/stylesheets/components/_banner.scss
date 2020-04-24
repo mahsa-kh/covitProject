@@ -2,25 +2,23 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  height: 600px;
+  height: 1024px;;
   position: relative;
 
 }
 
-// .banner h1 {
-//   margin: 0;
-//   color: white;
-// }
+.banner h2 {
+  margin: 0;
+  color: white;
+  font-weight: lighter;
+}
 
-// .banner p {
-//   font-family: Karla;
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 14px;
-//   color: white;
-//   opacity: .7;
-//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-// }
+.banner p {
+  font-size: 14px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
 
 
 .banner-container {
@@ -28,4 +26,21 @@
   width: 700px;
   position: absolute;
   right: 100px;
+}
+
+
+.banner-container a {
+  position: absolute;
+  top: 200px;
+}
+
+
+.banner-container a:hover {
+  text-decoration: none;
+}
+
+.heading {
+  position: relative;
+  left: 100px;
+  top: 20px;
 }
