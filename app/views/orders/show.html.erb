@@ -14,6 +14,7 @@ Here is your shopping bag:
       +
     <% end %>
 
+
   <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
       -
     <% end %>
@@ -47,5 +48,6 @@ Your order will be sent as a gift to: <%= @order.gift_email %>
         });
       </script>
 <%= link_to "GO BACK", root_path %>
+
 
 
