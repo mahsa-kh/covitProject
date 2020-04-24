@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_action :set_order
   # before_action :set_order
 
-
   protected
 
   def configure_permitted_parameters
@@ -18,7 +17,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
 
   protected
@@ -37,8 +36,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
   private
 
   def set_order
@@ -53,7 +50,5 @@ class ApplicationController < ActionController::Base
       cookies[:order_id] = @order.id
     end
   end
-
-
 
 end
