@@ -4,6 +4,22 @@ This will be moved to nav-bar, to profile<%= link_to "GO to orders", orders_path
 
 
 
+<div class="card-container">
+  <div class="card-container-item">
+    <div class="card">
+      <img src=<%= asset_path('cafe.jpg') %> />
+      <div class="card-infos">
+        <div>
+          <h2>Chez Panisse</h2>
+          <p>Resturaunt</p>
+        </div>
+        <p class="card-empl">10 people work here</p>
+        <h2 class="card-user discount-bordered">20%</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <% @businesses.each do |business| %>
 
@@ -20,3 +36,4 @@ This will be moved to nav-bar, to profile<%= link_to "GO to orders", orders_path
 
 
 <% end %>
+
