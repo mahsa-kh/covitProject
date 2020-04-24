@@ -46,27 +46,10 @@ class BusinessOffersController < ApplicationController
 
   def destroy
   end
+end
 
 
-  def add_to_bag
-     # Route to this method: /businesses/:business_id/business_offers/:id
-     @order.add_item_quantity(params[:id])
-     redirect_to update_total_amount_cents_path(params[:business_id])
-  end
-
-  def remove_from_bag
-     # Route to this method: /businesses/:business_id/business_offers/:id
-     @order.decrease_item_quantity(params[:id])
-     redirect_to update_total_amount_cents_checkout_path(params[:business_id])
-  end
-
-  def increase_to_bag
-     # Route to this method: /businesses/:business_id/business_offers/:id
-     @order.add_item_quantity(params[:id])
-     redirect_to update_total_amount_cents_checkout_path(params[:business_id])
-  end
-
-  private
+private
 
 
   def set_business
@@ -76,4 +59,4 @@ class BusinessOffersController < ApplicationController
   def business_offer_params
     params.require(:business_offer).permit(:offer_amount, :discount)
   end
-end
+

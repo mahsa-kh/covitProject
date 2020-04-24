@@ -1,21 +1,7 @@
 class BusinessesController < ApplicationController
-   def index
-    if params[:query].present?
-            sql_query = " \
-        businesses.name ILIKE :query \
-        OR businesses.description ILIKE :query \
-        OR businesses.address ILIKE :query \
-        OR categories.category_name ILIKE :query \
-      "
-      @businesses = Business.joins(:category).where(sql_query, query: "%#{params[:query]}%")
-    elsif params[:category].present?
-      @category = Category.find_by(category_name: params[:category])
-      @businesses = @category ? Business.where(category: @category) : Business.all
-    else
-      @businesses = Business.all
-    end
- end
-
+  def index
+    @business = Business.all
+  end
 
   def new
     @business = Business.new
@@ -34,7 +20,6 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find(params[:id])
   end
 
   def edit
