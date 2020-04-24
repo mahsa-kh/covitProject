@@ -1,12 +1,99 @@
-.navbar-lewagon {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  background-color: white;
+  border-bottom: 1px solid black;
+  padding-top: 40px;
+  height: 80px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.action {
+  display: flex;
+  justify-content: center;
+  margin-left: 40px;
+  height: 40px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.shop,
+.cart,
+.logo,
+.search {
+  min-width: 100px;
+  margin: 0px;
+}
+
+.tuche {
+  height: 28px;
+  margin-down: 4px;
+}
+
+.action-item {
+  border: 1px solid black;
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
+  border-bottom: 1px solid black;
+    &:last-child {
+      border-left: none;
+  }
+}
+
+.login {
+  margin: 18px;
+}
+
+.action-two {
+  display: flex;
+  justify-content: center;
+}
+
+.action-item-two {
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
+}
+
+.logo_two {
+  height: 24px;
+}
+
+
+.login a {
+  color: black;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+
+
+
+.search-action-item-two {
+  background-color: light-blue;
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
+}
+
+.navbar navbar-light bg-light {
+  background-color: light-blue;
+  padding: 17px 38px;
+  box-sizing: content;
+  line-height: 0.2;
+  flex-basis: 50%;
+  margin: 0px;
+  padding-top: 18px;
 }
