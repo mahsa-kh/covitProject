@@ -3,12 +3,12 @@
 
 
 <div class="main-container-side">
-  <div class="side-title1">
+<!--   <div class="side-title1">
     CATEGORIES
   </div>
   <div class="side-title2">
     SHOPS
-  </div>
+  </div> -->
       <div class="cat-content">
         <% Category.all.each do |category|%>
 
@@ -23,7 +23,7 @@
     <%= link_to business_path(business), class: "link-to" do %>
       <div class="card-container-item">
         <div class="card">
-          <img src=<%= asset_path('bookstore1.jpg')%> >
+          <img src=<%= asset_path('gym1.jpg')%> >
           <div class="card-infos">
             <div>
               <h2><%= business.name %></h2>
@@ -39,7 +39,7 @@
       <% end %>
     <% end %>
   </div>
-    <div class="centerd-btn-layer mt-4 mb-4">
+    <div class="centerd-btn-layer">
       <%= link_to businesses_path, class: "link-to" do %>
       <div class="button-secondary">View All</div>
       <% end %>

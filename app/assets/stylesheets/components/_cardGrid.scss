@@ -2,9 +2,9 @@
   display: grid;
   // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
   grid-template-columns: 229px auto;
-  grid-template-rows:  88px auto 88px;
+  grid-template-rows:  auto 88px;
   grid-template-areas:
-    "topic1 topic2 "
+    // "topic1 topic2 "
     "concat concard "
     ". btn";
 
@@ -14,19 +14,19 @@
   // margin-bottom: 54px;
 }
 
-.main-container-side .side-title1 {
-  grid-area: topic1;
-  align-self: end;
-  padding-left: 30px;
-  font-size: 28px !important;
-  line-height: 33px !important;
-}
-.main-container-side .side-title2 {
-  grid-area: topic2;
-  align-self: end;
-  font-size: 28px !important;
-  line-height: 33px !important;
-}
+// .main-container-side .side-title1 {
+//   grid-area: topic1;
+//   align-self: end;
+//   padding-left: 30px;
+//   font-size: 28px !important;
+//   line-height: 33px !important;
+// }
+// .main-container-side .side-title2 {
+//   grid-area: topic2;
+//   align-self: end;
+//   font-size: 28px !important;
+//   line-height: 33px !important;
+// }
 
 
 .main-container-side .cat-content{
@@ -35,11 +35,11 @@
   padding-left: 30px;
 
   .cat-box-sm {
-    width: 150px;
-    height: 50px;
-    border-bottom: 0.7px solid #cccccc;
-    padding-top: 15px;
-    font-size: 20px;
+    width: 160px;
+    height: 30px;
+    border-bottom: 1px solid #cccccc;
+    // padding-top: 15px;
+    font-size: 16px;
 
   }
 }
@@ -68,7 +68,7 @@
   grid-template-areas:
     "main main main ";
 
-  row-gap: 73px;
+  row-gap: 35px;
   column-gap: 52px;
   justify-content:  center;
   position: relative;
