@@ -1,4 +1,50 @@
-.card-container-noside {
+.main-container-side {
+  display: grid;
+  // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
+  grid-template-columns: 229px auto;
+  grid-template-rows:  88px auto 88px;
+  grid-template-areas:
+    "topic1 topic2 "
+    "concat concard "
+    ". btn";
+
+  justify-content:  start;
+  // position: relative;
+  // top: 40px;
+  // margin-bottom: 54px;
+}
+
+.main-container-side .side-title1 {
+  grid-area: topic1;
+  align-self: end;
+  padding-left: 30px;
+  font-size: 28px !important;
+  line-height: 33px !important;
+}
+.main-container-side .side-title2 {
+  grid-area: topic2;
+  align-self: end;
+  font-size: 28px !important;
+  line-height: 33px !important;
+}
+
+
+.main-container-side .cat-content{
+  grid-area: concat;
+  padding-top: 40px;
+  padding-left: 30px;
+
+  .cat-box-sm {
+    width: 150px;
+    height: 50px;
+    border-bottom: 0.7px solid #cccccc;
+    padding-top: 15px;
+    font-size: 20px;
+
+  }
+}
+
+ .card-container-noside {
   display: grid;
   // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
   grid-template-columns: 360px 360px  360px ;
@@ -12,6 +58,26 @@
   position: relative;
   top: 40px;
   margin-bottom: 54px;
+}
+
+.main-container-side .card-container-side {
+  display: grid;
+  // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
+  grid-template-columns: 360px 360px  360px ;
+  grid-template-rows:  269px;
+  grid-template-areas:
+    "main main main ";
+
+  row-gap: 73px;
+  column-gap: 52px;
+  justify-content:  center;
+  position: relative;
+  top: 40px;
+  margin-bottom: 54px;
+
+
+  grid-area: concard;
+  justify-self: start;
 }
 
 
@@ -32,60 +98,24 @@
 }
 
 
-
-.card-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  margin-right: 45px;
-  margin-left: 45px;
+.card-container-noside .card-container-item:hover {
+  opacity: 0.7;
 }
-
-
-
-
-
-.card-container .card-container-item:hover {
+.card-container-side .card-container-item:hover {
   opacity: 0.7;
 }
 
+//  FOR THE PLACEMENT OF CERTAIN BUTTONS:
 
-
- .card-container-compact {
-  flex-grow: auto;
+.centerd-btn-layer{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
-  align-items: flex-start;
-  margin: 10;
+  align-items: center;
+  position: relative;
+  top: 15px;
+  grid-area: btn;
 }
 
 
-.card-container-compact .card-container-item {
-  flex-grow: auto;
-  width: 350px;
-  height: 269px;
-  margin-top: 10px;
-  margin-top: 10px;
-  align-self: flex-start;
-}
-
-
-
-// .item-a {
-//   grid-area: header;
-// }
-// .item-b {
-//   grid-area: main;
-// }
-// .item-c {
-//   grid-area: sidebar;
-// }
-// .item-d {
-//   grid-area: footer;
-// }
 
 
