@@ -52,7 +52,7 @@ class BusinessesController < ApplicationController
     # @category = Category.find(params[:id])
     @business = Business.new(business_params)
     @business.user_id = current_user.id
-    authorize @restaurant
+    authorize @business
     # @business.category_id = params[:category_id]
     if @business.save!
       redirect_to new_business_business_offer_path(@business)
@@ -62,7 +62,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find(params[:id])
+    # @business = Business.find(params[:id]) # set_business in private already does this job
     @businesses = Business.all
   end
 
@@ -80,7 +80,7 @@ class BusinessesController < ApplicationController
   def destroy
   end
 
-  def view_hisotry
+  def view_history # Corrected typo on this line
   end
 
   def view_orders
@@ -95,6 +95,6 @@ class BusinessesController < ApplicationController
 
   def set_business
     @business = Business.find(params[:id])
-    authorize @restaurant
+    authorize @business
   end
 end
