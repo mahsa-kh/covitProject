@@ -5,11 +5,12 @@ before_action :set_order, only: [:add_to_bag, :remove_from_bag, :increase_to_bag
 before_action :set_business, only: [:new, :create, :edit]
 
   def index
-    @business_offer = BusinessOffer.all
+    @business_offers = policy_scope(BusinessOffer) # NOT TESTED (PUNDIT)
   end
 
   def new
     @business_offer = BusinessOffer.new
+    authorize @business_offer # NOT WORKING (PUNDIT)
     # @business = Business.find(params[:business_offer_id])
     # @business_offer = BusinessOffer.where("business_offer_id = ?", @business_offer.id)
   end
@@ -17,6 +18,7 @@ before_action :set_business, only: [:new, :create, :edit]
   def create
     @business_offer = BusinessOffer.new(business_offer_params)
     @business_offer.business_id = params[:business_id]
+    authorize @business_offer # NOT WORKING (PUNDIT)
     @business_offer.price_cents = business_offer_params[:offer_amount].to_i * 100
         if @business_offer.save
           redirect_to new_business_business_offer_path
