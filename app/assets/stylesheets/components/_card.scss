@@ -40,31 +40,19 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+
 }
+
+   .green {
+    color: #2255FF;
+    font-weight: bold;
+  }
 
 .card-infos .card-empl {
   position: absolute;
   right: 8px;
 }
 
-.module {
-  width: 200px;
-  height: 200px;
-  background: #f06d06;
-  position: relative;
-  border: 5px solid blue;
-  margin: 20px;
-}
-.module:after {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  right: -15px;
-  bottom: -15px;
-  background: red;
-  z-index: -1;
-}
 
 .card-infos .discount-bordered{
 

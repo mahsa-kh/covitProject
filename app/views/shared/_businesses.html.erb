@@ -3,12 +3,6 @@
 
 
 <div class="main-container-side">
-<!--   <div class="side-title1">
-    CATEGORIES
-  </div>
-  <div class="side-title2">
-    SHOPS
-  </div> -->
       <div class="cat-content">
         <% Category.all.each do |category|%>
 
@@ -27,7 +21,7 @@
           <div class="card-infos">
             <div>
               <h2><%= business.name %></h2>
-              <p><%= business.category.category_name %></p>
+              <p class="green"><%= business.category.category_name %></p>
             </div>
             <p class="card-empl"><u><%= business.employee_no %></u> people work here</p>
             <div class="discount-bordered">

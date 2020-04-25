@@ -9,25 +9,8 @@
     ". btn";
 
   justify-content:  start;
-  // position: relative;
-  // top: 40px;
-  // margin-bottom: 54px;
+
 }
-
-// .main-container-side .side-title1 {
-//   grid-area: topic1;
-//   align-self: end;
-//   padding-left: 30px;
-//   font-size: 28px !important;
-//   line-height: 33px !important;
-// }
-// .main-container-side .side-title2 {
-//   grid-area: topic2;
-//   align-self: end;
-//   font-size: 28px !important;
-//   line-height: 33px !important;
-// }
-
 
 .main-container-side .cat-content{
   grid-area: concat;
@@ -38,7 +21,6 @@
     width: 160px;
     height: 30px;
     border-bottom: 1px solid #cccccc;
-    // padding-top: 15px;
     font-size: 16px;
 
   }
@@ -46,7 +28,6 @@
 
  .card-container-noside {
   display: grid;
-  // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
   grid-template-columns: 360px 360px  360px ;
   grid-template-rows:  269px;
   grid-template-areas:
@@ -62,7 +43,6 @@
 
 .main-container-side .card-container-side {
   display: grid;
-  // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
   grid-template-columns: 360px 360px  360px ;
   grid-template-rows:  269px;
   grid-template-areas:
@@ -74,7 +54,6 @@
   position: relative;
   top: 40px;
   margin-bottom: 54px;
-
 
   grid-area: concard;
   justify-self: start;
@@ -105,7 +84,6 @@
   opacity: 0.7;
 }
 
-//  FOR THE PLACEMENT OF CERTAIN BUTTONS:
 
 .centerd-btn-layer{
   display: flex;
