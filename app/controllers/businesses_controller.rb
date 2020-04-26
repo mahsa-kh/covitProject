@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
+
     if params[:query].present?
             sql_query = " \
         businesses.name ILIKE :query \
@@ -15,7 +16,31 @@ class BusinessesController < ApplicationController
     else
       @businesses = Business.all
     end
- end
+
+    # @user = current_user # given by DEVICE!!
+    # if !@user.orders.nil?
+    #   @orders = @user.orders
+    #   show_alert = @orders.any? do |ord|
+    #     (Date.today + 10) > ord.exp_date
+    #   end
+    #    if show_alert
+    #      flash[:alert] = "One or more orders are going to expire within 10 days"
+    #    end
+    # end
+  end
+
+
+
+  def order_history_businesses
+    @orders = Order.where(user: current_user)  # It is the same ---> @orders = current_user.orders
+    @businesses = []
+    @orders.each do |order|
+      order.order_items.each do |order_item|
+        business = order_item.business_offer.business  #  OrderItems belongs_to :business_offer  & BusinessOffers belongs_to :business,
+        @businesses << business unless @businesses.include?(business)
+      end
+    end
+  end
 
 
   def new
@@ -36,6 +61,7 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @businesses = Business.all
   end
 
   def edit

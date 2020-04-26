@@ -29,6 +29,7 @@
       <th scope="col">Payment Status</th>
       <th scope="col">Confirmation No</th>
       <th scope="col">Credit Pack</th>
+      <th scope="col">Gift</th>
     </tr>
   </thead>
   <tbody>
@@ -41,8 +42,8 @@
         <td><%= order.state %></td>
         <td> <%= order.confirmation_no %></td>
         <td> <%= order.order_items.count %></td>
+        <td> <% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%></td>
       </tr>
       <%end%>
   </tbody>
 </table>
-

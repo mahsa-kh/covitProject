@@ -1,6 +1,6 @@
 Here is your shopping bag:
-
-<% @order.order_items.each do |order_item|%>
+ <% order_items = @order.order_items.sort_by { |k| k["id"] }%>
+<% order_items.each do |order_item|%>
 <br>
  item: <%= order_item.business_offer.offer_amount %>
 <p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
@@ -13,6 +13,7 @@ Here is your shopping bag:
     <%= link_to increase_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
       +
     <% end %>
+
 
   <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
       -
@@ -47,5 +48,6 @@ Your order will be sent as a gift to: <%= @order.gift_email %>
         });
       </script>
 <%= link_to "GO BACK", root_path %>
+
 
 

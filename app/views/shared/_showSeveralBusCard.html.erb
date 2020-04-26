@@ -1,0 +1,28 @@
+
+<div class="card-container mt-4">
+  <% businesses.each do |business| %>
+  <%= link_to business_path(business), class: "link-to" do %>
+    <div class="card-container-item">
+      <div class="card">
+        <img src=<%= asset_path('cafe1.jpg')%> >
+        <div class="card-infos">
+          <div>
+            <h2><%= business.name %></h2>
+            <p><%= business.category.category_name %></p>
+          </div>
+          <p class="card-empl"><u><%= business.employee_no %></u> people work here</p>
+          <h2 class="card-user discount-bordered"><%= business.business_offers[0].discount %>%</h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="centerd-btn-layer mt-4 mb-4">
+  <%= link_to businesses_path, class: "link-to" do %>
+  <div class="button-secondary">View All</div>
+  <% end %>
+</div>
+
+

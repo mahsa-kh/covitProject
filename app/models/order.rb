@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :user
   monetize :total_amount_cents
+  before_save :set_expiration_date
 
   def add_item_quantity(business_offer_id)
       @order_item = OrderItem.where("order_id = ? AND business_offer_id = ?", self.id, business_offer_id.to_i).first
@@ -32,5 +33,14 @@ class Order < ApplicationRecord
       end
       @order_item
   end
+
+private
+
+  def set_expiration_date
+    puts self
+    self.exp_date = Date.today + 10
+    puts self
+  end
+
 end
 

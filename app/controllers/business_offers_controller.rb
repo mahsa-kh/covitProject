@@ -1,8 +1,9 @@
 class BusinessOffersController < ApplicationController
+
 before_action :set_order, only: [:add_to_bag, :remove_from_bag, :increase_to_bag]
   # this method is the same as view_user_history or view_user_orders mentioned in trello
-before_action :set_business, only: [:new, :create, :edit] 
-  
+before_action :set_business, only: [:new, :create, :edit]
+
   def index
     @business_offer = BusinessOffer.all
   end
@@ -16,6 +17,7 @@ before_action :set_business, only: [:new, :create, :edit]
   def create
     @business_offer = BusinessOffer.new(business_offer_params)
     @business_offer.business_id = params[:business_id]
+    @business_offer.price_cents = business_offer_params[:offer_amount].to_i * 100
         if @business_offer.save
           redirect_to new_business_business_offer_path
         else
@@ -66,7 +68,7 @@ before_action :set_business, only: [:new, :create, :edit]
      @order.add_item_quantity(params[:id])
      redirect_to update_total_amount_cents_checkout_path(params[:business_id])
   end
-  
+
   private
 
 
