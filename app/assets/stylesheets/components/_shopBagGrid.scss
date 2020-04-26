@@ -1,0 +1,99 @@
+.shop-bag-container{
+  display: grid;
+  grid-template-columns: auto 490px;
+  grid-template-rows:  750px;
+  grid-template-areas:
+    "items bag";
+  margin-top: 40px;
+}
+
+.shop-item-container{
+  grid-area: items;
+}
+
+.pay-bag-container{
+  grid-area: bag;
+  padding-right: 24px;
+  display: grid;
+  grid-template-columns: 470px;
+  grid-template-rows:  30px 30px 30px 50px auto 50px 50px 300px;
+  grid-template-areas:
+    "bg-ttl"
+    "bg-item1"
+    "bg-item2"
+    "gift-link"
+    "gift-msg"
+    "pay-btn"
+    "bg-item3"
+    "terms";
+    row-gap: 12px;
+}
+
+.pay-title {
+  grid-area: bg-ttl;
+  padding-bottom: 3px;
+  border-bottom: 0.7px solid #999894;
+  font-size: 15px;
+  align-self: start;
+  justify-self: start;
+  width: 100%;
+  color: #403f3d;
+}
+
+.pay-item1 {
+  grid-area: bg-item1;
+  font-size: 14px;
+  justify-self: start;
+  width: 100%;
+  color: #403f3d;
+}
+
+.pay-item2 {
+  grid-area: bg-item2;
+  border-bottom: 0.7px solid #999894;
+  font-size: 14px;
+  justify-self: start;
+  width: 100%;
+}
+
+.pay-item3 {
+  grid-area: bg-item3;
+  border-bottom: 0.7px solid #999894;
+  font-size: 14px;
+  justify-self: start;
+  color: #403f3d;
+  width: 100%;
+}
+
+.gift-check {
+  grid-area: gift-link;
+  font-size: 14px;
+  justify-self: start;
+  color: #403f3d;
+}
+
+.gift-textbox{
+  grid-area: gift-msg;
+  font-size: 14px;
+  align-self: center;
+  justify-self: center;
+  color: #403f3d;
+  margin-top: 18px;
+}
+
+.pay-btn{
+  grid-area: pay-btn;
+  align-self: center;
+}
+
+
+.pay-terms {
+  grid-area: terms;
+  font-size: 12px;
+  align-self: start;
+  color: #403f3d;
+  margin-top: 18px;
+  margin-right: 24px;
+  line-height: 1.6;
+  text-align: justify;
+}

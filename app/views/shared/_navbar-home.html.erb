@@ -11,7 +11,7 @@
 </div>
 <div class="navbar-box-srch">
   <%= form_tag businesses_path, method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "txtfld-ghost", placeholder: "Search" %>
+    <%= text_field_tag :query, params[:query], class: "txtfld-ghost-sm", placeholder: "Search" %>
   <% end %>
 </div>
 <div class="navbar-box-lg"><%= link_to "Login", new_user_registration_path, class: "link-to" %></div>

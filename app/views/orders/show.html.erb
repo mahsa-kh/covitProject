@@ -1,53 +1,97 @@
-Here is your shopping bag:
- <% order_items = @order.order_items.sort_by { |k| k["id"] }%>
-<% order_items.each do |order_item|%>
-<br>
- item: <%= order_item.business_offer.offer_amount %>
-<p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
+<%= render 'shared/navbar-home' %>
+<div class="line"></div>
 
-  -- Quantity:   <%= order_item.quantity %>
-  <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
-    Delete
-  <% end %>
+<div class="shop-bag-container">
+  <div class="shop-item-container">
 
-    <%= link_to increase_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
-      +
+
+      Here is your shopping bag:
+       <% order_items = @order.order_items.sort_by { |k| k["id"] }%>
+      <% order_items.each do |order_item|%>
+      <br>
+       item: <%= order_item.business_offer.offer_amount %>
+      <p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
+
+        -- Quantity:   <%= order_item.quantity %>
+        <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
+          Delete
+        <% end %>
+
+          <%= link_to increase_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
+            +
+          <% end %>
+
+
+        <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
+            -
+          <% end %>
+      <% end %>
+  </div>
+
+<!-- ************************************** RIGHT SIDE OF THE PAGE ************************************************* -->
+
+<div class="pay-bag-container">
+
+  <div class="pay-title">
+  ORDER SUMMARY
+  </div>
+  <div class="pay-item1">
+    Number of Items:                   PLACEHOLDER FOR QUERY
+  </div>
+  <div class="pay-item2">
+    Total Value: <%= @order.total_amount_cents %>
+  </div>
+    <% if !@order.gift %>
+      <%= simple_form_for(@order, remote: true )do |order| %>
+        <div class="gift-check">
+          <%= order.check_box :gift, class: "checkbox-g" %> Send as a gift!
+        </div>
+        <div class="gift-textbox">
+          <%= order.input_field :gift_email, placeholder: 'email address', class: "txtfld-ghost"  %> <br>
+          <%= order.input_field :gift_message, placeholder: 'type your message..', class: "txtfarea-ghost"  %>
+          <%= order.submit "send as a gift", class: "button-primary-gift " %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="gift-check green">
+        Your order will be sent as a gift to: <%= @order.gift_email %>
+
+      </div>
     <% end %>
 
-
-  <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
-      -
-    <% end %>
-<% end %>
-
-<br>
-TOTAL: <%= @order.total_amount_cents %>
-<br>
-
-<% if !@order.gift %>
-              <%= simple_form_for(@order) do |order| %>
-                <%= order.check_box :gift%> Send as a gift!<br>
-                <%= order.input_field :gift_email, placeholder: 'email address'  %>
-                <%= order.input_field :gift_message, placeholder: 'type your message..'  %>
-                <%= order.submit "send as a gift" %>
-              <% end %>
-<% else %>
-Your order will be sent as a gift to: <%= @order.gift_email %>
-
-<% end %>
-<br>
-<button id="pay" class="btn btn-primary">Pay</button>
-    <script src="https://js.stripe.com/v3/"></script>
-      <script>
-        var paymentButton = document.getElementById('pay');
-        paymentButton.addEventListener('click', () => {
-          var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
-          stripe.redirectToCheckout({
-            sessionId: '<%= @order.checkout_session_id %>'
-          });
-        });
-      </script>
-<%= link_to "GO BACK", root_path %>
+    <div class="pay-btn">
+      <button id="pay" class="button-primary-lrg">Pay</button>
+    </div>
+              <script src="https://js.stripe.com/v3/"></script>
+                <script>
+                  var paymentButton = document.getElementById('pay');
+                  paymentButton.addEventListener('click', () => {
+                    var stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+                    stripe.redirectToCheckout({
+                      sessionId: '<%= @order.checkout_session_id %>'
+                    });
+                  });
+                </script>
+    <div class="button-transparent pay-item3">
+      <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+    </div>
 
 
+    <div class="pay-terms">
+      <p>
+        Our returns are free and easy. If something isn’t quite right, you have 100 days to send it back to us. Read more in our return and refund policy
+      </p>
+      <p style="color: #D47F6C">
+        FREE SHIPPING AND FREE RETURNS ON ALL ORDERS
+      </p>
+      <p>
+        Because of the current situation, we have extended our returns and refunds policy to 100 days.
+      </p>
+      <p>
+        Please note, order processing may take longer than usual right now. We’re working as fast as we can to get all orders ready, and we will let you know by email as soon as yours is on its way. Thank you for your patience during this difficult time, and - as always - for shopping with COS.
+        In accordance with our Privacy Notice, if you are signed in to your COS account, we will share personal data from your account with Klarna for order checkout and payment purposes.
+      </p>
+    </div>
+  </div>
+</div>
 

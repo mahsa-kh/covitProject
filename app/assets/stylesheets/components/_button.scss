@@ -1,9 +1,49 @@
+.button-primary-gift {
+  color: white;
+  padding: 8px 24px;
+  background: #94B0B9;
+  border: 1px solid #94B0B9;
+  width: 360px;
+  height: 42px;
+  border-radius: 4px;
+
+  left: 0%;
+  right: 0%;
+  top: 21.43%;
+  bottom: 23.81%;
+
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+}
+
 .button-primary {
   color: white;
   padding: 8px 24px;
   background: #333333;
   border: 1px solid #333333;
   width: 360px;
+  height: 42px;
+
+  left: 0%;
+  right: 0%;
+  top: 21.43%;
+  bottom: 23.81%;
+
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  grid-area: btn;
+}
+
+.button-primary-lrg {
+  color: white;
+  padding: 8px 24px;
+  background: #333333;
+  border: 1px solid #333333;
+  width: 470px;
   height: 42px;
 
   left: 0%;
