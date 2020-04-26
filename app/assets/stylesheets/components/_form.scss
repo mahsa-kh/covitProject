@@ -1,0 +1,24 @@
+.form-container {
+  display: grid;
+  grid-template-columns: 360px;
+  grid-template-rows:  repeat(8, 65px);
+  grid-template-areas:
+    "ttl"
+    "txt"
+    "txt"
+    "txt"
+    "txt"
+    "txt"
+    "txt"
+    "btn";
+  justify-content:  start;
+  row-gap: 15px;
+  margin-left: 229px;
+  margin-top: 144px;
+}
+
+.form-title {
+  grid-area: ttl;
+  font-size: 18px;
+  line-height: 16px;
+}
