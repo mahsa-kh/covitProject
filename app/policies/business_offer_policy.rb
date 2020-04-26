@@ -18,13 +18,17 @@ class BusinessOfferPolicy < ApplicationPolicy
     current_user?
   end
 
-  def update?
+  def edit?
     condition = user.businesses.pluck(:id).include?(record.biz_offer_id.to_i)
     if condition
       true
     else
       false
     end
+  end
+
+  def update?
+    current_user?
   end
 
   private
