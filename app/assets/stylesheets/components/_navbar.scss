@@ -1,10 +1,11 @@
 .navbar-container {
+  position: relative;
   display: grid;
-  grid-template-columns: 30px 100px 100px auto 80px 50px 50px;
+  grid-template-columns: 30px 100px 100px auto 130px 50px 50px 50px;
   grid-template-rows:  45px;
   grid-template-areas:
     // "topic1 topic2 "
-    "spc stores about logo search logout bag ";
+    "spc stores about logo search logout profile bag ";
 
   justify-items: center;
   align-items: center;
@@ -49,19 +50,19 @@
 
 .nav-logo {
   height: 45px;
-  width: auto;
+  width: 100%;
   grid-area: logo;
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .navbar-box-srch {
   grid-area: search;
   height: 45px;
-  width: 100px;
+  width: 130px;
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -72,22 +73,41 @@
 .navbar-box-lg{
   grid-area: logout;
   height: 45px;
-  width: 100px;
+  width: 50px;
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .navbar-box-bag {
   grid-area: bag;
   height: 45px;
-  width: 100px;
+  width: 50px;
+  justify-self: center;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-bottom: 1px solid black;
+      img {
+      width: 30px;
+      height: 30px;
+    }
+}
+
+.navbar-box-profile {
+  grid-area: profile;
+  height: 45px;
+  width: 50px;
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-}
+  border-bottom: 1px solid black;
 
+    img {
+      width: 30px;
+      height: 30px;
+    }
+}
