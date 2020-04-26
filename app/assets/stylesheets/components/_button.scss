@@ -1,8 +1,8 @@
 .button-primary {
   color: white;
   padding: 8px 24px;
-  background: black;
-  border: 1px solid black;
+  background: #333333;
+  border: 1px solid #333333;
   width: 360px;
   height: 42px;
 
@@ -37,7 +37,7 @@
 .button-primary:hover {
   background: white;
   color: black;
-  border: 1px solid black;
+  border: 1px solid #333333;
   text-decoration: none;
 }
 
@@ -55,9 +55,9 @@
 }
 
 .button-secondary-banner:hover {
-  background: black;
+  background: #333333;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #333333;
   text-decoration: none;
 }
 
@@ -65,7 +65,7 @@
   color: black;
   padding: 8px 24px;
   background: white;
-  border: 1px solid black;
+  border: 1px solid #333333;
   width: 360px;
   height: 42px;
 
@@ -83,9 +83,9 @@
 }
 
 .button-secondary:hover {
-  background: black;
+  background: #333333;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #333333;
   text-decoration: none;
 }
 
@@ -93,7 +93,7 @@
   color: black;
   padding: 14px;
   background: white;
-  border: 1px solid black;
+  border: 1px solid #333333;
   width: 167px;
   height: 42px;
 
@@ -106,9 +106,9 @@
 }
 
 .button-secondary-sm:hover {
-  background: black;
+  background: #333333;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #333333;
   text-decoration: none;
 }
 

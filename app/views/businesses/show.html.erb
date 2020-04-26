@@ -1,7 +1,7 @@
 
 <%= render "/shared/businessOffers", business: @business %>
 <div class="centerd-btn-layer">
-  <div class="space-holder-line mt-5"></div>
+  <div class="line mt-4"></div>
 </div>
-<div class="heading mb-5 ml-2"><h4>Places you might like:</h4></div>
-<%= render "/shared/showSeveralBusCard", businesses: @businesses, number: 3 %>
+
+<%= render "/shared/showSeveralBusCard", businesses: @businesses, text: "Places You Might Like" %>

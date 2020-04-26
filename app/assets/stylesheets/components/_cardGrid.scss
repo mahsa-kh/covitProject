@@ -29,8 +29,9 @@
  .card-container-noside {
   display: grid;
   grid-template-columns: 360px 360px  360px ;
-  grid-template-rows:  269px;
+  grid-template-rows:  30px 269px;
   grid-template-areas:
+    "head head head"
     "main main main ";
 
   row-gap: 40px;
@@ -67,13 +68,10 @@
 }
 
 .heading {
-  height: 33px;
-  position: relative;
-  left: 127px;
-  top: 20px;
+  grid-area: head;
+  width: 100%;
   font-size: 28px !important;
   line-height: 33px !important;
-  margin-top: 54px;
 }
 
 

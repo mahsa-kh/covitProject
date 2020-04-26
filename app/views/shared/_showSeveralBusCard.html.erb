@@ -1,5 +1,6 @@
-<div class="heading" id="3">Explore</div>
+
 <div class="card-container-noside">
+  <div class="heading" id="3"><%= text %></div>
   <% businesses.each do |business| %>
   <%= link_to business_path(business), class: "link-to" do %>
       <div class="card-container-item">

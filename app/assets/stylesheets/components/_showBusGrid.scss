@@ -1,21 +1,17 @@
 .bus-container {
   display: grid;
-  // grid-template-columns: 128px 360px 52px 360px 52px 360px 128px;
   grid-template-columns: 773px auto 90px;
   grid-template-rows:  526px;
   grid-template-areas:
-    // "topic1 topic2 "
     "pic info . ";
   column-gap: 80px;
-  margin-top: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 
 }
 
 .main-item {
-
-  // margin: 20px;
   grid-area: pic;
-
 }
 
 .main-item img {
@@ -24,10 +20,6 @@
   margin-left: 25px;
 }
 
-// .space-holder {
-//   grid-area: spc;
-//   // width: 150px;
-// }
 
 .space-holder-line {
   width: 700px;
@@ -38,8 +30,6 @@
 
 .bus-content-container {
   grid-area: info;
-  // width: 600px;
-  // height: 527px;
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -47,7 +37,6 @@
 
 .bus-infos {
   align-self: flex-start;
-  // padding-left: 4px;
 }
 
 .bus-infos h1 {
@@ -74,15 +63,13 @@
   grid-template-areas:
     "ofr ofr"
     "ofr ofr";
-    column-gap: 26px;
-    row-gap: 23px;
+  column-gap: 23px;
+  row-gap: 23px;
   margin-bottom: 23px;
 }
 
 .bus-offers .offers {
   grid-area: ofr;
-  // align-self: baseline;
-  // margin-bottom: 25px;
   text-align: center;
 }
 

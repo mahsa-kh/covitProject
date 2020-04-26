@@ -2,7 +2,7 @@
 <div class="line"></div>
 <div class="bus-container">
   <div class="main-item">
-      <img src="<%= asset_path('cafe.jpg') %>" alt="" >
+      <img src="<%= asset_path('cafe.jpg') %>" alt="">
   </div>
 
   <div class="bus-content-container">
@@ -10,7 +10,7 @@
       <h1><%= business.name %> <small><a href="<%= business.instagram %>" class="link-to"><i class="fab fa-instagram"></i></a></small> </h1>
       <p><%= business.description %></p>
       <h1>Location</h1>
-      <p> <u><%= business.address %></u></p>
+      <p> <%= business.address %></p>
     </div>
 
     <div class="bus-infos mt-2">
@@ -21,7 +21,7 @@
 
         <% business.business_offers.each do |business_offer| %>
           <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post , class: "link-to" do %>
-            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#67a38f"> (<%= business_offer.price_cents%>%)</span></button>
+            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#739C88"> (<%= business_offer.price_cents%>%)</span></button>
           <% end %>
         <%end%>
 
@@ -42,8 +42,7 @@
       <%end%>
     <!-- </div> -->
   </div>
-<!--   <div class="space-holder">
-  </div> -->
+
 
 </div>
 
