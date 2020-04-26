@@ -6,34 +6,18 @@ class BusinessOfferPolicy < ApplicationPolicy
   end
 
   def new?
-    condition = user.businesses.pluck(:id).include?(record.biz_offer_id.to_i)
-    if condition
-      true
-    else
-      false
-    end
+    user.businesses.pluck(:id).include?(record.biz_offer_id.to_i)
   end
 
   def create?
-    current_user?
+    new?
   end
 
   def edit?
-    condition = user.businesses.pluck(:id).include?(record.biz_offer_id.to_i)
-    if condition
-      true
-    else
-      false
-    end
+    user.businesses.pluck(:id).include?(record.business.id)
   end
 
   def update?
-    current_user?
-  end
-
-  private
-
-  def current_user?
-    record.business.user == user
+    edit?
   end
 end

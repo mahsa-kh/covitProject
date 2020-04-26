@@ -11,7 +11,9 @@
             <p><%= business.category.category_name %></p>
           </div>
           <p class="card-empl"><u><%= business.employee_no %></u> people work here</p>
-          <h2 class="card-user discount-bordered"><%= business.business_offers[0].discount %>%</h2>
+          <% if business.business_offers[0]%>
+            <h2 class="card-user discount-bordered"><%= business.business_offers[0].discount %>%</h2>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 class BusinessOffersController < ApplicationController
   before_action :set_order, only: [:add_to_bag, :remove_from_bag, :increase_to_bag]
   # this method is the same as view_user_history or view_user_orders mentioned in trello
-  before_action :set_business, only: [:new, :create, :edit]
+  before_action :set_business, only: [:new, :create]
 
   def index
     @business_offers = policy_scope(BusinessOffer)
@@ -31,23 +31,20 @@ class BusinessOffersController < ApplicationController
   def show; end
 
   def edit
-    # @business_offer = BusinessOffer.find(params[:id])
-    bizz = BusinessOffer.find(params[:id])
-    bizz.biz_offer_id = params[:business_id]
-    @business_offer = bizz
+    @business_offer = BusinessOffer.find(params[:id])
     authorize @business_offer
   end
 
   def update
     @business_offer = BusinessOffer.find(params[:id])
     authorize @business_offer
-      if @business_offer.update(business_offer_params)
-        flash[:alert] = "Bravo!"
-        redirect_to business_path(@business_offer.business_id)
-      else
-        flash[:alert] = "Can't update business offer, please try again"
-        render :edit
-      end
+    if @business_offer.update(business_offer_params)
+      flash[:alert] = "Bravo!"
+      redirect_to business_path(@business_offer.business_id)
+    else
+      flash[:alert] = "Can't update business offer, please try again"
+      render :edit
+    end
   end
 
   def destroy
