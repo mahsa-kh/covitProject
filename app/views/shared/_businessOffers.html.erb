@@ -1,6 +1,11 @@
+<%= render 'shared/navbar-home' %>
+<div class="line"></div>
 <div class="bus-container">
-  <img src="<%= asset_path('cafe.jpg') %>" alt="" class="main-item">
-  <div class="main-item bus-content-container">
+  <div class="main-item">
+      <img src="<%= asset_path('cafe.jpg') %>" alt="" >
+  </div>
+
+  <div class="bus-content-container">
     <div class="bus-infos">
       <h1><%= business.name %> <small><a href="<%= business.instagram %>" class="link-to"><i class="fab fa-instagram"></i></a></small> </h1>
       <p><%= business.description %></p>
@@ -16,7 +21,7 @@
 
         <% business.business_offers.each do |business_offer| %>
           <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post , class: "link-to" do %>
-            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#2255FF"> (<%= business_offer.price_cents%>%)</span></button>
+            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ <span style="color:#67a38f"> (<%= business_offer.price_cents%>%)</span></button>
           <% end %>
         <%end%>
 
@@ -37,8 +42,8 @@
       <%end%>
     <!-- </div> -->
   </div>
-  <div class="main-item space-holder">
-  </div>
+<!--   <div class="space-holder">
+  </div> -->
 
 </div>
 

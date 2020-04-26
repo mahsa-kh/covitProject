@@ -1,0 +1,30 @@
+
+
+
+
+<div class="navbar-container">
+<div class="navbar-spc"></div>
+<div class="navbar-box-str">Stores</div>
+<div class="navbar-box-abt">About Us</div>
+<div class="nav-logo">
+  <p> TUCHE</p>
+</div>
+<div class="navbar-box-srch">
+  <%= form_tag businesses_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "txtfld-ghost", placeholder: "Search" %>
+  <% end %>
+</div>
+<div class="navbar-box-lg"><%= link_to "Login", new_user_registration_path, class: "link-to" %></div>
+<div class="navbar-box-bag">
+  <%= link_to  new_user_registration_path, class: "link-to" do %>
+    <img src="<%= asset_path('bag.svg')%>" alt="">
+  <% end %>
+</div>
+<div class="navbar-box-profile">
+  <%= link_to  new_user_registration_path, class: "link-to" do %>
+    <img src="<%= asset_path('profile.svg')%>" alt="">
+  <% end %>
+</div>
+</div>
+
+

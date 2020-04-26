@@ -1,8 +1,8 @@
 .navbar-container {
   position: relative;
   display: grid;
-  grid-template-columns: 30px 100px 100px auto 130px 50px 50px 50px;
-  grid-template-rows:  45px;
+  grid-template-columns: 30px 100px 100px auto 170px 50px 50px 50px;
+  grid-template-rows:  83px;
   grid-template-areas:
     // "topic1 topic2 "
     "spc stores about logo search logout profile bag ";
@@ -11,16 +11,21 @@
   align-items: center;
     font-size: 14px;
   line-height: 16px;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .navbar-box-str {
   grid-area: stores;
   height: 45px;
   width: 100px;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+  // border-top: 1px solid black;
+  // border-left: 1px solid black;
+  // border-bottom: 1px solid black;
+  color: white;
+  background-color: #94b0b9;
+  margin-right: 3px;
+  border-radius: 5px;
+
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -29,9 +34,13 @@
 
 .navbar-box-abt {
   grid-area: about;
+  color: white;
+  background-color: #d47f6c;
+  margin-left: 3px;
+  border-radius: 5px;
   height: 45px;
   width: 100px;
-  border: 1px solid black;
+  // border: 1px solid black;
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -43,7 +52,7 @@
   grid-area: spc;
   height: 45px;
   width:30px;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   justify-self: center;
 }
 
@@ -55,19 +64,27 @@
   justify-self: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid black;
+  align-items: end;
+  // border-bottom: 1px solid black;
+
+  p {
+    // height: 20px;
+    // width: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
 }
 
 .navbar-box-srch {
   grid-area: search;
   height: 45px;
-  width: 130px;
+  width: 170px;
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  // border-bottom: 1px solid black;
 }
 
 .navbar-box-lg{
@@ -78,7 +95,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
 }
 
 .navbar-box-bag {
@@ -89,7 +106,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
       img {
       width: 30px;
       height: 30px;
@@ -104,10 +121,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
 
     img {
       width: 30px;
       height: 30px;
     }
+}
+
+.line {
+  width: 100%;
+  border-top: 1px solid #333333;
 }
