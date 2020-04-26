@@ -19,7 +19,7 @@ class BusinessOffersController < ApplicationController
   def create
     @business_offer = BusinessOffer.new(business_offer_params)
     @business_offer.business_id = params[:business_id]
-    authorize @business_offer # NOT WORKING (PUNDIT)
+    authorize @business_offer
     @business_offer.price_cents = business_offer_params[:offer_amount].to_i * 100
     if @business_offer.save
       redirect_to new_business_business_offer_path
@@ -31,11 +31,16 @@ class BusinessOffersController < ApplicationController
   def show; end
 
   def edit
-    @business_offer = BusinessOffer.find(params[:id])
+    # @business_offer = BusinessOffer.find(params[:id])
+    bizz = BusinessOffer.find(params[:id])
+    bizz.biz_offer_id = params[:business_id]
+    @business_offer = bizz
+    authorize @business_offer
   end
 
   def update
     @business_offer = BusinessOffer.find(params[:id])
+    authorize @business_offer
       if @business_offer.update(business_offer_params)
         flash[:alert] = "Bravo!"
         redirect_to business_path(@business_offer.business_id)
