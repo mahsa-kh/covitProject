@@ -9,6 +9,14 @@
 
 .shop-item-container{
   grid-area: items;
+  display: grid;
+  grid-template-columns: 890px;
+  grid-template-rows:  30px auto;
+  grid-template-areas:
+  "shop-ttl"
+  "shop-itm";
+  row-gap: 18px;
+    margin-left: 18px;
 }
 
 .pay-bag-container{
@@ -86,7 +94,6 @@
   align-self: center;
 }
 
-
 .pay-terms {
   grid-area: terms;
   font-size: 12px;
@@ -96,4 +103,57 @@
   margin-right: 24px;
   line-height: 1.6;
   text-align: justify;
+}
+
+
+.shop-ttl{
+  grid-area: shop-ttl;
+  padding-bottom: 3px;
+  border-bottom: 0.7px solid #999894;
+  font-size: 15px;
+  align-self: start;
+  justify-self: start;
+  width: 100%;
+  color: #403f3d;
+}
+
+.shop-list-container{
+  grid-area: shop-itm;
+  padding-bottom: 18px;
+  border-bottom: 0.7px solid #999894;
+  font-size: 15px;
+  align-self: start;
+  justify-self: start;
+  width: 100%;
+  color: #403f3d;
+
+  display: grid;
+  grid-template-columns: 85px 715px 35px;
+  grid-template-rows:  150px;
+  grid-template-areas:
+  "pic descrption act";
+  row-gap: 18px;
+  column-gap: 8px;
+
+}
+
+.item-pic {
+  grid-area: pic;
+
+  img {
+    width: 85px;
+    height: 128px;
+  }
+}
+
+.item-descrption {
+  grid-area: descrption;
+}
+
+.item-action {
+  grid-area: act;
+}
+
+.strike {
+  text-decoration: line-through;
 }

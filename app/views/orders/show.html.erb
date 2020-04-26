@@ -1,32 +1,48 @@
 <%= render 'shared/navbar-home' %>
 <div class="line"></div>
+<% order_items = @order.order_items.sort_by { |k| k["id"] }%>
 
 <div class="shop-bag-container">
   <div class="shop-item-container">
+    <div class="shop-ttl">
+      <p>SHOPPING BAG ITEMS</p>
+    </div>
+          <% order_items.each do |order_item|%>
+    <div class="shop-list-container">
+        <div class="item-pic">
+            <img src="<%= asset_path('cafe.jpg') %>" alt="">
+        </div>
+        <div class="item-descrption">
+          <p>Business name</p>
+          <p>
+          <span class="strike"><%= order_item.business_offer.offer_amount %></span>
+          you paid: <%= humanized_money_with_symbol(order_item.business_offer.price) %>
+          </p>
+          <p>
+            Quantity
+            <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
+              -
+            <% end %>
+            <%= order_item.quantity %>
+            <%= link_to increase_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
+              +
+            <% end %>
+            </p>
+        </div>
+        <div class="item-action">
+          <p>
+            <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
+              Delete
+            <% end %>
+          </p>
+          <p>total</p>
+        </div>
 
-
-      Here is your shopping bag:
-       <% order_items = @order.order_items.sort_by { |k| k["id"] }%>
-      <% order_items.each do |order_item|%>
-      <br>
-       item: <%= order_item.business_offer.offer_amount %>
-      <p>Amount: <%= humanized_money_with_symbol(order_item.business_offer.price) %></p>
-
-        -- Quantity:   <%= order_item.quantity %>
-        <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
-          Delete
-        <% end %>
-
-          <%= link_to increase_offer_to_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
-            +
+    </div>
           <% end %>
-
-
-        <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
-            -
-          <% end %>
-      <% end %>
   </div>
+
+
 
 <!-- ************************************** RIGHT SIDE OF THE PAGE ************************************************* -->
 
