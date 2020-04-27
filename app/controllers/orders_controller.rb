@@ -16,6 +16,15 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
       @orders = []
       @order_items.each do |order_item|
 
+            # if params[:filter].present?
+            #   sql_query = " \   Order.find(15).order_items[0].business_offer.offer_amount
+            #     business_offer.offer_amount :query \
+            #     order_item.id : #{order_item.id} \
+            #   "
+            #   @orders = OrderItem.joins(:business_offer).where(sql_query, query: "%#{params[:query]}%")
+            # else
+
+
         if params[:query].present?
           sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR state ILIKE :query AND id = #{order_item.order_id}"
           all_orders = Order.where(sql_query, query: "%#{params[:query]}%")
@@ -36,6 +45,7 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
         @orders = Order.where("user_id = ?", current_user.id)
       end
     end
+
   end
 
   def new

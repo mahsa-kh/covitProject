@@ -1,0 +1,94 @@
+
+
+<%= render 'shared/navbar-home' %>
+<div class="line"></div>
+
+
+      <div class="srch-bar">
+        <%= form_tag orders_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "txtfld-ghost mt-2",
+            placeholder: "Find an order"
+          %>
+          <%= button_tag :submit, class: "button-secondary-xs ml-2" do %>
+            <img src="<%= asset_path('search.svg') %>" alt="">
+          <%end%>
+        <% end %>
+      </div>
+
+    <div class="page-container">
+      <div class="sidebar">
+        <div class="item-box-up">
+          <div class="up-spc">Your Profile</div>
+          <div class="up-spc">Supported Businesses</div>
+          <div class="up-spc">Transactions History</div>
+        </div>
+    <%if orderView %>
+        <div class="item-box-down">
+          <div class="down-ttl">FILTER:</div>
+          <div class="down-spc stl">
+           kjgku
+          </div>
+          <div class="down-spc stl">busness offer 1</div>
+          <div class="down-spc stl">busness offer 1</div>
+          <div class="down-spc stl">busness offer 1</div>
+        </div>
+    <%end%>
+      </div>
+    <%if orderView %>
+      <div class="page-body-table">
+        <div class="order-cell" style="grid-area: f1; font-weight: bold;width: 130px !important;">ORDER NUMBER</div>
+        <div class="order-cell" style="grid-area: f2; font-weight: bold; width: 110px !important;">ORDER DATE</div>
+        <div class="order-cell" style="grid-area: f3; font-weight: bold; width: 110px !important;">EXPIRY DATE</div>
+        <div class="order-cell" style="grid-area: f4; font-weight: bold; width: 70px !important;">TOTAL</div>
+        <div class="order-cell" style="grid-area: f5; font-weight: bold; width: 140px !important;">PAYMENT STATUS</div>
+        <div class="order-cell" style="grid-area: f6; font-weight: bold; width: 160px !important;">CONFIRMATION NO.</div>
+        <div class="order-cell" style="grid-area: f7; font-weight: bold; width: 130px !important;">PACK QUANTITY</div>
+        <div class="order-cell" style="grid-area: f8; font-weight: bold;">GIFT</div>
+
+        <div class="filter-cell"></div>
+            <% orders.each do |order|%>
+            <div class="order-cell" style="grid-area: f11;width: 130px !important;"><%= order.id %></div>
+            <div class="order-cell" style="grid-area: f12; width: 110px !important;"><%= order.order_date %></div>
+            <div class="order-cell" style="grid-area: f13; width: 110px !important;"><%= order.exp_date %></div>
+            <div class="order-cell" style="grid-area: f14; width: 70px !important;"><%= order.total_amount_cents %></div>
+            <div class="order-cell" style="grid-area: f15; width: 140px !important;"><%= order.state %></div>
+            <div class="order-cell" style="grid-area: f16; width: 160px !important;"><%= order.confirmation_no %></div>
+            <div class="order-cell" style="grid-area: f17; width: 130px !important;"><%= order.order_items.count %> </div>
+            <div class="order-cell" style="grid-area: f18;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+            </div>
+        <div class="filter-cell"></div>
+            <%end%>
+      </div>
+    <%end%>
+    <%if card %>
+      <div class="page-body-card">
+        <div class="card-container-noside">
+          <div class="heading" id="3"><%= text %></div>
+          <% businesses.each do |business| %>
+          <%= link_to business_path(business), class: "link-to" do %>
+              <div class="card-container-item">
+                <div class="card">
+                  <img src=<%= asset_path('gym1.jpg')%> >
+                  <div class="card-infos">
+                    <div>
+                      <h2><%= business.name %></h2>
+                      <p class="green"><%= business.category.category_name %></p>
+                    </div>
+                    <p class="card-empl"><u><%= business.employee_no %></u> people work here</p>
+                    <div class="discount-bordered">
+                      <div class="discount-bordered-inside"> <%= business.business_offers[0].discount %>%</div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <%end%>
+    </div>
+
+
+
