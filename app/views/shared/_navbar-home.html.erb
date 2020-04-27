@@ -1,13 +1,10 @@
 
-
-
-
 <div class="navbar-container">
 <div class="navbar-spc"></div>
 <div class="navbar-box-str">Stores</div>
 <div class="navbar-box-abt">About Us</div>
 <div class="nav-logo">
-  <p> TUCHE</p>
+  <p><a href="/">TUCHE</a></p>
 </div>
 <div class="navbar-box-srch">
   <%= form_tag businesses_path, method: :get do %>
@@ -15,13 +12,24 @@
   <% end %>
 </div>
 <div class="navbar-box-lg"><%= link_to "Login", new_user_registration_path, class: "link-to" %></div>
-<div class="navbar-box-bag">
-  <%= link_to  new_user_registration_path, class: "link-to" do %>
-    <img src="<%= asset_path('bag.svg')%>" alt="">
-  <% end %>
-</div>
+ <% if !current_user.orders.last.nil? %>
+    <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
+        <div class="navbar-box-bag">
+          <%= link_to  orders_path, class: "link-to" do %>
+            <img src="<%= asset_path('bag.svg')%>" alt="">
+          <% end %>
+        </div>
+    <%end%>
+  <%else%>
+        <div class="navbar-box-bag">
+          <%= link_to "#", class: "link-to" do %>
+            <img src="<%= asset_path('bag.svg')%>" alt="">
+          <% end %>
+        </div>
+    <%flash[:alert] = "Your bag is empty!"%>
+  <%end%>
 <div class="navbar-box-profile">
-  <%= link_to  new_user_registration_path, class: "link-to" do %>
+  <%= link_to  edit_user_registration_path, class: "link-to" do %>
     <img src="<%= asset_path('profile.svg')%>" alt="">
   <% end %>
 </div>

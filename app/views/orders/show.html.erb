@@ -16,8 +16,8 @@
          <p><strong style="color: #739C88; font-weight: bold"> Business name</strong>
           <br>
 
-          <span class="strike"><%= order_item.business_offer.offer_amount %></span>
-          you paid: <%= humanized_money_with_symbol(order_item.business_offer.price) %>
+          Original credit amount: <span class="strike"><%= order_item.business_offer.offer_amount %></span>
+          , but you pay: <%= humanized_money_with_symbol(order_item.business_offer.price) %>
           <br>
                   Quantity
             <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>

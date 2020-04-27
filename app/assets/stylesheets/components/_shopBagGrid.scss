@@ -24,23 +24,6 @@
   margin-right: 18px;
 }
 
-// .pay-bag-container{
-//   grid-area: bag;
-//   padding-right: 24px;
-//   display: grid;
-//   grid-template-columns: 470px;
-//   grid-template-rows:  30px 30px 30px 50px 200px 50px 50px 300px;
-//   grid-template-areas:
-//     "bg-ttl"
-//     "bg-item1"
-//     "bg-item2"
-//     "gift-link"
-//     "gift-msg"
-//     "pay-btn"
-//     "bg-item3"
-//     "terms";
-//     row-gap: 12px;
-// }
 
 .pay-bag-container{
   grid-area: bag;
@@ -53,7 +36,6 @@
     "bg-item1"
     "bg-item2"
     "gift-link"
-    // "gift-msg"
     "pay-btn"
     "bg-item3"
     "terms";
@@ -142,7 +124,6 @@
 }
 
 .shop-list-container{
-  grid-area: shop-itm;
   padding-bottom: 18px;
   border-bottom: 0.7px solid #999894;
   font-size: 15px;
@@ -174,7 +155,6 @@
 }
 
 .item-descrption {
-  // margin-top: 35px;
   margin-left: 32px;
   grid-area: descrption;
   line-height: 25px;

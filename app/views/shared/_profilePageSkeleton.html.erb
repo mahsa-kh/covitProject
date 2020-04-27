@@ -36,15 +36,18 @@
           </div>
         </div>
     <%if orderView %>
+      <%if current_user.owner %>
         <div class="item-box-down">
           <div class="down-ttl">FILTER:</div>
-          <div class="down-spc stl">
-           kjgku
+          <% current_user.businesses[0].business_offers.each do |business_offer|%>
+            <div class="down-spc stl">
+            <%= link_to orders_path(offer: business_offer.id), class: "link-to-white", method: :get do %>
+              <%=business_offer.offer_amount%>$ Credit
+            <%end%>
           </div>
-          <div class="down-spc stl">busness offer 1</div>
-          <div class="down-spc stl">busness offer 1</div>
-          <div class="down-spc stl">busness offer 1</div>
+          <%end%>
         </div>
+      <%end%>
     <%end%>
       </div>
     <%if orderView %>
@@ -52,22 +55,22 @@
         <div class="order-cell" style=" font-weight: bold;width: 140px !important;">ORDER NUMBER</div>
         <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
         <div class="order-cell" style="font-weight: bold; width: 120px !important;">EXPIRY DATE</div>
-        <div class="order-cell" style="font-weight: bold; width: 90px !important;">TOTAL</div>
-        <div class="order-cell" style="font-weight: bold; width: 140px !important;">PAYMENT STATUS</div>
-        <div class="order-cell" style="font-weight: bold; width: 160px !important;">CONFIRMATION NO.</div>
-        <div class="order-cell" style="font-weight: bold; width: 130px !important;">PACK QUANTITY</div>
+        <div class="order-cell" style="font-weight: bold; width: 130px !important;">TOTAL</div>
+        <div class="order-cell" style="font-weight: bold; width: 150px !important;">PAYMENT STATUS</div>
+        <div class="order-cell" style="font-weight: bold; width: 180px !important;">CONFIRMATION NO.</div>
+        <div class="order-cell" style="font-weight: bold; width: 190px !important;">PACK QUANTITY</div>
         <div class="order-cell" style="font-weight: bold;">GIFT</div>
 
 
             <% orders.each do |order|%>
-            <div class="order-cell" style="width: 130px !important;"><%= order.id %></div>
-            <div class="order-cell" style=" width: 110px !important;"><%= order.order_date %></div>
-            <div class="order-cell" style=" width: 110px !important;"><%= order.exp_date %></div>
-            <div class="order-cell" style=" width: 70px !important;"><%= order.total_amount_cents %></div>
-            <div class="order-cell" style=" width: 140px !important;"><%= order.state %></div>
-            <div class="order-cell" style=" width: 160px !important;"><%= order.confirmation_no %></div>
-            <div class="order-cell" style=" width: 130px !important;"><%= order.order_items.count %> </div>
-            <div class="order-cell" style=""><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+            <div class="order-cell" style="width: 140px !important; color:#333333;"><%= order.id %></div>
+            <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.order_date %></div>
+            <div class="order-cell" style=" width: 120px !important; color:#333333;"><%= order.exp_date %></div>
+            <div class="order-cell" style=" width: 130px !important; color:#333333;"><%= order.total_amount_cents %></div>
+            <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.state %></div>
+            <div class="order-cell" style=" width: 180px !important; color:#333333;"><%= order.confirmation_no %></div>
+            <div class="order-cell" style=" width: 190px !important; color:#333333;"><%= order.order_items.count %> </div>
+            <div class="order-cell" style="width: 100px !important; color:#333333;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
             </div>
 
             <%end%>

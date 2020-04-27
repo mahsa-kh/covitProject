@@ -14,6 +14,16 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
       @orders = []
 
 
+      if params[:offer].present?
+        order_items = OrderItem.where("business_offer_id = ?", params[:offer].to_i)
+        order_items.each do |item|
+          all_orders = Order.where(id: item.order_id)
+          all_orders.each do |order|
+            @orders.push(order)
+          end
+        end
+      end
+
       business = Business.where("user_id = ?", current_user.id).last
       @order_items = business.order_items
       @order_items.each do |order_item|
