@@ -3,13 +3,19 @@
 <%= render 'shared/navbar-home' %>
 <div class="line"></div>
 
-
+    <div class="srch-bar"></div>
     <div class="page-container">
       <div class="sidebar">
         <div class="item-box-up">
-          <div class="up-spc">Your Profile</div>
-          <div class="up-spc">Supported Businesses</div>
-          <div class="up-spc">Transactions History</div>
+          <div class="up-spc">
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+          </div>
         </div>
       </div>
       <div class="page-body-flat">

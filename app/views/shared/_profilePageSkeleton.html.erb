@@ -18,12 +18,22 @@
       </div>
     <%end%>
 
+    <%if !orderView%>
+    <div class="srch-bar"></div>
+    <%end%>
+
     <div class="page-container">
       <div class="sidebar">
         <div class="item-box-up">
-          <div class="up-spc">Your Profile</div>
-          <div class="up-spc">Supported Businesses</div>
-          <div class="up-spc">Transactions History</div>
+          <div class="up-spc">
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+          </div>
         </div>
     <%if orderView %>
         <div class="item-box-down">
@@ -78,7 +88,9 @@
                       <p class="green">Thanks! You helped <%= business.employee_no %> who work here!</p>
                     </div>
                     <div class="discount-bordered">
-                      <div class="discount-bordered-inside"> <%= business.business_offers[0].discount %>%</div>
+                      <div class="discount-bordered-inside">
+                        <img src=<%= asset_path('check.svg')%> >
+                      </div>
                       </div>
                   </div>
                 </div>
