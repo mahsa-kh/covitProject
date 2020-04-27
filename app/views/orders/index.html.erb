@@ -4,62 +4,66 @@
 <div class="line"></div>
 
 
-<div class="main-container-side">
-      <div class="cat-content">
-        <p>Your Profile</p>
-        <p>Supported Businesses</p>
-        <p>Transactions History</p>
+      <div class="srch-bar">
+        <%= form_tag orders_path, method: :get, class: "form-inline" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "txtfld-ghost mt-2",
+            placeholder: "Find an order"
+          %>
+          <%= button_tag :submit, class: "button-secondary-xs ml-2" do %>
+            <img src="<%= asset_path('search.svg') %>" alt="">
+          <%end%>
+        <% end %>
       </div>
-  <div class="card-container-side">
-    <p>you can search based on "Confirmation No:" "Total Amount", "order Date", "Expiry Date" or "State"</p>
-<%= form_tag orders_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find an order"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+
+<div class="page-container">
+      <div class="sidebar">
+        <div class="item-box-up">
+          <div class="up-spc">Your Profile</div>
+          <div class="up-spc">Supported Businesses</div>
+          <div class="up-spc">Transactions History</div>
+        </div>
+        <div class="item-box-down">
+          <div class="down-ttl">FILTER:</div>
+          <div class="down-spc stl">busness offer 1</div>
+          <div class="down-spc stl">busness offer 1</div>
+          <div class="down-spc stl">busness offer 1</div>
+          <div class="down-spc stl">busness offer 1</div>
+        </div>
+      </div>
 
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Order No</th>
-      <th scope="col">Date</th>
-      <th scope="col">Order Expiry Date</th>
-      <th scope="col">Payment Amount</th>
-      <th scope="col">Payment Status</th>
-      <th scope="col">Confirmation No</th>
-      <th scope="col">Credit Pack</th>
-      <th scope="col">Gift</th>
-    </tr>
-  </thead>
-  <tbody>
+        <div class="page-body">
+<div class="order-cell" style="grid-area: f1">ORDER NUMBER</div>
+<div class="order-cell" style="grid-area: f2">ORDER DATE</div>
+<div class="order-cell" style="grid-area: f3">EXPIRY DATE</div>
+<div class="order-cell" style="grid-area: f4">TOTAL</div>
+<div class="order-cell" style="grid-area: f5">PAYMENT STATUS</div>
+<div class="order-cell" style="grid-area: f6">CONFIRMATION NO.</div>
+<div class="order-cell" style="grid-area: f7">PACK QUANTITY</div>
+<div class="order-cell" style="grid-area: f8">GIFT</div>
+
+<div class="filter-cell"></div>
       <% @orders.each do |order|%>
-      <tr>
-        <th scope="row"><%= order.id %></th>
-        <th ><%= order.order_date %></th>
-        <td><%= order.exp_date %></td>
-        <td><%= order.total_amount_cents %></td>
-        <td><%= order.state %></td>
-        <td> <%= order.confirmation_no %></td>
-        <td> <%= order.order_items.count %></td>
-        <td> <% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%></td>
-      </tr>
+      <div class="order-cell" style="grid-area: f11"><%= order.id %></div>
+      <div class="order-cell" style="grid-area: f12"><%= order.order_date %></div>
+      <div class="order-cell" style="grid-area: f13">%= order.exp_date %></div>
+      <div class="order-cell" style="grid-area: f14"><%= order.total_amount_cents %></div>
+      <div class="order-cell" style="grid-area: f15"><%= order.state %></div>
+      <div class="order-cell" style="grid-area: f16"><%= order.confirmation_no %></div>
+      <div class="order-cell" style="grid-area: f17"><%= order.order_items.count %></div>
+      <div class="order-cell" style="grid-area: f18"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%></div>
+
+      <div class="filter-cell"></div>
       <%end%>
-  </tbody>
-</table>
 
   </div>
 
 </div>
 
-<% if !current_user.owner %>
 
-  <ul class="list-unstyled">
-<% end %>
 
 <br>
 

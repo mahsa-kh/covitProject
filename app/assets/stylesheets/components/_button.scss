@@ -38,6 +38,25 @@
   grid-area: btn;
 }
 
+.button-secondary-sm {
+  color: white;
+  padding: 8px 24px;
+  background: #333333;
+  border-radius: 10px;
+  width: 80px;
+  height: 32px;
+
+  left: 0%;
+  right: 0%;
+  top: 21.43%;
+  bottom: 23.81%;
+
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+
+}
+
 .button-primary-lrg {
   color: white;
   padding: 8px 24px;
@@ -81,6 +100,10 @@
   color: black;
   border: 1px solid #333333;
   text-decoration: none;
+
+  a {
+    color: black;
+  }
 }
 
 .button-secondary-banner {
@@ -123,6 +146,25 @@
   line-height: 23px;
   text-align: center;
 }
+
+.button-secondary-xs {
+  color: black;
+  // padding: 8px 24px;
+  padding-top: 3px;
+  border: 1px solid #333333;
+  background: white;
+  border-radius: 10px;
+  width: 50px;
+  height: 32px;
+
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+
+}
+
+
+
 
 .button-secondary:hover {
   background: #333333;
