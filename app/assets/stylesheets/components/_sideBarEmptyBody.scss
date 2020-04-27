@@ -1,0 +1,41 @@
+.page-container {
+  display: grid;
+  grid-template-columns: 229px auto;
+  grid-template-rows:  auto;
+  grid-template-areas:
+    "side body ";
+
+  justify-content:  start;
+}
+
+.page-container .sidebar{
+  grid-area: concat;
+  padding-top: 40px;
+  padding-left: 30px;
+
+  .cat-box-sm {
+    width: 160px;
+    height: 30px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 16px;
+
+  }
+}
+
+.page-container .page-body {
+  display: grid;
+  grid-template-columns: 360px 360px  360px ;
+  grid-template-rows:  269px;
+  grid-template-areas:
+    "main main main ";
+
+  row-gap: 35px;
+  column-gap: 52px;
+  justify-content:  center;
+  position: relative;
+  top: 40px;
+  margin-bottom: 54px;
+
+  grid-area: concard;
+  justify-self: start;
+}
