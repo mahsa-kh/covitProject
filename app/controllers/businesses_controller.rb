@@ -17,16 +17,16 @@ class BusinessesController < ApplicationController
       @businesses = @bussinesses_index_pundit
     end
 
-    # @user = current_user # given by DEVICE!!
-    # if !@user.orders.nil?
-    #   @orders = @user.orders
-    #   show_alert = @orders.any? do |ord|
-    #     (Date.today + 10) > ord.exp_date
-    #   end
-    #    if show_alert
-    #      flash[:alert] = "One or more orders are going to expire within 10 days"
-    #    end
-    # end
+    @user = current_user # given by DEVICE!!
+    if !@user.orders.nil?
+      @orders = @user.orders
+      show_alert = @orders.any? do |ord|
+        (Date.today + 10) > ord.exp_date if ord.exp_date
+      end
+       if show_alert
+         flash[:alert] = "One or more orders are going to expire within 10 days"
+       end
+    end
   end
 
 

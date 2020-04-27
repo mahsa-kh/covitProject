@@ -1,22 +1,25 @@
 
-<div class="card-container mt-4">
+<div class="card-container-noside">
+  <div class="heading" id="3"><%= text %></div>
   <% businesses.each do |business| %>
   <%= link_to business_path(business), class: "link-to" do %>
-    <div class="card-container-item">
-      <div class="card">
-        <img src=<%= asset_path('cafe1.jpg')%> >
-        <div class="card-infos">
-          <div>
-            <h2><%= business.name %></h2>
-            <p><%= business.category.category_name %></p>
+      <div class="card-container-item">
+        <div class="card">
+          <img src=<%= asset_path('gym1.jpg')%> >
+          <div class="card-infos">
+            <div>
+              <h2><%= business.name %></h2>
+              <p class="green"><%= business.category.category_name %></p>
+            </div>
+            <p class="card-empl"><u><%= business.employee_no %></u> people work here</p>
+            <div class="discount-bordered">
+              <% if business.business_offers[0] %>
+                <div class="discount-bordered-inside"> <%= business.business_offers[0].discount %>%</div>
+              <% end %>
+              </div>
           </div>
-          <p class="card-empl"><u><%= business.employee_no %></u> people work here</p>
-          <% if business.business_offers[0] %>
-            <h2 class="card-user discount-bordered"><%= business.business_offers[0].discount %>%</h2>
-          <% end %>
         </div>
       </div>
-    </div>
     <% end %>
   <% end %>
 </div>
