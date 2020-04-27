@@ -24,4 +24,12 @@ class BusinessOfferPolicy < ApplicationPolicy
   def add_to_bag?
     true
   end
+
+  def remove_from_bag?
+    true
+  end
+
+  def increase_to_bag?
+    true
+  end
 end

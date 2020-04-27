@@ -4,4 +4,12 @@ class OrderItemPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    true
+  end
+
+  def destroy?
+    true
+  end
 end

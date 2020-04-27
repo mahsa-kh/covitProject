@@ -8,6 +8,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
+    authorize @order_item
   end
 
   def show
@@ -20,6 +21,7 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
+    authorize @order_item
     OrderItem.find(params[:id]).destroy
     redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
   end

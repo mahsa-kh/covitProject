@@ -47,8 +47,7 @@ class BusinessOffersController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   def add_to_bag
     # Route to this method: /businesses/:business_id/business_offers/:id
