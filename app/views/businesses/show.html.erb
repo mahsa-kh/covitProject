@@ -1,36 +1,6 @@
-
-<<<<<<< HEAD
-<p>Find me in app/views/businesses/show.html.erb</p>
-<!-- Business info:
-<%= @business.name %>
-
-<%= @business.description%> <br>
-<%= @business.instagram%> <br>
-<%= @business.address%> <br>
-<%= @business.website%> <br>
- -->
-<%= render 'shared/businessOffers' %>
-
-
-Offers:
-<% @business.business_offers.each do |business_offer| %>
-  <%= link_to add_offer_to_bag_path(@business, business_offer.id), method: :post do %>
-    <p>Credit: <%= business_offer.offer_amount %> -- Pay Only:
-<p>Amount: <%= humanized_money_with_symbol(business_offer.price) %></p>
-      <%= ((business_offer.offer_amount * (100 - business_offer.discount))/100) %></p>
-  <% end %>
-<%end%>
-
-
-
-
-<%= link_to "PROCEED WITH CHECKOUT", order_path(cookies[:order_id])%> <br>
-<%= link_to "GO BACK", root_path %>
-=======
 <%= render "/shared/businessOffers", business: @business %>
 <div class="centerd-btn-layer">
-  <div class="space-holder-line mt-5"></div>
+  <div class="line mt-4"></div>
 </div>
-<div class="heading mb-5 ml-2"><h4>Places you might like:</h4></div>
-<%= render "/shared/showSeveralBusCard", businesses: @businesses, number: 3 %>
->>>>>>> a8dbcfb92644e64317661cdc7eac8a43da0e0b5a
+
+<%= render "/shared/showSeveralBusCard", businesses: @businesses, text: "Places You Might Like" %>

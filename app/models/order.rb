@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   # belongs_to :order_item
   has_many :order_items, dependent: :destroy
+  has_many :business_offers, through: :order_items
   belongs_to :user
   monetize :total_amount_cents
   before_save :set_expiration_date

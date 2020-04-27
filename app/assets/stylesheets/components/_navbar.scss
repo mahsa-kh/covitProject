@@ -1,99 +1,133 @@
-* {
-  margin: 0;
-  padding: 0;
+.navbar-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px 100px 100px auto 170px 50px 50px 50px;
+  grid-template-rows:  83px;
+  grid-template-areas:
+    "spc stores about logo search logout profile bag ";
+
+  justify-items: center;
+  align-items: center;
+    font-size: 14px;
+  line-height: 16px;
+  margin-top: 5px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  border-bottom: 1px solid black;
-  padding-top: 40px;
-  height: 80px;
-}
+.navbar-box-str {
+  grid-area: stores;
+  height: 45px;
+  width: 100px;
+  color: white;
+  background-color: #94b0b9;
+  margin-right: 3px;
+  border-radius: 5px;
 
-.action {
+  justify-self: center;
   display: flex;
   justify-content: center;
-  margin-left: 40px;
-  height: 40px;
+  align-items: center;
 }
 
-.shop,
-.cart,
-.logo,
-.search {
-  min-width: 100px;
-  margin: 0px;
+.navbar-box-abt {
+  grid-area: about;
+  color: white;
+  background-color: #d47f6c;
+  margin-left: 3px;
+  border-radius: 5px;
+  height: 45px;
+  width: 100px;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.tuche {
-  height: 28px;
-  margin-down: 4px;
+
+.navbar-spc {
+  grid-area: spc;
+  height: 45px;
+  width:30px;
+  justify-self: center;
 }
 
-.action-item {
-  border: 1px solid black;
-  padding: 17px 38px;
-  box-sizing: content;
-  line-height: 0.2;
-  flex-basis: 50%;
-  margin: 0px;
-  padding-top: 18px;
-  border-bottom: 1px solid black;
-    &:last-child {
-      border-left: none;
+
+.nav-logo {
+  height: 45px;
+  width: 100%;
+  grid-area: logo;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  a {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+
+  a:hover{
+    text-decoration: none;
   }
 }
 
-.login {
-  margin: 18px;
-}
-
-.action-two {
+.navbar-box-srch {
+  grid-area: search;
+  height: 45px;
+  width: 170px;
+  justify-self: center;
   display: flex;
   justify-content: center;
+  align-items: center;
+  // border-bottom: 1px solid black;
 }
 
-.action-item-two {
-  padding: 17px 38px;
-  box-sizing: content;
-  line-height: 0.2;
-  flex-basis: 50%;
-  margin: 0px;
-  padding-top: 18px;
+.navbar-box-lg{
+  grid-area: logout;
+  height: 45px;
+  width: 50px;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo_two {
-  height: 24px;
+.navbar-box-bag {
+  grid-area: bag;
+  height: 45px;
+  width: 50px;
+  justify-self: center;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+      img {
+      width: 30px;
+      height: 30px;
+    }
 }
 
+.navbar-box-profile {
+  grid-area: profile;
+  height: 45px;
+  width: 50px;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.login a {
-  color: black;
-  text-decoration: none;
-  background-color: transparent;
+    img {
+      width: 30px;
+      height: 30px;
+    }
 }
 
-
-
-
-.search-action-item-two {
-  background-color: light-blue;
-  padding: 17px 38px;
-  box-sizing: content;
-  line-height: 0.2;
-  flex-basis: 50%;
-  margin: 0px;
-  padding-top: 18px;
-}
-
-.navbar navbar-light bg-light {
-  background-color: light-blue;
-  padding: 17px 38px;
-  box-sizing: content;
-  line-height: 0.2;
-  flex-basis: 50%;
-  margin: 0px;
-  padding-top: 18px;
+.line {
+  width: 100%;
+  border-top: 1px solid #333333;
 }
