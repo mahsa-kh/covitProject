@@ -3,15 +3,34 @@ before_action :set_order, only: [:total_calculator, :update_total_amount_cents, 
 before_action :total_calculator, only: [:update_total_amount_cents, :update_total_amount_cents_checkout]
 
   def index
+
+    if params[:payment] == "success"
+    current_user.orders.last.update(exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
+    elsif params[:payment] == "fail"
+    current_user.orders.last.update(state: 'failed', paid: false, owner_paid: false)
+    end
+
     if current_user.owner
+      @orders = []
+
+
+      if params[:offer].present?
+        order_items = OrderItem.where("business_offer_id = ?", params[:offer].to_i)
+        order_items.each do |item|
+          all_orders = Order.where(id: item.order_id)
+          all_orders.each do |order|
+            @orders.push(order)
+          end
+        end
+      end
+
       business = Business.where("user_id = ?", current_user.id).last
       @order_items = business.order_items
-      @orders = []
       @order_items.each do |order_item|
 
-        if params[:query].present?
-          sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR state ILIKE :query AND id = #{order_item.order_id}"
-          all_orders = Order.where(sql_query, query: "%#{params[:query]}%")
+        if params[:order_query].present?
+          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND id = #{order_item.order_id}"
+          all_orders = Order.where(sql_query, order_query: "%#{params[:order_query]}%")
           all_orders.each do |order|
             @orders.push(order)
           end
@@ -22,13 +41,14 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
       end
     else
       # @orders = Order.where("user_id = ?", current_user.id)
-      if params[:query].present?
-        sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT)  ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR state ILIKE :query AND user_id = #{current_user.id}"
-        @orders = Order.where(sql_query, query: "%#{params[:query]}%")
+      if params[:order_query].present?
+        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND user_id = #{current_user.id}"
+        @orders = Order.where(sql_query, order_query: "%#{params[:order_query]}%")
       else
         @orders = Order.where("user_id = ?", current_user.id)
       end
     end
+
   end
 
   def new
@@ -38,14 +58,14 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
   end
 
   def show
-   # @user = current_user # given by device!!
-   #  @orders = @user.orders
-   #  show_alert = @orders.any? do |ord|
-   #    (Date.today + 10) > ord.exp_date
-   #  end
-   #   if show_alert
-   #     flash[:alert] = "One or more orders are going to expire within 10 days"
-   #   end
+   @user = current_user # given by device!!
+    @orders = @user.orders
+    show_alert = @orders.any? do |ord|
+      (Date.today + 10) > ord.exp_date if ord.exp_date
+    end
+     if show_alert
+       flash[:alert] = "One or more orders are going to expire within 10 days"
+     end
     @order = Order.find(params[:id])
   end
 
@@ -90,8 +110,8 @@ session = Stripe::Checkout::Session.create(
         currency: 'eur',
         quantity: 1
       }],
-      success_url: orders_url,
-      cancel_url: orders_url
+      success_url:"#{orders_url}?payment=success",
+      cancel_url: "#{orders_url}?payment=fail"
     )
 
 @order.update(checkout_session_id: session.id)
