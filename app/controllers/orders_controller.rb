@@ -11,23 +11,16 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
     end
 
     if current_user.owner
+      @orders = []
+
+
       business = Business.where("user_id = ?", current_user.id).last
       @order_items = business.order_items
-      @orders = []
       @order_items.each do |order_item|
 
-            # if params[:filter].present?
-            #   sql_query = " \   Order.find(15).order_items[0].business_offer.offer_amount
-            #     business_offer.offer_amount :query \
-            #     order_item.id : #{order_item.id} \
-            #   "
-            #   @orders = OrderItem.joins(:business_offer).where(sql_query, query: "%#{params[:query]}%")
-            # else
-
-
-        if params[:query].present?
-          sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR state ILIKE :query AND id = #{order_item.order_id}"
-          all_orders = Order.where(sql_query, query: "%#{params[:query]}%")
+        if params[:order_query].present?
+          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND id = #{order_item.order_id}"
+          all_orders = Order.where(sql_query, order_query: "%#{params[:order_query]}%")
           all_orders.each do |order|
             @orders.push(order)
           end
@@ -38,9 +31,9 @@ before_action :total_calculator, only: [:update_total_amount_cents, :update_tota
       end
     else
       # @orders = Order.where("user_id = ?", current_user.id)
-      if params[:query].present?
-        sql_query = "confirmation_no ILIKE :query OR CAST(total_amount_cents AS TEXT)  ILIKE :query OR CAST(exp_date AS TEXT) ILIKE :query OR CAST(order_date AS TEXT) ILIKE :query OR state ILIKE :query AND user_id = #{current_user.id}"
-        @orders = Order.where(sql_query, query: "%#{params[:query]}%")
+      if params[:order_query].present?
+        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND user_id = #{current_user.id}"
+        @orders = Order.where(sql_query, order_query: "%#{params[:order_query]}%")
       else
         @orders = Order.where("user_id = ?", current_user.id)
       end

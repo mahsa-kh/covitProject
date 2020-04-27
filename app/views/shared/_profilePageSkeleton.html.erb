@@ -6,8 +6,8 @@
     <%if orderView %>
       <div class="srch-bar">
         <%= form_tag orders_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
+          <%= text_field_tag :order_query,
+            params[:order_query],
             class: "txtfld-ghost mt-2",
             placeholder: "Find an order"
           %>
@@ -49,27 +49,27 @@
       </div>
     <%if orderView %>
       <div class="page-body-table">
-        <div class="order-cell" style="grid-area: f1; font-weight: bold;width: 130px !important;">ORDER NUMBER</div>
-        <div class="order-cell" style="grid-area: f2; font-weight: bold; width: 110px !important;">ORDER DATE</div>
-        <div class="order-cell" style="grid-area: f3; font-weight: bold; width: 110px !important;">EXPIRY DATE</div>
-        <div class="order-cell" style="grid-area: f4; font-weight: bold; width: 70px !important;">TOTAL</div>
-        <div class="order-cell" style="grid-area: f5; font-weight: bold; width: 140px !important;">PAYMENT STATUS</div>
-        <div class="order-cell" style="grid-area: f6; font-weight: bold; width: 160px !important;">CONFIRMATION NO.</div>
-        <div class="order-cell" style="grid-area: f7; font-weight: bold; width: 130px !important;">PACK QUANTITY</div>
-        <div class="order-cell" style="grid-area: f8; font-weight: bold;">GIFT</div>
+        <div class="order-cell" style=" font-weight: bold;width: 140px !important;">ORDER NUMBER</div>
+        <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
+        <div class="order-cell" style="font-weight: bold; width: 120px !important;">EXPIRY DATE</div>
+        <div class="order-cell" style="font-weight: bold; width: 90px !important;">TOTAL</div>
+        <div class="order-cell" style="font-weight: bold; width: 140px !important;">PAYMENT STATUS</div>
+        <div class="order-cell" style="font-weight: bold; width: 160px !important;">CONFIRMATION NO.</div>
+        <div class="order-cell" style="font-weight: bold; width: 130px !important;">PACK QUANTITY</div>
+        <div class="order-cell" style="font-weight: bold;">GIFT</div>
 
-        <div class="filter-cell"></div>
+
             <% orders.each do |order|%>
-            <div class="order-cell" style="grid-area: f11;width: 130px !important;"><%= order.id %></div>
-            <div class="order-cell" style="grid-area: f12; width: 110px !important;"><%= order.order_date %></div>
-            <div class="order-cell" style="grid-area: f13; width: 110px !important;"><%= order.exp_date %></div>
-            <div class="order-cell" style="grid-area: f14; width: 70px !important;"><%= order.total_amount_cents %></div>
-            <div class="order-cell" style="grid-area: f15; width: 140px !important;"><%= order.state %></div>
-            <div class="order-cell" style="grid-area: f16; width: 160px !important;"><%= order.confirmation_no %></div>
-            <div class="order-cell" style="grid-area: f17; width: 130px !important;"><%= order.order_items.count %> </div>
-            <div class="order-cell" style="grid-area: f18;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+            <div class="order-cell" style="width: 130px !important;"><%= order.id %></div>
+            <div class="order-cell" style=" width: 110px !important;"><%= order.order_date %></div>
+            <div class="order-cell" style=" width: 110px !important;"><%= order.exp_date %></div>
+            <div class="order-cell" style=" width: 70px !important;"><%= order.total_amount_cents %></div>
+            <div class="order-cell" style=" width: 140px !important;"><%= order.state %></div>
+            <div class="order-cell" style=" width: 160px !important;"><%= order.confirmation_no %></div>
+            <div class="order-cell" style=" width: 130px !important;"><%= order.order_items.count %> </div>
+            <div class="order-cell" style=""><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
             </div>
-        <div class="filter-cell"></div>
+
             <%end%>
       </div>
     <%end%>
