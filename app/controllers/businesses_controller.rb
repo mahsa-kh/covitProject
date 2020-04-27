@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
-
+    @bussinesses_index_pundit = policy_scope(Business)
     if params[:query].present?
             sql_query = " \
         businesses.name ILIKE :query \
@@ -9,12 +9,12 @@ class BusinessesController < ApplicationController
         OR businesses.address ILIKE :query \
         OR categories.category_name ILIKE :query \
       "
-      @businesses = Business.joins(:category).where(sql_query, query: "%#{params[:query]}%")
+      @businesses = @bussinesses_index_pundit.joins(:category).where(sql_query, query: "%#{params[:query]}%")
     elsif params[:category].present?
       @category = Category.find_by(category_name: params[:category])
-      @businesses = @category ? Business.where(category: @category) : Business.all
+      @businesses = @category ? @bussinesses_index_pundit.where(category: @category) : @bussinesses_index_pundit
     else
-      @businesses = Business.all
+      @businesses = @bussinesses_index_pundit
     end
 
     # @user = current_user # given by DEVICE!!
@@ -80,7 +80,7 @@ class BusinessesController < ApplicationController
   def destroy
   end
 
-  def view_history # Corrected typo on this line
+  def view_history
   end
 
   def view_orders

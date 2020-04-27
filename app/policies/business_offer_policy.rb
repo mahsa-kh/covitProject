@@ -20,4 +20,8 @@ class BusinessOfferPolicy < ApplicationPolicy
   def update?
     edit?
   end
+
+  def add_to_bag?
+    true
+  end
 end
