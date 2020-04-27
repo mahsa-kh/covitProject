@@ -6,10 +6,16 @@ class OrderItemPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user_owns_order?
   end
 
   def destroy?
-    true
+    user_owns_order?
+  end
+
+  private
+
+  def user_owns_order?
+    record.order.user == user
   end
 end

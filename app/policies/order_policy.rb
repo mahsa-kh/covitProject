@@ -13,6 +13,10 @@ class OrderPolicy < ApplicationPolicy
     current_user_and_not_owner?
   end
 
+  def update?
+    current_user_and_not_owner?
+  end
+
   def update_total_amount_cents?
     current_user_and_not_owner?
   end

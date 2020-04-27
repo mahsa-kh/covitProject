@@ -1,5 +1,4 @@
 class BusinessOffer < ApplicationRecord
-  attr_accessor :biz_offer_id
   belongs_to :business, dependent: :destroy  # .business
   has_many :order_items, dependent: :destroy # .order_items
   has_many :orders, through: :order_items    # .orders

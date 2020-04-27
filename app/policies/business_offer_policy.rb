@@ -6,11 +6,11 @@ class BusinessOfferPolicy < ApplicationPolicy
   end
 
   def new?
-    user.businesses.pluck(:id).include?(record.biz_offer_id.to_i)
+   create?
   end
 
   def create?
-    new?
+    user.businesses.pluck(:id).include?(record.business.id)
   end
 
   def edit?

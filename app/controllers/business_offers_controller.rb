@@ -9,7 +9,7 @@ class BusinessOffersController < ApplicationController
 
   def new
     b = BusinessOffer.new
-    b.biz_offer_id = params[:business_id] # attr_accessor of BusinessOffer Model
+    b.business_id = params[:business_id] # attr_accessor of BusinessOffer Model
     @business_offer = b
     authorize @business_offer
     # @business = Business.find(params[:business_offer_id])
@@ -19,12 +19,13 @@ class BusinessOffersController < ApplicationController
   def create
     @business_offer = BusinessOffer.new(business_offer_params)
     @business_offer.business_id = params[:business_id]
-    authorize @business_offer
     @business_offer.price_cents = business_offer_params[:offer_amount].to_i * 100
+    authorize @business_offer
     if @business_offer.save
       redirect_to new_business_business_offer_path
     else
-      redirect_to root
+      flash.now[:error] = "Offer amount must be unique"
+      render :new
     end
   end
 

@@ -58,12 +58,12 @@ class OrdersController < ApplicationController
   end
 
   def update
+    authorize @order
     @order.update(gift: true)
     @order.update(order_params)
   end
 
-  def destroy
-  end
+  def destroy; end
 
   def update_total_amount_cents
     authorize @order
