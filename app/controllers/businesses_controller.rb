@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
-
+    @bussinesses_index_pundit = policy_scope(Business)
     if params[:query].present?
             sql_query = " \
         businesses.name ILIKE :query \
@@ -9,12 +9,12 @@ class BusinessesController < ApplicationController
         OR businesses.address ILIKE :query \
         OR categories.category_name ILIKE :query \
       "
-      @businesses = Business.joins(:category).where(sql_query, query: "%#{params[:query]}%")
+      @businesses = @bussinesses_index_pundit.joins(:category).where(sql_query, query: "%#{params[:query]}%")
     elsif params[:category].present?
       @category = Category.find_by(category_name: params[:category])
-      @businesses = @category ? Business.where(category: @category) : Business.all
+      @businesses = @category ? @bussinesses_index_pundit.where(category: @category) : @bussinesses_index_pundit
     else
-      @businesses = Business.all
+      @businesses = @bussinesses_index_pundit
     end
 
     @user = current_user # given by DEVICE!!
@@ -45,12 +45,14 @@ class BusinessesController < ApplicationController
 
   def new
     @business = Business.new
+    authorize @business
   end
 
   def create
     # @category = Category.find(params[:id])
     @business = Business.new(business_params)
     @business.user_id = current_user.id
+    authorize @business
     # @business.category_id = params[:category_id]
     if @business.save!
       redirect_to new_business_business_offer_path(@business)
@@ -60,7 +62,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find(params[:id])
+    # @business = Business.find(params[:id]) # set_business in private already does this job
     @businesses = Business.all
   end
 
@@ -78,7 +80,7 @@ class BusinessesController < ApplicationController
   def destroy
   end
 
-  def view_hisotry
+  def view_history
   end
 
   def view_orders
@@ -92,6 +94,7 @@ class BusinessesController < ApplicationController
   end
 
   def set_business
-    # @business = Business.find(params[:id])
+    @business = Business.find(params[:id])
+    authorize @business
   end
 end

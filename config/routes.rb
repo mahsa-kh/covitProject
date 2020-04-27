@@ -15,9 +15,9 @@ mount StripeEvent::Engine, at: '/stripe-webhooks'
   #   sessions: "users/sessions"
   # }
   get "/businesses/helped", to: "businesses#order_history_businesses", as: "businesses_helped"
-  
+
   resources :businesses, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-    resources :business_offers, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :business_offers, shallow: true
   end
 
   resources :orders, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
@@ -33,7 +33,7 @@ mount StripeEvent::Engine, at: '/stripe-webhooks'
   get "/orders/:business_id/increase", to: "orders#update_total_amount_cents", as: "update_total_amount_cents"
   get "/orders/:business_id/decrease", to: "orders#update_total_amount_cents_checkout", as: "update_total_amount_cents_checkout"
 
-  
+
 
   # get "/businesses/:user_id/withdraw", to: "businesses#withdraw", as: "withdraw"
   # get "/orders/:user_id/transactions", to: "orders#view_history", as: "view_user_history"
