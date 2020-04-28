@@ -12,7 +12,7 @@
   <% end %>
 </div>
 <div class="navbar-box-lg"><%= link_to "Login", new_user_registration_path, class: "link-to" %></div>
- <% if !current_user.orders.last.nil? %>
+ <% if user_signed_in? && current_user.orders.last %>
     <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
         <div class="navbar-box-bag">
           <%= link_to  orders_path, class: "link-to" do %>
