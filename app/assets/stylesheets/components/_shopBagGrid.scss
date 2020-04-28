@@ -152,6 +152,11 @@
     width: 100px;
     height: 150px;
   }
+
+    .cl-img {
+    width: 100px;
+    height: 150px;
+  }
 }
 
 .item-descrption {
@@ -162,12 +167,22 @@
     width: 20px;
     height: 20px;
   }
+
+  .cl-img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .item-action {
   grid-area: act;
   justify-self: end;
     img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cl-img {
     width: 30px;
     height: 30px;
   }

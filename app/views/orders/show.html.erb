@@ -1,5 +1,4 @@
-<%= render 'shared/navbar-home' %>
-<div class="line"></div>
+
 <% order_items = @order.order_items.sort_by { |k| k["id"] }%>
 
 <div class="shop-bag-container">
@@ -10,14 +9,14 @@
           <% order_items.each do |order_item|%>
     <div class="shop-list-container">
         <div class="item-pic">
-            <img src="<%= asset_path('cafe.jpg') %>" alt="">
+            <%= cl_image_tag order_item.business_offer.business.photo.key, class:"cl-img" %>
         </div>
         <div class="item-descrption">
          <p><strong style="color: #739C88; font-weight: bold"> Business name</strong>
           <br>
 
-          Original credit amount: <span class="strike"><%= order_item.business_offer.offer_amount %></span>
-          , but you pay: <%= humanized_money_with_symbol(order_item.business_offer.price) %>
+          Original credit amount: <span class="strike"><%= humanized_money_with_symbol(order_item.business_offer.offer_amount) %></span>
+          , but you pay: <%= humanized_money_with_symbol(order_item.business_offer.price_cents) %>
           <br>
                   Quantity
             <%= link_to remove_from_bag_path(order_item.business_offer.business_id,order_item.business_offer.id), method: :post, remote:true do %>
@@ -31,7 +30,7 @@
         </div>
         <div class="item-action">
           <p>
-            <%= link_to  order_order_item_path(@order, order_item), method: :delete, remote:true  do %>
+            <%= link_to  order_order_item_path(@order, order_item), method: :delete  do %>
               <img src="<%= asset_path('cross.svg') %>" alt="">
             <% end %>
           </p>
@@ -55,7 +54,7 @@
     Number of Items:                   PLACEHOLDER FOR QUERY
   </div>
   <div class="pay-item2">
-    Total Value: <%= @order.total_amount_cents %>
+    Total Value: <%=  humanized_money_with_symbol(@order.total_amount_cents) %>
   </div>
     <% if !@order.gift %>
       <%= simple_form_for(@order, remote: true )do |order| %>
@@ -70,7 +69,7 @@
 
       </div>
     <% end %>
-
+<!-- **************************** CHECK IF TOTAL AMOUNT IS MORE THAN ZERO ******************************* -->
     <div class="pay-btn">
       <button id="pay" class="button-primary-lrg">PROCEED TO CHECKOUT</button>
     </div>

@@ -1,7 +1,15 @@
 <div class="navbar-container">
   <div class="navbar-spc"></div>
-  <div class="navbar-box-str">Stores</div>
-  <div class="navbar-box-abt">About Us</div>
+  <div class="navbar-box-str">
+    <%= link_to businesses_path, class: "link-to-white-solid" do %>
+      Stores
+    <% end %>
+  </div>
+  <div class="navbar-box-abt">
+    <%= link_to "#", class: "link-to-white-solid" do %>
+      About Us
+    <% end %>
+  </div>
   <div class="nav-logo">
     <p><a href="/">TUCHE</a></p>
   </div>
@@ -11,7 +19,7 @@
     <% end %>
   </div>
   <div class="navbar-box-lg"><%= link_to "Login", new_user_registration_path, class: "link-to" %></div>
-  
+
   <%if user_signed_in? %>
        <% if !current_user.orders.last.nil? %>
           <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
@@ -21,38 +29,29 @@
                 <% end %>
               </div>
           <%end%>
-        <%else%>
-              <div class="navbar-box-bag">
-                <%= link_to "#", class: "link-to" do %>
-                  <img src="<%= asset_path('bag.svg')%>" alt="">
-                <% end %>
-              </div>
-          <%flash[:alert] = "Your bag is empty!"%>
-        <%end%>
+          <div class="navbar-box-profile">
+            <%= link_to  edit_user_registration_path, class: "link-to" do %>
+              <img src="<%= asset_path('profile.svg')%>" alt="">
+            <% end %>
+          </div>
+      <%else%>
+        <div class="navbar-box-bag">
+          <%= link_to  root_path, class: "link-to" do %>
+            <img src="<%= asset_path('bag.svg')%>" alt="">
+          <% end %>
+          <%flash[:alert] = "You are not logged in"%>
+        </div>
+        <div class="navbar-box-bag">
+          <%= link_to "#", class: "link-to" do %>
+            <img src="<%= asset_path('bag.svg')%>" alt="">
+          <% end %>
+          <%flash[:alert] = "You are not logged in"%>
+        </div>
         <div class="navbar-box-profile">
-          <%= link_to  edit_user_registration_path, class: "link-to" do %>
+          <%= link_to  "#", class: "link-to" do %>
             <img src="<%= asset_path('profile.svg')%>" alt="">
           <% end %>
+          <%flash[:alert] = "You are not logged in"%>
         </div>
-  <%else%>
-              <div class="navbar-box-bag">
-                <%= link_to  root_path, class: "link-to" do %>
-                  <img src="<%= asset_path('bag.svg')%>" alt="">
-                <% end %>
-                <%flash[:alert] = "You are not logged in"%>
-              </div>
-              <div class="navbar-box-bag">
-                <%= link_to "#", class: "link-to" do %>
-                  <img src="<%= asset_path('bag.svg')%>" alt="">
-                <% end %>
-                <%flash[:alert] = "You are not logged in"%>
-              </div>
-              <div class="navbar-box-profile">
-                <%= link_to  "#", class: "link-to" do %>
-                  <img src="<%= asset_path('profile.svg')%>" alt="">
-                <% end %>
-                <%flash[:alert] = "You are not logged in"%>
-              </div>
-  <%end%>
-  
+    <%end%>
   </div>
