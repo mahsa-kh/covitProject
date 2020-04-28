@@ -58,9 +58,11 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
+  
   def show
+
    @user = current_user # given by device!!
-    @orders = @user.orders
+  @orders = @user.orders
     show_alert = @orders.any? do |ord|
       (Date.today + 10) > ord.exp_date if ord.exp_date
     end
@@ -70,6 +72,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     authorize @order
   end
+
 
   def edit
   end
