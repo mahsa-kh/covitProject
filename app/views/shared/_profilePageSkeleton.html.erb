@@ -37,11 +37,11 @@
     <%if orderView %>
       <%if current_user.owner %>
         <div class="item-box-down">
-          <div class="down-ttl">FILTER:</div>
+          <div class="down-ttl">Offer Package:</div>
           <% current_user.businesses[0].business_offers.each do |business_offer|%>
             <div class="down-spc stl">
             <%= link_to orders_path(offer: business_offer.id), class: "link-to-white", method: :get do %>
-              <%=business_offer.offer_amount%>$ Credit
+              <%=humanized_money_with_symbol(business_offer.offer_amount)%>$ Credit
             <%end%>
           </div>
           <%end%>

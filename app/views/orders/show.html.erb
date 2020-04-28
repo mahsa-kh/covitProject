@@ -54,7 +54,7 @@
     Number of Items:                   PLACEHOLDER FOR QUERY
   </div>
   <div class="pay-item2">
-    Total Value: <%=  humanized_money_with_symbol(@order.total_amount_cents) %>
+    Total Value: <%=  humanized_money_with_symbol(@order.total_amount_cents.to_f ) %>
   </div>
     <% if !@order.gift %>
       <%= simple_form_for(@order, remote: true )do |order| %>
@@ -105,4 +105,4 @@
     </div>
   </div>
 </div>
-
+    <%= render 'shared/flashes' %>
