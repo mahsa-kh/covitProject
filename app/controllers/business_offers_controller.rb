@@ -21,6 +21,7 @@ class BusinessOffersController < ApplicationController
     @business_offer.business_id = params[:business_id]
     @business_offer.offer_amount = business_offer_params[:offer_amount].to_i
     @business_offer.price_cents = (business_offer_params[:offer_amount].to_f) * (1 - (business_offer_params[:discount].to_f / 100))
+
     authorize @business_offer
     if @business_offer.save
       redirect_to new_business_business_offer_path
