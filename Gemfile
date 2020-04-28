@@ -37,6 +37,7 @@ gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
 gem 'cloudinary', '~> 1.12.0'
+gem "faker"
 
 group :development, :test do
   gem 'pry-byebug'
