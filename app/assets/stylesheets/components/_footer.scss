@@ -1,30 +1,51 @@
 .footer {
-  background: rgb(7,7,7);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  align-items: flex-start;
+  padding-top: 32px;
+  justify-content: space-evenly;
+  height: 10rem;
+  color: rgb(0,0,0);
   margin-top: 32px;
-  // border-top: 2px solid white;
+  border-top: 2px solid black;
 }
-.footer-links {
-  display: flex;
-  align-items: center;
+.footer-contact {
+
 }
-.footer-links a {
-  color: white;
-  opacity: 0.5;
-  text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
+.footer-social-item a {
+  color: rgba(0,0,0,0.5);
+  text-decoration: none !important;
   transition: 0.3s;
 }
-.footer-links a:hover {
-  opacity: 1;
+.footer-social-item a:hover {
+  color: rgb(0,0,0);
 }
-.footer .fa-heart {
-  color: #0779e4;
+.footer-box-lg{
+  grid-area: logout;
+  width: 50px;
+  display: flex;
+  justify-content: left;
+} p {
+  color: rgba(0,0,0,0.5);
 }
-
+.footer-headers {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+.footer-link-to {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: rgba(0,0,0,0.5) !important;
+  font-weight: lighter;
+  transition: 0.3s;
+}
+.footer-link-to:hover {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: rgb(0,0,0) !important;
+  font-weight: lighter;
+}
+.footer-subscribe {
+  color: rgb(0,0,0) !important;
+}
