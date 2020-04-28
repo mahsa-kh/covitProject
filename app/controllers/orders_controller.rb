@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
       @order_items = business.order_items
       @order_items.each do |order_item|
         if params[:order_query].present?
-          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND id = #{order_item.order_id}"
+          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND id = #{order_item.order_id} AND paid = true"
           all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
           all_orders.each do |order|
             @orders.push(order)
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     else
       # @orders = Order.where("user_id = ?", current_user.id)
       if params[:order_query].present?
-        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND user_id = #{current_user.id}"
+        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR state ILIKE :order_query AND user_id = #{current_user.id} AND paid = true"
         @orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
       else
         @orders = @orders_index_pundit.where("user_id = ?", current_user.id)
@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
-  
+
   def show
 
    @user = current_user # given by device!!

@@ -30,6 +30,7 @@
       border-bottom: 1px solid #cccccc;
       font-size: 16px;
       margin-bottom: 12px;
+      color: #333333;
     }
   }
 
@@ -42,6 +43,7 @@
       border-bottom: 1px solid #cccccc;
       font-size: 16px;
       margin-bottom: 12px;
+      color: #333333;
     }
     .down-spc{
       width: 210px;
@@ -50,21 +52,37 @@
       font-size: 16px;
       margin-bottom: 12px;
 
+
     }
 
     .stl{
-        height: 45px;
-        width: 120px;
-        color: white;
-        background-color: #94b0b9;
-        margin-right: 3px;
-        border-radius: 5px;
 
-        justify-self: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 14px;
+  color: white;
+  padding: 8px 24px;
+  background: #333333;
+  border: 1px solid #333333;
+  width: 210px;
+  height: 42px;
+  left: 0%;
+  right: 0%;
+  top: 21.43%;
+  bottom: 23.81%;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+        // height: 45px;
+        // width: 120px;
+        // color: white;
+        // background-color: white;
+        // margin-right: 3px;
+        // border-radius: 3px;
+
+        // justify-self: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // font-size: 14px;
     }
   }
 
@@ -101,12 +119,17 @@
 .order-cell {
   font-size: 14px;
   width: 100px;
-  height: 20px;
+  height: 30px;
   left: -1.5px;
   right: -1.5px;
   border-bottom: 1px solid #DADCE0;
   text-align: center;
   padding-bottom: 2px;
+
+  justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 .srch-bar {
