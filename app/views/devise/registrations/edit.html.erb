@@ -1,8 +1,4 @@
 
-
-<%= render 'shared/navbar-home' %>
-<div class="line"></div>
-
     <div class="srch-bar"></div>
     <div class="page-container">
       <div class="sidebar">
@@ -20,7 +16,7 @@
       </div>
       <div class="page-body-flat">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true, class: "txtfld-trans") do |f| %>
   <%= f.error_notification %>
 
     <%= f.input :email, required: false, class: "txtfld-trans" %>

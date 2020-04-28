@@ -100,7 +100,7 @@ class OrdersController < ApplicationController
     @order_items.each do |order_item|
       business_offer = BusinessOffer.find(order_item.business_offer_id)
       # This needs to be total of dicscounted amount:
-      updated_total_amount_cents += business_offer.price * order_item.quantity * 100
+      updated_total_amount_cents += business_offer.price_cents * order_item.quantity
     end
     @order.update(total_amount_cents: updated_total_amount_cents, order_date: Date.new)
 

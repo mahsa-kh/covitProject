@@ -139,3 +139,26 @@
   font-weight: lighter;
 }
 
+.link-to-white-solid {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: white !important;
+  font-weight: lighter;
+}
+
+.link-to-white-solid:hover{
+  text-decoration: none  !important;
+  opacity: 0.8;
+}
+
+.link-to-blue {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: #94B0B9 !important;
+  font-weight: lighter;
+}
+
+.link-to-blue:hover{
+  opacity: 0.8;
+}
+

@@ -106,25 +106,7 @@
   }
 }
 
-.button-secondary-banner {
-  color: black;
-  padding: 10px 24px;
-  background: white;
-  width: 260px;
-  height: 42px;
-  top: 50px;
 
-  font-size: 16px;
-  line-height: 23px;
-  text-align: center;
-}
-
-.button-secondary-banner:hover {
-  background: #333333;
-  color: white;
-  border: 1px solid #333333;
-  text-decoration: none;
-}
 
 .button-secondary{
   color: black;
@@ -196,6 +178,31 @@
   text-decoration: none;
 }
 
+.button-blue {
 
+  padding: 10px 24px;
+  width: 260px;
+  height: 42px;
+  top: 50px;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  color: white;
+  background: #739C88;
+  border: 1px solid #739C88;
+  left: 0%;
+  right: 0%;
+  bottom: 23.81%;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
 
+  grid-area: btn;
+}
+
+.button-blue:hover {
+  opacity: 0.8;
+    text-decoration: none;
+    color: white;
+}
 

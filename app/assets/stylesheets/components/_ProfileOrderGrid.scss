@@ -53,18 +53,18 @@
     }
 
     .stl{
-      height: 45px;
-      width: 120px;
-  color: white;
-  background-color: #94b0b9;
-  margin-right: 3px;
-  border-radius: 5px;
+        height: 45px;
+        width: 120px;
+        color: white;
+        background-color: #94b0b9;
+        margin-right: 3px;
+        border-radius: 5px;
 
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
     }
   }
 
@@ -123,3 +123,5 @@
     height: 30px;
   }
 }
+
+
