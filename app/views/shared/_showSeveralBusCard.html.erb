@@ -1,4 +1,4 @@
-
+<%if !businesses.nil? %>
 <div class="card-container-noside">
   <div class="heading" id="3"><%= text %></div>
   <% businesses.each do |business| %>
@@ -29,5 +29,5 @@
   <div class="button-secondary">View All</div>
   <% end %>
 </div>
-
+<%end%>
 
