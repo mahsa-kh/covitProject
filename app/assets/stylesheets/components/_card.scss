@@ -7,7 +7,7 @@
   border: 0px;
 }
 
-.card .card-img {
+.card .cl-img {
   height: 215px;
   width: 100%;
   object-fit: cover;
@@ -92,6 +92,11 @@
   align-items: center;
 
   img {
+    width: 30px;
+    height: 30px;
+  }
+
+    .cl-img {
     width: 30px;
     height: 30px;
   }

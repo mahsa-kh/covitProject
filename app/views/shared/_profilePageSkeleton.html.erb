@@ -83,7 +83,7 @@
           <%= link_to business_path(business), class: "link-to" do %>
               <div class="card-container-item">
                 <div class="card">
-                  <img src=<%= asset_path('gym1.jpg')%> >
+                  <%= cl_image_tag business.photo.key, class:"cl-img" %>
                   <div class="card-infos">
                     <div>
                       <h2><%= business.name %></h2>
