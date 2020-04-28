@@ -1,12 +1,16 @@
 
 <div class="bus-container">
   <div class="main-item">
-      <%= business.photo.key, class:"cl-img" %>
+      <%= cl_image_tag business.photo.key, class:"cl-img" %>
   </div>
 
   <div class="bus-content-container">
     <div class="bus-infos">
-      <h1><%= business.name %> <small><a href="<%= business.instagram %>" class="link-to"><i class="fab fa-instagram"></i></a></small> </h1>
+      <h1><%= business.name %> <small>
+        <%= link_to "www.instagram.com/#{business.instagram}", class: "link-to" do %>
+          <i class="fab fa-instagram"></i>
+        <%end%>
+      </small> </h1>
       <p><%= business.description %></p>
       <h1>Location</h1>
       <p> <%= business.address %></p>
