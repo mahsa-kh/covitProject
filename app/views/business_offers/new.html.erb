@@ -10,17 +10,17 @@
             <div class="msg mt-3 bl"> Add maximum 4 offers and click on REGISTER. </div>
               <div class="card-title">My Offer:</div>
                 <div class="card-form">
-                  <%= simple_form_for([@business, @business_offer], remote: true, class: 'form-inline') do |business_offer| %>
+                  <%= simple_form_for([@business, @business_offer], remote: true,  class: 'form-inline') do |business_offer| %>
                   <%= business_offer.input_field :offer_amount, size: '5', placeholder: 'Offer Amount'  %>
-                  <%= business_offer.input_field :discount, size: '30', placeholder: 'Discount' %>
+                  <%= business_offer.input_field :discount, size: '30', placeholder: 'Discount' %>%
                   <%= business_offer.submit "+" , class: "card-btn" %>
                   <% end %>
-          <% else %> 
-          <p>Maximum of 4 credit offer can be added to your page</p>       
+          <% else %>
+          <p>Maximum of 4 credit offer can be added to your page</p>
           <% end %>
                   <%  if @business.business_offers.any? %>
                     <%  @business.business_offers.each do |businessoffer| %>
-                    <p> <%= businessoffer.offer_amount %>€ <%= businessoffer.discount %>% </p>
+                     <p> <%= humanized_money_with_symbol(businessoffer.offer_amount) %> --  <%= businessoffer.discount %>% </p>
                     <%  end %>
                   <% else %>
                     <p> No offers yet </p>

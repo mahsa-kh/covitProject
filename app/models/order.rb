@@ -35,6 +35,36 @@ class Order < ApplicationRecord
       @order_item
   end
 
+
+  # def total_calculator
+  #   @order_items = self.order_items
+  #   updated_total_amount_cents = 0
+  #   # raise
+  #   @order_items.each do |order_item|
+  #     business_offer = BusinessOffer.find(order_item.business_offer_id)
+  #     # This needs to be total of dicscounted amount:
+  #     updated_total_amount_cents += business_offer.price_cents * order_item.quantity
+  #   end
+  #   first_name = User.find(self.user_id).first_name
+  #   last_name = User.find(self.user_id).last_name
+  #   if total_amount_cents == 0
+  #         self.update( total_amount_cents: updated_total_amount_cents, order_date: Date.new)
+  #   else
+  #   session = Stripe::Checkout::Session.create(
+  #     payment_method_types: ['card'],
+  #     line_items: [{
+  #       name: "#{first_name}, #{last_name}",
+  #       amount: self.total_amount_cents,
+  #       currency: 'eur',
+  #       quantity: 1
+  #     }],
+  #     success_url: "/orders?payment=success",
+  #     cancel_url: "/orders?payment=fail"
+  #   )
+  #   self.update(checkout_session_id: session.id, total_amount_cents: updated_total_amount_cents, order_date: Date.new)
+  # end
+  # end
+
 private
 
   def set_expiration_date
