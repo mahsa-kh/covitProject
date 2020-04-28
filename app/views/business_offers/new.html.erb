@@ -1,39 +1,37 @@
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class=".col-sm-12 col-md-3">
-    </div>
-    <div class=".col-sm-12 col-md-1">
-    </div>
-    <div class=".col-sm-12 col-md-4 d-sm-inline-flex d-md-inline-flex">
-      <div class="card-add mt-5 center">
-          <% if @business.business_offers.count <= 3 %>
-            <div class="msg mt-3 bl"> Add maximum 4 offers and click on REGISTER. </div>
-              <div class="card-title">My Offer:</div>
-                <div class="card-form">
-                  <%= simple_form_for([@business, @business_offer], remote: true, class: 'form-inline') do |business_offer| %>
-                  <%= business_offer.input_field :offer_amount, size: '5', placeholder: 'Offer Amount'  %>
-                  <%= business_offer.input_field :discount, size: '30', placeholder: 'Discount' %>
-                  <%= business_offer.submit "+" , class: "card-btn" %>
-                  <% end %>
-          <% else %> 
-          <p>Maximum of 4 credit offer can be added to your page</p>       
-          <% end %>
-                  <%  if @business.business_offers.any? %>
-                    <%  @business.business_offers.each do |businessoffer| %>
-                    <p> <%= businessoffer.offer_amount %>€ <%= businessoffer.discount %>% </p>
-                    <%  end %>
-                  <% else %>
-                    <p> No offers yet </p>
-                  <%  end %>
-                </div>
-            <div class="btn-layer">
-              <%= link_to "REGISTER", root_path, class: "btn btn-gradient" %>
-            </div>
+<div class="form-submission">
+  <div class=" col-12 col-md-12 col-lg-12">
+    <% if @business.business_offers.count <= 3 %>
+      <h2>Add maximum 4 offers and click on REGISTER.</h2>
+        <h3>My Offer:</h3>
+          <div class="card-form">
+            <%= simple_form_for([@business, @business_offer], remote: true, class: 'form-inline') do |business_offer| %>
+            <%= business_offer.input_field :offer_amount, size: '5', placeholder: 'Offer Amount', class: "txtfld-ghost" %>
+            <%= business_offer.input_field :discount, size: '30', placeholder: 'Discount', class: "txtfld-ghost" %>
+            <%= business_offer.submit "Add" , class: "add-btn"%>
+            <% end %>
+    <% else %> 
+      <p>Maximum of 4 credit offer can be added to your page</p>       
+    <% end %>
+    <%  if @business.business_offers.any? %>
+      <%  @business.business_offers.each do |businessoffer| %>
+        <div class="amount-discount">
+          
+          <div style = "width: 50px; margin: 10px; font-size: 25px;">
+            Amount <br> $ <%= businessoffer.offer_amount %>
           </div>
-      </div>
-    <div class=".col-sm-12 col-md-1">
-    </div>
-    <div class=".col-sm-12 col-md-3">
-    </div>
+
+          <div style = "width: 50px; margin: 10px"> 
+            Discount <br> <%= businessoffer.discount %>%
+          </div> 
+
+        </div>
+      <% end %>
+    <% else %>
+      <p> No offers yet </p>
+    <%  end %>
   </div>
+    <div class="btn-layer">
+      <%= link_to "REGISTER", root_path, class: "button-primary" %>
+    </div>
 </div>
+
