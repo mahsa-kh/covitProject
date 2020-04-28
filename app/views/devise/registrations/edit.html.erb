@@ -1,5 +1,3 @@
-
-
 <%= render 'shared/navbar-home' %>
 <div class="line"></div>
 
@@ -22,14 +20,10 @@
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
   <%= f.error_notification %>
-<<<<<<< HEAD
-  <div class="container"> 
-  <div class="form-inputs">
-    <%= f.input :email, required: false %>
-=======
+
 
     <%= f.input :email, required: false, class: "txtfld-trans" %>
->>>>>>> master
+
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -64,8 +58,3 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-<%= link_to "Back", :back %>
-</div>
-=======
->>>>>>> master
