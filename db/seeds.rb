@@ -44,7 +44,7 @@ puts "Users Creation"
       password: Faker::Alphanumeric.alpha(number: 10),
       owner: Faker::Boolean.boolean,
     )
-    user.save!  
+    user.save!
   end
 
   user1 = User.new(
@@ -146,7 +146,7 @@ for i in 1..5 do
       confirmation_no: Faker::Number.number(digits: 10), # it's a number not a text
       paid: Faker::Boolean.boolean,
       owner_paid: Faker::Boolean.boolean,
-      user_id: rand(1..2),
+      user_id: (User.all).sample.id,
       total_amount_cents: rand(400..500),
       gift: Faker::Boolean.boolean
       )
