@@ -2,8 +2,9 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  height: 850px;
-  position: relative;
+  height: 700px;
+  width: 100%;
+
 }
 
 
@@ -11,36 +12,25 @@
   margin: 0;
   color: white;
   font-weight: lighter;
-}
-
-.banner p {
-  font-size: 14px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  line-height: 44px !important;
 }
 
 
 .banner-container {
   height: 300px;
-  width: 700px;
+  width: 900px;
   position: absolute;
-  right: 100px;
+  right: 200px;
+  top: 220px;
 }
 
 
 .banner-container a {
   position: absolute;
-  top: 200px;
+  top: 110px;
 }
 
 
 .banner-container a:hover {
   text-decoration: none;
-}
-
-.heading {
-  position: relative;
-  left: 100px;
-  top: 20px;
 }

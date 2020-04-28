@@ -1,16 +1,41 @@
-<h2>Hello <%= current_user.first_name.capitalize %>, edit your profile here</h2>
+
+
+<%= render 'shared/navbar-home' %>
+<div class="line"></div>
+
+    <div class="srch-bar"></div>
+    <div class="page-container">
+      <div class="sidebar">
+        <div class="item-box-up">
+          <div class="up-spc">
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+          </div>
+        </div>
+      </div>
+      <div class="page-body-flat">
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
   <%= f.error_notification %>
+<<<<<<< HEAD
   <div class="container"> 
   <div class="form-inputs">
     <%= f.input :email, required: false %>
+=======
+
+    <%= f.input :email, required: false, class: "txtfld-trans" %>
+>>>>>>> master
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :first_name, required: false %>
+    <%= f.input :first_name, required: false, class: "txtfld-trans" %>
     <%= f.input :last_name, required: false %>
     <%= f.input :password,
                 required: false,
@@ -23,16 +48,24 @@
                 required: true,
                 hint: "we need your current password to confirm your changes",
                 input_html: { autocomplete: "current-password" } %>
-  </div>
+
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "button-primary" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<div class="mt-4">
+<p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "green" %></p>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</div>
 
+
+      </div>
+    </div>
+
+<<<<<<< HEAD
 <%= link_to "Back", :back %>
 </div>
+=======
+>>>>>>> master

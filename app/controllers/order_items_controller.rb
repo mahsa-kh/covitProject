@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-   before_action :set_order, only: [:create, :destroy]
+  before_action :set_order, only: [:create, :destroy]
 
   def index
   end
@@ -8,19 +8,24 @@ class OrderItemsController < ApplicationController
   end
 
   def create
+    authorize @order_item
   end
 
   def show
   end
 
   def edit
+    create
   end
 
   def update
+    authorize @order_item
   end
 
   def destroy
-    OrderItem.find(params[:id]).destroy
+    @order_item = OrderItem.find(params[:id])
+    authorize @order_item
+    @order_item.destroy
     redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
   end
 
@@ -28,4 +33,3 @@ class OrderItemsController < ApplicationController
   #   params.require(:business_offer).permit(:offer_amount, :discount)
   # end
 end
-
