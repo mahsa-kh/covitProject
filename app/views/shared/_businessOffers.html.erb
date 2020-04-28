@@ -1,13 +1,16 @@
-<%= render 'shared/navbar-home' %>
-<div class="line"></div>
+
 <div class="bus-container">
   <div class="main-item">
-      <img src="<%= asset_path('cafe.jpg') %>" alt="">
+      <%= cl_image_tag business.photo.key, class:"cl-img" %>
   </div>
 
   <div class="bus-content-container">
     <div class="bus-infos">
-      <h1><%= business.name %> <small><a href="<%= business.instagram %>" class="link-to"><i class="fab fa-instagram"></i></a></small> </h1>
+      <h1><%= business.name %> <small>
+        <%= link_to "www.instagram.com/#{business.instagram}", class: "link-to" do %>
+          <i class="fab fa-instagram"></i>
+        <%end%>
+      </small> </h1>
       <p><%= business.description %></p>
       <h1>Location</h1>
       <p> <%= business.address %></p>
@@ -21,12 +24,16 @@
 
         <% business.business_offers.each do |business_offer| %>
           <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post , class: "link-to" do %>
-            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ - <%= business_offer.price_cents/100 %> <span style="color:#739C88"> (<%= business_offer.discount%>%)</span></button>
+            <button class="button-secondary-sm offers"><span class="strike"><%= humanized_money_with_symbol(business_offer.offer_amount)%>$</span> <%=humanized_money_with_symbol(business_offer.price_cents) %> <span style="color:#739C88"> (<%= business_offer.discount%>%)</span></button>
           <% end %>
         <%end%>
 
     </div>
-      <% if !current_user.orders.last.nil? %>
+      <% if current_user.owner %>
+        <div class="offer-action  button-transparent mt-1">
+          <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+        </div>
+      <% elsif !current_user.orders.last.nil? %>
         <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
           <div class="offer-action  button-primary mt-1">
             <%= link_to "VIEW CART", order_path(current_user.orders.last.id) , class: "link-to-white"%>
@@ -40,9 +47,6 @@
             <%= link_to "Back to Shops", businesses_path , class: "link-to-white"%>
           </div>
       <%end%>
-    <!-- </div> -->
   </div>
-
-
 </div>
 

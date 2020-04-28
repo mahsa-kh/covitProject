@@ -1,8 +1,5 @@
 
 
-<%= render 'shared/navbar-home' %>
-<div class="line"></div>
-
     <%if orderView %>
       <div class="srch-bar">
         <%= form_tag orders_path, method: :get do %>
@@ -29,11 +26,13 @@
             <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
           </div>
           <div class="up-spc">
-            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
-          </div>
-          <div class="up-spc">
             <%= link_to "Transactions History", orders_path, class: "link-to" %>
           </div>
+        <% if !current_user.owner%>
+          <div class="up-spc">
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+          </div>
+        <%end%>
         </div>
     <%if orderView %>
       <%if current_user.owner %>
@@ -84,7 +83,7 @@
           <%= link_to business_path(business), class: "link-to" do %>
               <div class="card-container-item">
                 <div class="card">
-                  <img src=<%= asset_path('gym1.jpg')%> >
+                  <%= cl_image_tag business.photo.key, class:"cl-img" %>
                   <div class="card-infos">
                     <div>
                       <h2><%= business.name %></h2>

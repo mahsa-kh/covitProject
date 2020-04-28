@@ -95,7 +95,6 @@ class OrdersController < ApplicationController
     redirect_to order_path(@order.id), notice: "Shopping bag is updated!"
   end
 
-  private
 
   def total_calculator
     @order_items = OrderItem.where("order_id = ?", @order.id)
@@ -103,15 +102,15 @@ class OrdersController < ApplicationController
     @order_items.each do |order_item|
       business_offer = BusinessOffer.find(order_item.business_offer_id)
       # This needs to be total of dicscounted amount:
-      updated_total_amount_cents += business_offer.price * order_item.quantity * 100
+      updated_total_amount_cents += business_offer.price_cents * order_item.quantity
     end
     @order.update(total_amount_cents: updated_total_amount_cents, order_date: Date.new)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: current_user,
-        amount: @order.total_amount_cents * 100,
+        name: "#{current_user.first_name} #{current_user.last_name}",
+        amount: @order.total_amount_cents,
         currency: 'eur',
         quantity: 1
       }],

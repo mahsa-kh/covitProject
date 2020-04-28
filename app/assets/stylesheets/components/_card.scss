@@ -7,7 +7,7 @@
   border: 0px;
 }
 
-.card .card-img {
+.card .cl-img {
   height: 215px;
   width: 100%;
   object-fit: cover;
@@ -95,6 +95,11 @@
     width: 30px;
     height: 30px;
   }
+
+    .cl-img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .link-to-txt {
@@ -137,5 +142,28 @@
   font-family: Karla;
   color: black  !important;
   font-weight: lighter;
+}
+
+.link-to-white-solid {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: white !important;
+  font-weight: lighter;
+}
+
+.link-to-white-solid:hover{
+  text-decoration: none  !important;
+  opacity: 0.8;
+}
+
+.link-to-blue {
+  text-decoration: none  !important;
+  font-family: Karla;
+  color: #94B0B9 !important;
+  font-weight: lighter;
+}
+
+.link-to-blue:hover{
+  opacity: 0.8;
 }
 
