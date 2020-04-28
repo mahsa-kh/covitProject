@@ -7,11 +7,13 @@
             <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
           </div>
           <div class="up-spc">
-            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
-          </div>
-          <div class="up-spc">
             <%= link_to "Transactions History", orders_path, class: "link-to" %>
           </div>
+        <% if !current_user.owner%>
+          <div class="up-spc">
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+          </div>
+        <%end%>
         </div>
       </div>
       <div class="page-body-flat">

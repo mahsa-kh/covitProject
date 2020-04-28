@@ -92,7 +92,6 @@ class OrdersController < ApplicationController
     redirect_to order_path(@order.id), notice: "Shopping bag is updated!"
   end
 
-  private
 
   def total_calculator
     @order_items = OrderItem.where("order_id = ?", @order.id)
@@ -108,7 +107,7 @@ class OrdersController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: current_user,
-        amount: @order.total_amount_cents * 100,
+        amount: @order.total_amount_cents,
         currency: 'eur',
         quantity: 1
       }],

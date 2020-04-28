@@ -6,7 +6,6 @@
   width: 360px;
   height: 42px;
   border-radius: 4px;
-
   left: 0%;
   right: 0%;
   top: 21.43%;
@@ -25,12 +24,11 @@
   border: 1px solid #333333;
   width: 360px;
   height: 42px;
-
   left: 0%;
   right: 0%;
   top: 21.43%;
   bottom: 23.81%;
-
+  border-radius: 5px;
   font-size: 16px;
   line-height: 23px;
   text-align: center;
@@ -38,24 +36,24 @@
   grid-area: btn;
 }
 
-.button-secondary-sm {
-  color: white;
-  padding: 8px 24px;
-  background: #333333;
-  border-radius: 10px;
-  width: 80px;
-  height: 32px;
+// .button-secondary-sm {
+//   color: white;
+//   padding: 8px 24px;
+//   background: #333333;
+//   border-radius: 10px;
+//   width: 80px;
+//   height: 32px;
 
-  left: 0%;
-  right: 0%;
-  top: 21.43%;
-  bottom: 23.81%;
+//   left: 0%;
+//   right: 0%;
+//   top: 21.43%;
+//   bottom: 23.81%;
 
-  font-size: 16px;
-  line-height: 23px;
-  text-align: center;
+//   font-size: 16px;
+//   line-height: 23px;
+//   text-align: center;
 
-}
+// }
 
 .button-primary-lrg {
   color: white;
@@ -69,7 +67,7 @@
   right: 0%;
   top: 21.43%;
   bottom: 23.81%;
-
+  border-radius: 5px;
   font-size: 16px;
   line-height: 23px;
   text-align: center;
@@ -84,7 +82,7 @@
   // border: 0px solid white;
   width: 360px;
   height: 42px;
-
+  border-radius: 5px;
   left: 0%;
   right: 0%;
   top: 21.43%;
@@ -120,7 +118,7 @@
   right: 0%;
   top: 21.43%;
   bottom: 23.81%;
-
+  border-radius: 5px;
   font-family: Karla;
   font-style: normal;
   font-weight: normal;
@@ -162,7 +160,7 @@
   border: 1px solid #333333;
   width: 167px;
   height: 42px;
-
+  border-radius: 5px;
   font-family: Karla;
   font-style: normal;
   font-weight: normal;
@@ -196,6 +194,7 @@
   font-size: 16px;
   line-height: 23px;
   text-align: center;
+  border-radius: 5px;
 
   grid-area: btn;
 }

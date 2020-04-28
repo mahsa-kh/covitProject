@@ -20,7 +20,7 @@
 
         <% business.business_offers.each do |business_offer| %>
           <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post , class: "link-to" do %>
-            <button class="button-secondary-sm offers"><%= business_offer.offer_amount%>$ - <%= business_offer.price_cents/100 %> <span style="color:#739C88"> (<%= business_offer.discount%>%)</span></button>
+            <button class="button-secondary-sm offers"><span class="strike"><%= humanized_money_with_symbol(business_offer.offer_amount)%>$</span> <%=humanized_money_with_symbol(business_offer.price_cents) %> <span style="color:#739C88"> (<%= business_offer.discount%>%)</span></button>
           <% end %>
         <%end%>
 
