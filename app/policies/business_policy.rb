@@ -21,6 +21,10 @@ class BusinessPolicy < ApplicationPolicy
     current_user?
   end
 
+  def order_history_businesses?
+    user
+  end
+
   private
 
   def user_is_owner?
