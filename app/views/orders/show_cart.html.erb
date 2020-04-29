@@ -126,7 +126,7 @@
         <div class="gift-check mt-2" id="gift-item">
           <%= order.check_box :gift, class: "checkbox-g" %> Send as a gift!
         </div>
-        <div class="gift-textbox" id="gift-div">
+        <div class="gift-textbox" id="gift-div" style="display: none">
           <%= order.input_field :gift_email, placeholder: 'email address', class: "txtfld-ghost"  %> <br>
           <%= order.input_field :gift_message, placeholder: 'type your message..', class: "txtfarea-ghost"  %>
           <%= order.submit "send as a gift", class: "button-primary-gift " %>
@@ -181,28 +181,14 @@
     <%= render 'shared/flashes' %>
 
                 <script>
-                    window.onload = function nocheck() {
-                    var x = document.getElementById("gift-div");
-                    x.style.display = "none"
-                      // checkb = document.getElementById('gift-item');
-                      //  checkb.checked = false;
-                  }
+var gift = document.getElementById('order_gift');
+gift.addEventListener( 'change', function() {
+  var x = document.getElementById("gift-div");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+});
 
-                  var gift = document.getElementById('gift-item');
-                  gift.addEventListener( 'change', function() {
-                      if(this.unchecked) {
-                          displayGift();
-                      } else {
-                          displayGift();
-                      }
-                  });
-
-                  function displayGift() {
-                    var x = document.getElementById("gift-div");
-                    if (x.style.display === "none") {
-                      x.style.display = "block";
-                    } else {
-                      x.style.display = "none";
-                    }
-                  }
                 </script>
