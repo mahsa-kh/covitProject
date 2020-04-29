@@ -52,7 +52,7 @@ class OrderItemsController < ApplicationController
       success_url:"#{orders_url}?payment=success",
       cancel_url: "#{orders_url}?payment=fail"
     )
-
+    order.update(checkout_session_id: session.id)
     redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
   end
 
