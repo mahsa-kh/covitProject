@@ -40,7 +40,7 @@
           <div class="down-ttl">Offer Package:</div>
           <% current_user.businesses[0].business_offers.each do |business_offer|%>
             <div class="down-spc stl">
-            <%= link_to orders_path(offer: business_offer.id), class: "link-to-white", method: :get do %>
+            <%= link_to orders_path(offer: business_offer.id), class: "link-to-txt", method: :get do %>
               <%=humanized_money_with_symbol(business_offer.offer_amount)%>$ Credit
             <%end%>
           </div>

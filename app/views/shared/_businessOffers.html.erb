@@ -7,7 +7,7 @@
   <div class="bus-content-container">
     <div class="bus-infos">
       <h1><%= business.name %> <small>
-        <%= link_to "www.instagram.com/#{business.instagram}", class: "link-to" do %>
+        <%= link_to "http://www.instagram.com/#{business.instagram}", target: "_blank", rel: "nofollow", class: "link-to" do %>
           <i class="fab fa-instagram"></i>
         <%end%>
       </small> </h1>
