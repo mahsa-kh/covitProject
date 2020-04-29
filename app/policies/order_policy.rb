@@ -1,7 +1,11 @@
 class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(user: user)
+      if !user.owner
+        scope.where(user: user)
+      else
+        scope.where(@order)
+      end
     end
   end
 
