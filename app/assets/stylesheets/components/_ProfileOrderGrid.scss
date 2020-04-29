@@ -161,4 +161,25 @@
   }
 }
 
+.msg-box{
+  width: 770px;
+  height: 100px;
+  border-radius: 4px;
+  font-size: 18px;
+
+  background-color: #94B0B9;
+  // opacity: 0.6;
+  padding-top: 12px;
+  padding-left: 16px;
+          display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-direction: column;
+        p{
+            color: #e6e6e6;
+            font-size: 16px;
+             line-height: 20px;
+        }
+}
+
 

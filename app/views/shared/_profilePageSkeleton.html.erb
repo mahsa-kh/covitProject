@@ -52,33 +52,54 @@
     <%if orderView %>
       <div class="page-body-table">
         <div class="order-row">
-        <div class="order-cell" style=" font-weight: bold;width: 110px !important;">ORDER NUMBER</div>
-        <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
-        <div class="order-cell" style="font-weight: bold; width: 110px !important;">EXPIRY DATE</div>
-        <div class="order-cell" style="font-weight: bold; width: 90px !important;">TOTAL</div>
-        <div class="order-cell" style="font-weight: bold; width: 150px !important;">PAYMENT STATUS</div>
-        <div class="order-cell" style="font-weight: bold; width: 150px !important;">CONFIRMATION NO.</div>
-        <div class="order-cell" style="font-weight: bold; width: 120px !important;">PACK QUANTITY</div>
-        <div class="order-cell" style="font-weight: bold;">GIFT</div>
+          <div class="order-cell" style=" font-weight: bold;width: 110px !important;">ORDER NUMBER</div>
+          <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
+          <div class="order-cell" style="font-weight: bold; width: 110px !important;">EXPIRY DATE</div>
+          <div class="order-cell" style="font-weight: bold; width: 90px !important;">TOTAL</div>
+          <div class="order-cell" style="font-weight: bold; width: 150px !important;">PAYMENT STATUS</div>
+          <div class="order-cell" style="font-weight: bold; width: 150px !important;">CONFIRMATION NO.</div>
+          <div class="order-cell" style="font-weight: bold; width: 120px !important;">PACK QUANTITY</div>
+          <div class="order-cell" style="font-weight: bold;">GIFT</div>
         </div>
 
             <% orders.each do |order|%>
             <div class="order-row">
-            <div class="order-cell" style="width: 110px !important; color:#333333;"><%= order.id %></div>
-            <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.order_date %></div>
-            <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.exp_date %></div>
-            <div class="order-cell" style=" width: 90px !important; color:#333333;"><%= order.total_amount_cents %></div>
-            <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.state %></div>
-            <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.confirmation_no %></div>
-            <div class="order-cell" style=" width: 120px !important; color:#333333;"><%= order.order_items.count %> </div>
-            <div class="order-cell" style="width: 110px !important; color:#333333;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+              <div class="order-cell" style="width: 110px !important; color:#333333;"><%= order.id %></div>
+              <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.order_date %></div>
+              <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.exp_date %></div>
+              <div class="order-cell" style=" width: 90px !important; color:#333333;"><%= order.total_amount_cents %></div>
+              <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.state %></div>
+              <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.confirmation_no %></div>
+              <div class="order-cell" style=" width: 120px !important; color:#333333;"><%= order.order_items.count %> </div>
+              <div class="order-cell" style="width: 110px !important; color:#333333;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+              </div>
             </div>
-</div>
             <%end%>
       </div>
     <%end%>
         <%if card %>
       <div class="page-body-card">
+        <%quantity=0%>
+        <% empl = 0%>
+<%orders = Order.where(user_id: current_user)%>
+  <%if !orders.nil?%>
+  <%orders.each do |order|%>
+    <% order_items = order.order_items %>
+    <%order_items.each do |order_item|%>
+      <% quantity = quantity + order_item.quantity.to_i %>
+      <% empl = empl + order_item.business_offer.business.employee_no.to_i %>
+    <%end%>
+  <%end%>
+  <div class="msg-box">
+      <p><strong>Thank You!</strong></p>
+      <p>You have baught <%= quantity %> credits.<br>
+      You have helped <%= empl %> number of employees!</p>
+  </div>
+<%end%>
+
+
+
+
         <div class="main-container-side-t">
           <div class="card-container-side-t">
           <% businesses.each do |business| %>
