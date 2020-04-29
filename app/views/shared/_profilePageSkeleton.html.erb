@@ -1,0 +1,108 @@
+
+
+    <%if orderView %>
+      <div class="srch-bar">
+        <%= form_tag orders_path, method: :get do %>
+          <%= text_field_tag :order_query,
+            params[:order_query],
+            class: "txtfld-ghost mt-2",
+            placeholder: "Find an order"
+          %>
+          <%= button_tag :submit, class: "button-secondary-xs ml-2" do %>
+            <img src="<%= asset_path('search.svg') %>" alt="">
+          <%end%>
+        <% end %>
+      </div>
+    <%end%>
+
+    <%if !orderView%>
+    <div class="srch-bar"></div>
+    <%end%>
+
+    <div class="page-container">
+      <div class="sidebar">
+        <div class="item-box-up">
+          <div class="up-spc">
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+          </div>
+          <div class="up-spc">
+            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+          </div>
+        <% if !current_user.owner%>
+          <div class="up-spc">
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+          </div>
+        <%end%>
+        </div>
+    <%if orderView %>
+      <%if current_user.owner %>
+        <div class="item-box-down">
+          <div class="down-ttl">Offer Package:</div>
+          <% current_user.businesses[0].business_offers.each do |business_offer|%>
+            <div class="down-spc stl">
+            <%= link_to orders_path(offer: business_offer.id), class: "link-to-txt", method: :get do %>
+              <%=humanized_money_with_symbol(business_offer.offer_amount)%>$ Credit
+            <%end%>
+          </div>
+          <%end%>
+        </div>
+      <%end%>
+    <%end%>
+      </div>
+    <%if orderView %>
+      <div class="page-body-table">
+        <div class="order-cell" style=" font-weight: bold;width: 140px !important;">ORDER NUMBER</div>
+        <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
+        <div class="order-cell" style="font-weight: bold; width: 120px !important;">EXPIRY DATE</div>
+        <div class="order-cell" style="font-weight: bold; width: 130px !important;">TOTAL</div>
+        <div class="order-cell" style="font-weight: bold; width: 150px !important;">PAYMENT STATUS</div>
+        <div class="order-cell" style="font-weight: bold; width: 180px !important;">CONFIRMATION NO.</div>
+        <div class="order-cell" style="font-weight: bold; width: 190px !important;">PACK QUANTITY</div>
+        <div class="order-cell" style="font-weight: bold;">GIFT</div>
+
+
+            <% orders.each do |order|%>
+            <div class="order-cell" style="width: 140px !important; color:#333333;"><%= order.id %></div>
+            <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.order_date %></div>
+            <div class="order-cell" style=" width: 120px !important; color:#333333;"><%= order.exp_date %></div>
+            <div class="order-cell" style=" width: 130px !important; color:#333333;"><%= order.total_amount_cents %></div>
+            <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.state %></div>
+            <div class="order-cell" style=" width: 180px !important; color:#333333;"><%= order.confirmation_no %></div>
+            <div class="order-cell" style=" width: 190px !important; color:#333333;"><%= order.order_items.count %> </div>
+            <div class="order-cell" style="width: 100px !important; color:#333333;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+            </div>
+
+            <%end%>
+      </div>
+    <%end%>
+        <%if card %>
+      <div class="page-body-card">
+        <div class="card-container-noside">
+
+          <% businesses.each do |business| %>
+          <%= link_to business_path(business), class: "link-to" do %>
+              <div class="card-container-item">
+                <div class="card">
+                  <%= cl_image_tag business.photo.key, class:"cl-img" %>
+                  <div class="card-infos">
+                    <div>
+                      <h2><%= business.name %></h2>
+                      <p class="green">Thanks! You helped <%= business.employee_no %> who work here!</p>
+                    </div>
+                    <div class="discount-bordered">
+                      <div class="discount-bordered-inside">
+                        <img src=<%= asset_path('check.svg')%> >
+                      </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <%end%>
+    </div>
+
+
+

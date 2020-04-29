@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-   before_action :set_order, only: [:create, :destroy]
+  before_action :set_order, only: [:create, :destroy]
 
   def index
   end
@@ -8,19 +8,51 @@ class OrderItemsController < ApplicationController
   end
 
   def create
+    authorize @order_item
   end
 
   def show
   end
 
   def edit
+    create
   end
 
   def update
+    authorize @order_item
   end
 
   def destroy
-    OrderItem.find(params[:id]).destroy
+    # @order_item = OrderItem.find(params[:id])
+    # authorize @order_item
+    # order = @order_item.order
+    # @order_item.destroy
+    # order.total_calculator
+
+    # redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
+
+    @order_item = OrderItem.find(params[:id])
+    authorize @order_item
+    quantity = @order_item.quantity
+    price = @order_item.business_offer.price_cents
+    current_item_amount = quantity * price
+    order = Order.find(@order_item.order_id)
+    updated_amount = order.total_amount_cents - current_item_amount
+    @order_item.destroy
+    order.update(total_amount_cents: updated_amount)
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: "#{current_user.first_name} #{current_user.last_name}",
+        amount: order.total_amount_cents * 100,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url:"#{orders_url}?payment=success",
+      cancel_url: "#{orders_url}?payment=fail"
+    )
+
     redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
   end
 
@@ -28,4 +60,3 @@ class OrderItemsController < ApplicationController
   #   params.require(:business_offer).permit(:offer_amount, :discount)
   # end
 end
-

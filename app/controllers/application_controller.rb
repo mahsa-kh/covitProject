@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, except: :home
+
+  include Pundit
+
+  # Pundit: white-list approach.
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+  # Uncomment when you *really understand* Pundit!
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 
@@ -18,8 +26,6 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
   end
-
-  protected
 
   def after_sign_in_path_for(resource)
     # return the path based on resource
@@ -37,6 +43,19 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def user_not_authorized
+    if current_user.owner
+      flash[:alert] = "Please login as user to perform this action."
+    else
+      flash[:alert] = "Only businesses are authorized to perform this action."
+    end
+    redirect_to(request.referrer || root_path)
+  end
+
   def set_order
     if current_user.orders.nil? || current_user.orders.last.nil? || current_user.orders.last.paid
       @order = Order.create(paid: false, user_id: current_user.id, owner_paid: false, gift: false)
@@ -49,5 +68,4 @@ class ApplicationController < ActionController::Base
       # cookies[:order_id] = @order.id
     end
   end
-
 end
