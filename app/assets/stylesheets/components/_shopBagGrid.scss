@@ -9,38 +9,6 @@
 
 }
 
-// .shop-item-container{
-//   grid-area: items;
-//   display: grid;
-//   grid-template-columns: 880px;
-//   grid-template-rows:  30px auto;
-//   grid-template-areas:
-//   "shop-ttl"
-//   "shop-itm";
-//   grid-auto-flow: row;
-
-//   row-gap: 18px;
-//   margin-left: 18px;
-//   margin-right: 18px;
-// }
-
-
-// .pay-bag-container{
-//   grid-area: bag;
-//   padding-right: 24px;
-//   display: grid;
-//   grid-template-columns: 470px;
-//   grid-template-rows:  30px 30px 30px 50px 50px 50px 300px;
-//   grid-template-areas:
-//     "bg-ttl"
-//     "bg-item1"
-//     "bg-item2"
-//     "gift-link"
-//     "pay-btn"
-//     "bg-item3"
-//     "terms";
-//     row-gap: 12px;
-// }
 
 .pay-title {
   grid-area: bg-ttl;
@@ -88,6 +56,8 @@
   justify-self: start;
   color: #403f3d;
   padding-top: 15px;
+  padding-bottom: 15px;
+    border-bottom: 0.7px solid #999894;
 }
 
 .gift-textbox{
@@ -102,7 +72,7 @@
 .pay-btn{
   grid-area: pay-btn;
   align-self: center;
-  border-top: 0.7px solid #999894;
+
   padding-top: 20px;
   margin-top: 20px;
 }

@@ -5,7 +5,7 @@ class OrderPolicy < ApplicationPolicy
     end
   end
 
-  def show?
+  def show_cart?
     !user.owner
   end
 

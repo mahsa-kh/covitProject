@@ -23,13 +23,6 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    # @order_item = OrderItem.find(params[:id])
-    # authorize @order_item
-    # order = @order_item.order
-    # @order_item.destroy
-    # order.total_calculator
-
-    # redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
 
     @order_item = OrderItem.find(params[:id])
     authorize @order_item
@@ -53,10 +46,8 @@ class OrderItemsController < ApplicationController
       cancel_url: "#{orders_url}?payment=fail"
     )
     order.update(checkout_session_id: session.id)
-    redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
+    redirect_to show_cart_path, notice: "Item is deleted!"
   end
 
-  #  def business_offer_params
-  #   params.require(:business_offer).permit(:offer_amount, :discount)
-  # end
+
 end

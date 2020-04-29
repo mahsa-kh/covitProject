@@ -64,21 +64,25 @@ class OrdersController < ApplicationController
   end
 
 
-  def show
-
-    @user = current_user # given by device!!
-    @orders = @user.orders
-    show_alert = @orders.any? do |ord|
-      (Date.today + 10) > ord.exp_date if ord.exp_date
-    end
-     if show_alert
-       flash[:alert] = "One or more orders are going to expire within 10 days"
-     end
-    @order = Order.find(params[:id])
-    if @order.paid
+  def show_cart
+# If user has no order at all, send false to show empty bag
+    if current_user.orders.last.nil?
       @order = false
+    else
+      @order = current_user.orders.last
+        @orders = current_user.orders
+        show_alert = @orders.any? do |ord|
+          (Date.today + 10) > ord.exp_date if ord.exp_date
+        end
+        if show_alert
+          flash[:alert] = "One or more orders are going to expire within 10 days"
+        end
+# If user's order is already paid, send false to show empty bag
+        if @order.paid
+          @order = false
+        end
+        @order
     end
-    @order
     authorize Order.new
   end
 
@@ -103,7 +107,7 @@ class OrdersController < ApplicationController
   def update_total_amount_cents_checkout
     authorize @order
     # @order.total_calculator
-    redirect_to order_path(@order.id), notice: "Shopping bag is updated!"
+    redirect_to show_cart_path, notice: "Shopping bag is updated!"
   end
 
   def total_calculator
