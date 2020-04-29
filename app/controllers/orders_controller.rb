@@ -90,11 +90,14 @@ class OrdersController < ApplicationController
   def edit
   end
 
+
   def update
     authorize @order
     @order.update(gift: true)
     @order.update(order_params)
+    render :show_cart
   end
+
 
   def destroy; end
 
@@ -136,6 +139,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:gift_email, :gift_message)
+    params.require(:order).permit(:gift, :gift_email, :gift_message)
   end
 end
