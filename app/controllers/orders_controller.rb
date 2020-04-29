@@ -6,9 +6,9 @@ class OrdersController < ApplicationController
     @orders_index_pundit = policy_scope(Order)
 
     if params[:payment] == "success"
-    current_user.orders.last.update(exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
+    current_user.orders.last.update(order_date: Date.new, exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
     elsif params[:payment] == "fail"
-    current_user.orders.last.update(state: 'failed', paid: false, owner_paid: false)
+    current_user.orders.last.update(order_date: Date.new, state: 'failed', paid: false, owner_paid: false)
     end
 
     if current_user.owner
