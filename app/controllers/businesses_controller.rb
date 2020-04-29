@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
   def index
+    skip_authorization
     @bussinesses_index_pundit = policy_scope(Business)
     if params[:query].present?
             sql_query = " \
