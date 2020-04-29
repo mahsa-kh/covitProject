@@ -1,7 +1,7 @@
 .shop-bag-container{
   display: grid;
   grid-template-columns: auto 490px;
-  grid-template-rows:  750px;
+  grid-template-rows:  900px;
   grid-template-areas:
     "items bag";
   margin-top: 40px;
@@ -25,22 +25,22 @@
 // }
 
 
-.pay-bag-container{
-  grid-area: bag;
-  padding-right: 24px;
-  display: grid;
-  grid-template-columns: 470px;
-  grid-template-rows:  30px 30px 30px 50px 50px 50px 300px;
-  grid-template-areas:
-    "bg-ttl"
-    "bg-item1"
-    "bg-item2"
-    "gift-link"
-    "pay-btn"
-    "bg-item3"
-    "terms";
-    row-gap: 12px;
-}
+// .pay-bag-container{
+//   grid-area: bag;
+//   padding-right: 24px;
+//   display: grid;
+//   grid-template-columns: 470px;
+//   grid-template-rows:  30px 30px 30px 50px 50px 50px 300px;
+//   grid-template-areas:
+//     "bg-ttl"
+//     "bg-item1"
+//     "bg-item2"
+//     "gift-link"
+//     "pay-btn"
+//     "bg-item3"
+//     "terms";
+//     row-gap: 12px;
+// }
 
 .pay-title {
   grid-area: bg-ttl;
@@ -57,7 +57,8 @@
   grid-area: bg-item1;
   font-size: 14px;
   justify-self: start;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   width: 100%;
   color: #403f3d;
 }
@@ -68,6 +69,8 @@
   font-size: 14px;
   justify-self: start;
   width: 100%;
+  margin-top: 15px;
+  padding-bottom: 15px;
 }
 
 .pay-item3 {
@@ -84,6 +87,7 @@
   font-size: 14px;
   justify-self: start;
   color: #403f3d;
+  padding-top: 15px;
 }
 
 .gift-textbox{
@@ -98,6 +102,9 @@
 .pay-btn{
   grid-area: pay-btn;
   align-self: center;
+  border-top: 0.7px solid #999894;
+  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .pay-terms {
@@ -119,8 +126,9 @@
   font-size: 15px;
   align-self: start;
   justify-self: start;
-  width: 100%;
+  width: 95%;
   color: #403f3d;
+  margin-left: 8px;
 }
 
 .shop-list-container{
@@ -130,9 +138,10 @@
   font-size: 15px;
   align-self: start;
   justify-self: start;
-  width: 100%;
+  width: 95%;
   color: #403f3d;
   margin-top: 20px;
+  margin-left: 8px;
   display: grid;
   grid-template-columns: 85px 715px 50px;
   grid-template-rows:  150px;
@@ -172,6 +181,12 @@
   .cl-img {
     width: 20px;
     height: 20px;
+  }
+
+  .empty-msg {
+    position: absolute;
+    left: 400px;
+    top: 260px;
   }
 }
 

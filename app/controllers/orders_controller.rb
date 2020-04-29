@@ -65,9 +65,8 @@ class OrdersController < ApplicationController
 
 
   def show
-
-   @user = current_user # given by device!!
-  @orders = @user.orders
+    @user = current_user # given by device!!
+    @orders = @user.orders
     show_alert = @orders.any? do |ord|
       (Date.today + 10) > ord.exp_date if ord.exp_date
     end
@@ -75,7 +74,11 @@ class OrdersController < ApplicationController
        flash[:alert] = "One or more orders are going to expire within 10 days"
      end
     @order = Order.find(params[:id])
-    authorize @order
+    if @order.paid
+      @order = false
+    end
+    @order
+    authorize Order.new
   end
 
 

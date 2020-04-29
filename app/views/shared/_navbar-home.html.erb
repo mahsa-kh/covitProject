@@ -32,19 +32,17 @@
 
 
 
-
-
-
-  <%if user_signed_in? %>
-       <% if !current_user.orders.last.nil? %>
-          <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
               <div class="navbar-box-bag">
                 <%= link_to  order_path(current_user.orders.last.id), class: "link-to-txt" do %>
                   <img src="<%= asset_path('bag.svg')%>" alt="">
                 <% end %>
               </div>
-          <%end%>
-          <%end%>
+
+
+  <%if user_signed_in? %>
+
+
+
           <div class="navbar-box-profile">
             <%= link_to  edit_user_registration_path, class: "link-to-txt" do %>
               <img src="<%= asset_path('profile.svg')%>" alt="">

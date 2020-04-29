@@ -6,7 +6,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def show?
-    current_user_and_not_owner?
+    !user.owner
   end
 
   def create?
