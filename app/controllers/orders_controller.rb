@@ -65,6 +65,7 @@ class OrdersController < ApplicationController
 
 
   def show
+
     @user = current_user # given by device!!
     @orders = @user.orders
     show_alert = @orders.any? do |ord|

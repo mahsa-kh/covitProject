@@ -122,11 +122,11 @@
     Total Value: <%=  humanized_money_with_symbol(@order.total_amount_cents.to_f ) %>
   </div>
     <% if !@order.gift %>
-      <%= simple_form_for(@order, remote: true )do |order| %>
+      <%= simple_form_for(@order )do |order| %>
         <div class="gift-check mt-2" id="gift-item">
           <%= order.check_box :gift, class: "checkbox-g" %> Send as a gift!
         </div>
-        <div class="gift-textbox">
+        <div class="gift-textbox" id="gift-div">
           <%= order.input_field :gift_email, placeholder: 'email address', class: "txtfld-ghost"  %> <br>
           <%= order.input_field :gift_message, placeholder: 'type your message..', class: "txtfarea-ghost"  %>
           <%= order.submit "send as a gift", class: "button-primary-gift " %>
@@ -180,9 +180,17 @@
     <%= render 'shared/flashes' %>
 
                 <script>
+                  window.onload = function nocheck() {
+                    var x = document.getElementById("gift-div");
+                    x.style.display = "none"
+                      // checkb = document.getElementById('gift-item');
+                      //  checkb.checked = false;
+                  }
+
                   var gift = document.getElementById('gift-item');
+                  window.load
                   gift.addEventListener( 'change', function() {
-                      if(this.checked) {
+                      if(this.unchecked) {
                           displayGift();
                       } else {
                           displayGift();
@@ -190,7 +198,7 @@
                   });
 
                   function displayGift() {
-                    var x = document.getElementById("gift-textbox");
+                    var x = document.getElementById("gift-div");
                     if (x.style.display === "none") {
                       x.style.display = "block";
                     } else {
