@@ -9,20 +9,20 @@
 
 }
 
-.shop-item-container{
-  grid-area: items;
-  display: grid;
-  grid-template-columns: 880px;
-  grid-template-rows:  30px auto;
-  grid-template-areas:
-  "shop-ttl"
-  "shop-itm";
-  grid-auto-flow: row;
+// .shop-item-container{
+//   grid-area: items;
+//   display: grid;
+//   grid-template-columns: 880px;
+//   grid-template-rows:  30px auto;
+//   grid-template-areas:
+//   "shop-ttl"
+//   "shop-itm";
+//   grid-auto-flow: row;
 
-  row-gap: 18px;
-  margin-left: 18px;
-  margin-right: 18px;
-}
+//   row-gap: 18px;
+//   margin-left: 18px;
+//   margin-right: 18px;
+// }
 
 
 .pay-bag-container{
@@ -124,7 +124,7 @@
 }
 
 .shop-list-container{
-  grid-area: shop-itm;
+  // grid-area: shop-itm;
   padding-bottom: 18px;
   border-bottom: 0.7px solid #999894;
   font-size: 15px;
@@ -132,7 +132,7 @@
   justify-self: start;
   width: 100%;
   color: #403f3d;
-
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 85px 715px 50px;
   grid-template-rows:  150px;
