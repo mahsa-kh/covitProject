@@ -23,14 +23,14 @@
       <div class="sidebar">
         <div class="item-box-up">
           <div class="up-spc">
-            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to-txt" %>
           </div>
           <div class="up-spc">
-            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+            <%= link_to "Transactions History", orders_path, class: "link-to-txt" %>
           </div>
         <% if !current_user.owner%>
           <div class="up-spc">
-            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to-txt" %>
           </div>
         <%end%>
         </div>
@@ -77,10 +77,10 @@
     <%end%>
         <%if card %>
       <div class="page-body-card">
-        <div class="card-container-noside">
-
+        <div class="main-container-side-t">
+          <div class="card-container-side-t">
           <% businesses.each do |business| %>
-          <%= link_to business_path(business), class: "link-to" do %>
+          <%= link_to business_path(business), class: "link-to-txt" do %>
               <div class="card-container-item">
                 <div class="card">
                   <%= cl_image_tag business.photo.key, class:"cl-img" %>
@@ -103,6 +103,7 @@
       </div>
     <%end%>
     </div>
+  </div>
 
 
 

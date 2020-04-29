@@ -3,14 +3,14 @@
       <div class="sidebar">
         <div class="item-box-up">
           <div class="up-spc">
-            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to-txt" %>
           </div>
           <div class="up-spc">
-            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+            <%= link_to "Transactions History", orders_path, class: "link-to-txt" %>
           </div>
         <% if !current_user.owner%>
           <div class="up-spc">
-            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to-txt" %>
           </div>
         <%end%>
         </div>
