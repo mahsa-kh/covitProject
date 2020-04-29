@@ -37,7 +37,7 @@ class BusinessesController < ApplicationController
     @businesses = []
     @orders.each do |order|
       order.order_items.each do |order_item|
-        business = order_item.business_offer.business #  OrderItems belongs_to :business_offer  & BusinessOffers belongs_to :business,
+        business = order_item.business_offer.business #  OrderItems belongs_to :business_offer  & BusinessOffers belongs_to :business
         @businesses << business unless @businesses.include?(business)
       end
     end
