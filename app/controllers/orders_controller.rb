@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
           end
         return
         else
-          orders = @orders_index_pundit.where(order_item.order_id)
+          orders = @orders_index_pundit.where(id: order_item.order_id)
           orders.each do |order|
             @orders.push(order)
           end
