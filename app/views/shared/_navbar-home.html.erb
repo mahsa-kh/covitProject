@@ -30,7 +30,7 @@
     </div>
   </div>
   <%end%>
- <%if user_signed_in?%>
+  <%if user_signed_in?%>
   <div class="navbar-box-bag">
     <%= link_to show_cart_path, class: "link-to-txt" do %>
     <img src="<%= asset_path('bag.svg')%>" alt="">
