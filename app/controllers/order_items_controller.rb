@@ -23,13 +23,6 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    # @order_item = OrderItem.find(params[:id])
-    # authorize @order_item
-    # order = @order_item.order
-    # @order_item.destroy
-    # order.total_calculator
-
-    # redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
 
     @order_item = OrderItem.find(params[:id])
     authorize @order_item
@@ -40,23 +33,24 @@ class OrderItemsController < ApplicationController
     updated_amount = order.total_amount_cents - current_item_amount
     @order_item.destroy
     order.update(total_amount_cents: updated_amount)
-
+    if updated_amount == 0
+      updated_amount = 1
+    end
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
         name: "#{current_user.first_name} #{current_user.last_name}",
-        amount: order.total_amount_cents * 100,
+        # amount: order.total_amount_cents * 100,
+        amount: updated_amount * 100,
         currency: 'eur',
         quantity: 1
       }],
       success_url:"#{orders_url}?payment=success",
       cancel_url: "#{orders_url}?payment=fail"
     )
-
-    redirect_to order_path(params[:order_id]), notice: "Item is deleted!"
+    order.update(checkout_session_id: session.id)
+    redirect_to show_cart_path, notice: "Item is deleted!"
   end
 
-  #  def business_offer_params
-  #   params.require(:business_offer).permit(:offer_amount, :discount)
-  # end
+
 end

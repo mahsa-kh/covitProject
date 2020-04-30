@@ -105,21 +105,22 @@
 .link-to-txt {
 
   font-family: Karla;
-  color: black !important;
+  color: #333333 !important;
   font-weight: lighter;
 }
 .link-to-txt:hover {
 
   font-family: Karla;
-  color: black !important;
+  color: #333333 !important;
   font-weight: lighter;
   opacity: 0.8;
+  text-decoration: none;
 }
 
 .link-to {
   text-decoration: none  !important;
   font-family: Karla;
-  color: black !important;
+  color: #333333 !important;
   font-weight: lighter;
 }
 
@@ -133,14 +134,14 @@
 .link-to:hover{
   text-decoration: none  !important;
   font-family: Karla;
-  color: black  !important;
+  color: white !important;
   font-weight: lighter;
 }
 
 .link-to-white:hover{
   text-decoration: none  !important;
   font-family: Karla;
-  color: black  !important;
+  color: #333333  !important;
   font-weight: lighter;
 }
 

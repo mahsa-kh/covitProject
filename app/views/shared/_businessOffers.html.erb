@@ -7,7 +7,7 @@
   <div class="bus-content-container">
     <div class="bus-infos">
       <h1><%= business.name %> <small>
-        <%= link_to "www.instagram.com/#{business.instagram}", class: "link-to" do %>
+        <%= link_to "http://www.instagram.com/#{business.instagram}", target: "_blank", rel: "nofollow", class: "link-to-txt" do %>
           <i class="fab fa-instagram"></i>
         <%end%>
       </small> </h1>
@@ -16,37 +16,63 @@
       <p> <%= business.address %></p>
     </div>
 
-    <div class="bus-infos mt-2">
-      <h1>Offers</h1>
-      <p>Click an offer to add it to your cart </p>
-    </div>
+    <% if user_signed_in? %>
+      <% if current_user.owner %>
+        <div class="bus-infos mt-2">
+          <h1>Offers</h1>
+          <p>These are the current available offers</p>
+        </div>
+      <% else %>
+        <div class="bus-infos mt-2">
+          <h1>Offers</h1>
+          <p>Click an offer to add it to your cart </p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="bus-infos mt-2">
+        <h1>Offers</h1>
+        <p>Create an account before adding to your cart</p>
+      </div>
+    <% end %>
+
     <div class="bus-infos bus-offers mt-2">
 
         <% business.business_offers.each do |business_offer| %>
-          <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post , class: "link-to" do %>
-            <button class="button-secondary-sm offers"><span class="strike"><%= humanized_money_with_symbol(business_offer.offer_amount)%>$</span> <%=humanized_money_with_symbol(business_offer.price_cents) %> <span style="color:#739C88"> (<%= business_offer.discount%>%)</span></button>
+          <%= link_to add_offer_to_bag_path(business, business_offer.id), method: :post  do %>
+            <button class="button-secondary-sm offers">
+              <span class="strike"><%= humanized_money_with_symbol(business_offer.offer_amount)%>$</span>
+               <%=humanized_money_with_symbol(business_offer.price_cents) %>
+               <span style="color:#739C88"> (<%= business_offer.discount%>%)</span>
+             </button>
           <% end %>
         <%end%>
 
     </div>
+    <% if user_signed_in? %>
       <% if current_user.owner %>
-        <div class="offer-action  button-transparent mt-1">
+        <div class="offer-action button-transparent mt-1">
           <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
         </div>
       <% elsif !current_user.orders.last.nil? %>
         <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
           <div class="offer-action  button-primary mt-1">
-            <%= link_to "VIEW CART", order_path(current_user.orders.last.id) , class: "link-to-white"%>
+            <%= link_to "VIEW CART", show_cart_path , class: "link-to-white"%>
           </div>
           <div class="offer-action  button-transparent mt-1">
-            <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+            <%= link_to "Back to Shops", businesses_path , class: "link-to-txt"%>
           </div>
         <%end %>
       <%else%>
           <div class="bus-infos button-primary mt-1">
-            <%= link_to "Back to Shops", businesses_path , class: "link-to-white"%>
+            <%= link_to "Back to Shops", businesses_path , class: "link-to-txt"%>
           </div>
-      <%end%>
+        <%end%>
+      <% end %>
+    <% else %>
+      <div class="offer-action button-transparent mt-1">
+        <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+      </div>
+    <% end %>
   </div>
 </div>
 

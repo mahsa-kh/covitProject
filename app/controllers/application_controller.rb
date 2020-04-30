@@ -52,10 +52,14 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    if current_user.owner
-      flash[:alert] = "Please login as user to perform this action."
+    if user_signed_in?
+      if current_user.owner
+        flash[:alert] = "Please login as user to perform this action."
+      else
+        flash[:alert] = "Only businesses are authorized to perform this action."
+      end
     else
-      flash[:alert] = "Only businesses are authorized to perform this action."
+      flash[:alert] = "Please create an account to perform this action."
     end
     redirect_to(request.referrer || root_path)
   end

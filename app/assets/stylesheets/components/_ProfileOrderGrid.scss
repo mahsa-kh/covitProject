@@ -15,7 +15,7 @@
 
   display: grid;
   grid-template-columns: 200px;
-  grid-template-rows:  200px 400px;
+  grid-template-rows:  120px 600px;
   grid-template-areas:
     "top"
     "bottom";
@@ -57,9 +57,9 @@
 
     .stl{
 
-  color: white;
+  color: #333333;
   padding: 8px 24px;
-  background: #333333;
+  background: white;
   border: 1px solid #333333;
   width: 210px;
   height: 42px;
@@ -68,7 +68,7 @@
   top: 21.43%;
   bottom: 23.81%;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 23px;
   text-align: center;
         // height: 45px;
@@ -91,17 +91,24 @@
   grid-area: body;
   justify-self: start;
   margin-top: 60px;
-  margin-left: 100px;
+  margin-left: 20px;
 
-  display: grid;
-  grid-template-columns: 140px 110px 90px 110px repeat(4, 150px);
-  grid-template-rows: 50px 50px;
-  // grid-template-areas:
-  //   "f1 f2 f3 f4 f5 f6 f7 f8 "
-  //   "f11 f12 f13 f14 f15 f16 f17 f18 ";
-  justify-content:  center;
+  // display: grid;
+  // grid-template-columns: 140px 110px 90px 110px repeat(4, 150px);
+  // grid-template-rows: 50px 50px;
+  // // grid-template-areas:
+  // //   "f1 f2 f3 f4 f5 f6 f7 f8 "
+  // //   "f11 f12 f13 f14 f15 f16 f17 f18 ";
+  // justify-content:  center;
 }
 
+
+.order-row {
+  display: flex;
+  width: 1000px;
+  height: 50px;
+  justify-content: center;
+}
 .page-body-flat {
   grid-area: body;
   justify-self: start;
@@ -114,9 +121,10 @@
   justify-self: start;
   // margin-top: 60px;
   margin-left: 100px;
+  width: 700px;
 }
 
-.order-cell {
+.order-row  .order-cell {
   font-size: 14px;
   width: 100px;
   height: 30px;
@@ -125,8 +133,9 @@
   border-bottom: 1px solid #DADCE0;
   text-align: center;
   padding-bottom: 2px;
-
-  justify-self: center;
+  color: #333333;
+    margin-left: 0px;
+  // justify-self: center;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -150,6 +159,40 @@
     width: 30px;
     height: 30px;
   }
+}
+
+.msg-box{
+  width: 770px;
+  height: 90px;
+  border-radius: 4px;
+  font-size: 18px;
+  position: relative;
+  background-color: white;
+  border: 0.7px solid #333333;
+  // opacity: 0.6;
+  padding-top: 12px;
+  padding-left: 16px;
+        display: flex;
+        justify-content: start;
+        align-items: baseline;
+        flex-direction: column;
+
+        h3{
+          font-size: 18px;
+          font-weight: bold;
+          color: #333333;
+          position: absolute;
+          left: 40%;
+          padding-top: 5px;
+        }
+        p{
+          top: 50px;
+            position: absolute;
+            color: #333333;
+            font-size: 16px;
+             line-height: 20px;
+             left: 17%;
+        }
 }
 
 

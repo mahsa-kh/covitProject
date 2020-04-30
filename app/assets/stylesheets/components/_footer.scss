@@ -6,10 +6,7 @@
   height: 10rem;
   color: rgb(0,0,0);
   margin-top: 32px;
-  border-top: 2px solid black;
-}
-.footer-contact {
-
+  border-top: 1px solid black;
 }
 .footer-social-item a {
   color: rgba(0,0,0,0.5);
@@ -17,7 +14,7 @@
   transition: 0.3s;
 }
 .footer-social-item a:hover {
-  color: rgb(0,0,0);
+  color: #333333;
 }
 .footer-box-lg{
   grid-area: logout;
@@ -43,7 +40,7 @@
 .footer-link-to:hover {
   text-decoration: none  !important;
   font-family: Karla;
-  color: rgb(0,0,0) !important;
+  color: #333333 !important;
   font-weight: lighter;
 }
 .footer-subscribe {

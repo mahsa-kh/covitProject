@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 .b-main-container {
   display: flex;
   flex-direction: column;
@@ -10,8 +13,19 @@
   height: 700px;
   width: 100%;
   order: 1;
+  position: relative;
 }
 
+.banner .scroll1 {
+    position: absolute;
+    left: 48%;
+    top: 83%;
+
+img {
+  width: 60px;
+  height: 60px;
+}
+}
 
 .banner h2 {
   margin: 0;
@@ -47,53 +61,39 @@
   flex-direction: column;
 }
 
-.sec1 {
-  height: 350px;
-  width: 100%;
-  background-color: #D47F6C;
-  border-top: 3px solid white;
-  opacity: 0.6;
-  position: relative;
-  margin-bottom: 5px;
-  h2{
-    color: white;
-    position: absolute;
-    font-size: 24px;
-    left: 20%;
-    top: 20%;
-  }
-}
+
 
 .sec2{
-  height: 400px;
+  height: 800px;
   width: 100%;
   background-color: white;
-  border-bottom: 3px solid #739C88;
-  border-top: 3px solid #739C88;
-    position: relative;
-
+  position: relative;
+  border-bottom: 0.7px solid #333333;
   h2{
     color: #333333;
     position: absolute;
-    font-size: 24px;
+    font-size: 28px;
     top: 30%;
-    left: 20%;
+    left: 30%;
   }
 
 }
 
 .sec2  .action-sec2{
     position: absolute;
-    left: 53%;
-    top: 63%;
+    left: 68%;
+    top: 53%;
     font-size: 16px;
     text-decoration: underline;
   }
 
-.sec1  .action-sec1{
+.sec2 .scroll2 {
     position: absolute;
-    left: 65%;
-    top: 63%;
-    font-size: 16px;
-    text-decoration: underline;
-  }
+    left: 48%;
+    top: 75%;
+
+img {
+  width: 60px;
+  height: 60px;
+}
+}

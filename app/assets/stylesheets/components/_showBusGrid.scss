@@ -38,10 +38,12 @@
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  width: 100%;
 }
 
 .bus-infos {
   align-self: flex-start;
+  width: 100%;
 }
 
 .bus-infos h1 {
@@ -63,7 +65,7 @@
 
  .bus-offers {
   display: grid;
-  grid-template-columns: 167px 1167px;
+  grid-template-columns: 167px 167px;
   grid-template-rows:  42px 42px;
   grid-template-areas:
     "ofr ofr"
