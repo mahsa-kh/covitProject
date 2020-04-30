@@ -166,19 +166,32 @@
   height: 100px;
   border-radius: 4px;
   font-size: 18px;
-
-  background-color: #739C88;
+  position: relative;
+  background-color: white;
+  border: 0.7px solid #333333;
   // opacity: 0.6;
   padding-top: 12px;
   padding-left: 16px;
-          display: flex;
+        display: flex;
         justify-content: start;
-        align-items: start;
+        align-items: baseline;
         flex-direction: column;
+
+        h3{
+          font-size: 18px;
+          font-weight: bold;
+          color: #333333;
+          position: absolute;
+          left: 40%;
+          padding-top: 5px;
+        }
         p{
-            color: #e6e6e6;
+          top: 50px;
+            position: absolute;
+            color: #333333;
             font-size: 16px;
              line-height: 20px;
+             left: 17%;
         }
 }
 

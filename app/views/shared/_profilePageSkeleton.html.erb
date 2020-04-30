@@ -79,8 +79,8 @@
     <%end%>
         <%if card %>
       <div class="page-body-card">
-        <%quantity=0%>
-        <% empl = 0%>
+<%quantity=0%>
+<% empl = 0%>
 <%orders = Order.where(user_id: current_user)%>
   <%if !orders.nil?%>
   <%orders.each do |order|%>
@@ -91,9 +91,9 @@
     <%end%>
   <%end%>
   <div class="msg-box">
-      <p><strong>Thank You!</strong></p>
-      <p>You have baught <%= quantity %> credits.<br>
-      You have helped <%= empl %> number of employees!</p>
+      <h3>Thank You!</h3>
+      <p>You have baught <strong><u> <%= quantity %> </u></strong> credits.
+      You have helped <strong><u> <%= empl %> </u></strong>number of employees!  </p>
   </div>
 <%end%>
 
