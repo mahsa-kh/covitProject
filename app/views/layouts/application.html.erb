@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tuche</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    
+    <%= favicon_link_tag asset_path("16_Tuche.png")   %>
+
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+   
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
   </head>
   <body>
     <%= render 'shared/navbar-home' %>
@@ -21,3 +35,83 @@
     <%= render 'shared/footer' %>
   </footer>
 </html>
+
+
+
+
+
+<!-- 
+
+<head><title>Example Title</title></head>
+Primary Keyword - Secondary Keyword | Brand Name
+8-foot Green Widgets - Widgets & Tools | Widget World
+
+
+------------EXAMPLES:
+<title>Social Meta Tags Setup in Rails | Le Wagon</title>
+<meta name="description" content="Sharing your product on social networks has become one privileged way to grow your userbase. But before you unleash your sharing fury, make sure your social meta tags are properly set.  | Le Wagon">
+
+<title>Title Tags - 2020 SEO Best Practices - Moz</title>
+<meta name="description" content="A title tag is an HTML element that specifies the title of a web page. Title tags are displayed on search engine results pages (SERPs) as the clickable headline for a given result and are important for usability, SEO, and social sharing. The title tag of a web page is meant to be an accurate and…">
+
+
+https://www.123-reg.co.uk/blog/seo-2/a-beginners-guide-to-writing-title-tags-and-meta-descriptions-that-get-clicks/
+
+
+----------------TITLE  (https://moz.com/learn/seo/title-tag)
+• Title must be highly relevant to the content found on that specific page.
+• Place important keywords and phrases close to the front of the title tag so they catch the eye.
+• Write naturally for visitors and avoid keyword stuffing.
+• Avoid duplication. Each page will have a different topic so it needs to have a unique title.
+• Potentially include your brand name at the end of the title tag, but focus on getting your message across first.
+• Keep it between 60 and 64 characters or as many characters as you can fit into a 512-pixel display. I
+
+For example, if you have thousands of product pages with a database of product names and categories, you could use that data to easily generate titles like:
+[Product Name] - [Product Category] | [Brand Name]
+
+We recommend titles where the most unique aspect of the page (e.g. the product name) appears first. Avoid titles like:
+Brand Name | Major Product Category - Minor Product Category - Name of Product
+
+
+• If you have a strong, well-known brand, then adding it to your titles may help boost click-through rates. We generally still recommend putting your brand at the end of the title, but there are cases (such as your home page or about page) where you may want to be more brand-focused. As mentioned earlier, Google may also append your brand automatically to your display titles, so be mindful of how your search results are currently displayed.
+
+
+
+
+---------------DESCRIPTION (https://moz.com/learn/seo/meta-description)
+At least, try to get crucial information in the first 155 characters of your meta description.
+• Have unique descriptions for every page on your site.
+• CALL TO ACTION
+Invitations like Learn more, Get it now, Try for free come in handy here.
+(Containing the focus keyword)
+
+Sometimes it's okay to not write meta descriptions
+Although conventional logic would hold that it's universally wiser to write a good meta description rather than let the engines scrape a given web page, this isn't always the case. Use this general rule of thumb to identify whether you should write your own meta description:
+
+If a page is targeting between one and three heavily searched terms or phrases, write your own meta description that targets those users performing search queries including those terms.
+
+If the page is targeting long-tail traffic (three or more keywords), it can sometimes be wiser to let the engines populate a meta description themselves. The reason is simple: When search engines pull together a meta description, they always display the keywords and surrounding phrases that the user has searched for. If a webmaster writes a meta description into the page's code, what they choose to write can actually detract from the relevance the engines make naturally, depending on the query.
+
+One caveat to intentionally omitting meta description tags:  Keep in mind that social sharing sites like Facebook commonly use a page's meta description tag as the description that appears when the page is shared on their sites. Without the meta description tag, social sharing sites may just use the first text they can find. Depending on the first text on your page, this might not create a good user experience for people encountering your content via social sharing.
+
+
+-------------Test your titles and descriptions using a tool such as this one from To The Web: 
+https://totheweb.com/learning_center/tool-test-google-title-meta-description-lengths/
+
+
+EXAMPLE
+<title>Social Meta Tags Setup in Rails | Le Wagon</title>
+<meta name="description" content="Sharing your product on social networks has become one privileged way to grow your userbase. But before you unleash your sharing fury, make sure your social meta tags are properly set.  | Le Wagon">
+
+
+
+---------------What are rich snippets?
+A SNIPPET is a result Google shows to the user in the search results. An example: I was searching for a good recipe for homemade ice cream and googled it. Google showed me a results list with normal snippets and rich snippets — or rich results as they are now called. A normal snippet usually looks like this:
+1. Google shows the title in blue, 
+2. the URL in green 
+3. and a description of what the page is about. 
+This is what we call the SNIPPET, the thing Yoast SEO helps you to optimize with our snippet preview.
+
+A RICH SNIPPET shows extra information between the URL and the description. A rich snippet looks like this:
+In this snippet, a PICTURE of the ice cream is added, you can see the RATING of the recipe, the TIME it takes to prepare this type of ice cream and the NUMBER of CALORIES it contains. 
+A rich snippet contains much more information than the normal snippet does. That’s why we call it a rich snippet. -->

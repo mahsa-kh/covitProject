@@ -5,10 +5,10 @@
       <div class="form-inputs">
         <%= simple_form_for @business do |f| %>
         <%= f.error_notification %>
-        <%= f.input :name, placeholder: 'Name of Your Business', error: 'Name is mandatory, please specify one', required: true, input_html: {class: "txtfield"} %>
+        <%= f.input :name, as: :string, placeholder: 'Name of Your Business', error: 'Name is mandatory, please specify one', required: true, input_html: {class: "txtfield"} %>
         <%= f.input :address, required: true, as: :search, input_html: {id: "b_address", class: "txtfield"}, placeholder: 'Address of Your Business' %>
-        <%= f.input :instagram, placeholder: 'Instagram Profile Link', required: true, input_html: {class: "txtfield"}  %>
-        <%= f.input :website, placeholder: 'Your Website url', required: true, input_html: {class: "txtfield"}  %>
+        <%= f.input :instagram, as: :string, placeholder: 'Instagram Profile Link', required: true, input_html: {class: "txtfield"}  %>
+        <%= f.input :website, as: :string, placeholder: 'Your Website url', required: true, input_html: {class: "txtfield"}  %>
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-6 px-lg-5">

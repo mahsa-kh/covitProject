@@ -55,7 +55,7 @@ class BusinessesController < ApplicationController
     @business.user_id = current_user.id
     authorize @business
     # @business.category_id = params[:category_id]
-    if @business.save!
+    if @business.save
       redirect_to new_business_business_offer_path(@business)
     else
       render :new
