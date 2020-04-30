@@ -25,7 +25,9 @@
           <%= f.input :employee_no, input_html: {class: "txtfield"}, placeholder: 'Number of employee we can help', required: true %>
           <%= f.input :instagram,as: :string, input_html: {class: "txtfield"}, placeholder: 'Instagram Profile Link', required: true %>
           <%= f.input :website,as: :string, input_html: {class: "txtfield"}, placeholder: 'Your Website url', required: true %>
-          <%= f.input :photo, as: :file, required: true, input_html: {class: "txtfield"}   %>
+          <div class="d-flex mt-4">
+            <i class="far fa-image" style="padding-right: 8px"></i><%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: 'Upload a photo' %>
+          </div>
         </div>
       </div>
       <div class="form-actions">
