@@ -46,33 +46,27 @@
              </button>
           <% end %>
         <%end%>
-
     </div>
-    <% if user_signed_in? %>
-      <% if current_user.owner %>
-        <div class="offer-action button-transparent mt-1">
-          <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
-        </div>
-      <% elsif !current_user.orders.last.nil? %>
-        <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
+
+<% if user_signed_in? %>
+  <% if !current_user.owner %>
           <div class="offer-action  button-primary mt-1">
             <%= link_to "VIEW CART", show_cart_path , class: "link-to-white"%>
           </div>
           <div class="offer-action  button-transparent mt-1">
             <%= link_to "Back to Shops", businesses_path , class: "link-to-txt"%>
           </div>
-        <%end %>
-      <%else%>
-          <div class="bus-infos button-primary mt-1">
+  <% else %>
+          <div class="offer-action  button-transparent mt-1">
             <%= link_to "Back to Shops", businesses_path , class: "link-to-txt"%>
           </div>
-        <%end%>
-      <% end %>
-    <% else %>
-      <div class="offer-action button-transparent mt-1">
-        <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
-      </div>
-    <% end %>
+  <% end %>
+<%else%>
+          <div class="offer-action  button-transparent mt-1">
+            <%= link_to "Back to Shops", businesses_path , class: "link-to-txt"%>
+          </div>
+<%end%>
+
   </div>
 </div>
 
