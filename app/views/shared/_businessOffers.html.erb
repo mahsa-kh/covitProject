@@ -16,10 +16,25 @@
       <p> <%= business.address %></p>
     </div>
 
-    <div class="bus-infos mt-2">
-      <h1>Offers</h1>
-      <p>Click an offer to add it to your cart </p>
-    </div>
+    <% if user_signed_in? %>
+      <% if current_user.owner %>
+        <div class="bus-infos mt-2">
+          <h1>Offers</h1>
+          <p>These are the current available offers</p>
+        </div>
+      <% else %>
+        <div class="bus-infos mt-2">
+          <h1>Offers</h1>
+          <p>Click an offer to add it to your cart </p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="bus-infos mt-2">
+        <h1>Offers</h1>
+        <p>Create an account before adding to your cart</p>
+      </div>
+    <% end %>
+
     <div class="bus-infos bus-offers mt-2">
 
         <% business.business_offers.each do |business_offer| %>
@@ -33,8 +48,9 @@
         <%end%>
 
     </div>
+    <% if user_signed_in? %>
       <% if current_user.owner %>
-        <div class="offer-action  button-transparent mt-1">
+        <div class="offer-action button-transparent mt-1">
           <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
         </div>
       <% elsif !current_user.orders.last.nil? %>
@@ -50,7 +66,13 @@
           <div class="bus-infos button-primary mt-1">
             <%= link_to "Back to Shops", businesses_path , class: "link-to-txt"%>
           </div>
-      <%end%>
+        <%end%>
+      <% end %>
+    <% else %>
+      <div class="offer-action button-transparent mt-1">
+        <%= link_to "Back to Shops", businesses_path , class: "link-to"%>
+      </div>
+    <% end %>
   </div>
 </div>
 
