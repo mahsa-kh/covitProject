@@ -32,7 +32,7 @@
     <% if !current_user.orders.last.nil? %>
       <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
         <div class="navbar-box-bag">
-          <%= link_to  order_path(current_user.orders.last.id), class: "link-to" do %>
+          <%= link_to  show_cart_path, class: "link-to" do %>
             <img src="<%= asset_path('bag.svg')%>" alt="">
           <% end %>
         </div>
@@ -45,7 +45,7 @@
     </div>
   <%else%>
     <div class="navbar-box-bag">
-      <%= link_to  root_path, class: "link-to" do %>
+      <%= link_to  show_cart_path, class: "link-to" do %>
         <img src="<%= asset_path('bag.svg')%>" alt="" id ="profile">
       <% end %>
       <%flash[:alert] = "You are not logged in"%>
