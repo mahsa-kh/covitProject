@@ -5,8 +5,8 @@ class OrderPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    current_user_and_not_owner?
+  def show_cart?
+    !user.owner
   end
 
   def create?

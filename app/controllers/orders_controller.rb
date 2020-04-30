@@ -6,9 +6,9 @@ class OrdersController < ApplicationController
     @orders_index_pundit = policy_scope(Order)
 
     if params[:payment] == "success"
-    current_user.orders.last.update(exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
+    current_user.orders.last.update(order_date: Date.new, exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
     elsif params[:payment] == "fail"
-    current_user.orders.last.update(state: 'failed', paid: false, owner_paid: false)
+    current_user.orders.last.update(order_date: Date.new, state: 'failed', paid: false, owner_paid: false)
     end
 
     if current_user.owner
@@ -27,7 +27,9 @@ class OrdersController < ApplicationController
       @order_items = business.order_items
       @order_items.each do |order_item|
         if params[:order_query].present?
-          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR state = pending OR state = paid AND id = #{order_item.order_id} AND paid = true"
+          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND state = 'pending' AND id = #{order_item.order_id} AND paid = true"
+          all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND  state = 'paid' AND id = #{order_item.order_id} AND paid = true"
           all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
           all_orders.each do |order|
             @orders.push(order)
@@ -40,8 +42,11 @@ class OrdersController < ApplicationController
     else
       # @orders = Order.where("user_id = ?", current_user.id)
       if params[:order_query].present?
-        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR state = pending OR state = paid AND user_id = #{current_user.id} AND paid = true"
+        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query AND state = 'pending' AND user_id = #{current_user.id} AND paid = true"
         @orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query AND state = 'paid' AND user_id = #{current_user.id} AND paid = true"
+        @orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+        # raise
       else
         @orders = @orders_index_pundit.where("user_id = ?", current_user.id)
       end
@@ -59,29 +64,40 @@ class OrdersController < ApplicationController
   end
 
 
-  def show
-
-   @user = current_user # given by device!!
-  @orders = @user.orders
-    show_alert = @orders.any? do |ord|
-      (Date.today + 10) > ord.exp_date if ord.exp_date
+  def show_cart
+# If user has no order at all, send false to show empty bag
+    if current_user.orders.last.nil?
+      @order = false
+    else
+      @order = current_user.orders.last
+        @orders = current_user.orders
+        show_alert = @orders.any? do |ord|
+          (Date.today + 10) > ord.exp_date if ord.exp_date
+        end
+        if show_alert
+          flash[:alert] = "One or more orders are going to expire within 10 days"
+        end
+# If user's order is already paid, send false to show empty bag
+        if @order.paid
+          @order = false
+        end
+        @order
     end
-     if show_alert
-       flash[:alert] = "One or more orders are going to expire within 10 days"
-     end
-    @order = Order.find(params[:id])
-    authorize @order
+    authorize Order.new
   end
 
 
   def edit
   end
 
+
   def update
     authorize @order
     @order.update(gift: true)
     @order.update(order_params)
+    render :show_cart
   end
+
 
   def destroy; end
 
@@ -94,7 +110,7 @@ class OrdersController < ApplicationController
   def update_total_amount_cents_checkout
     authorize @order
     # @order.total_calculator
-    redirect_to order_path(@order.id), notice: "Shopping bag is updated!"
+    redirect_to show_cart_path, notice: "Shopping bag is updated!"
   end
 
   def total_calculator
@@ -123,6 +139,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:gift_email, :gift_message)
+    params.require(:order).permit(:gift, :gift_email, :gift_message)
   end
 end
