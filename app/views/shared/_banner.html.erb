@@ -45,8 +45,9 @@ function scrollFunction1() {
   }
 }
 function topFunction1() {
-  document.body.scrollTop = 800; // For Safari
-  document.documentElement.scrollTop = 800;
+  document.querySelector('.sec2').scrollIntoView({
+  behavior: 'smooth'
+});
 }
 
 // ************************************************ SECOND SCROLL ************************************************//
@@ -62,7 +63,14 @@ function scrollFunction2() {
   }
 }
 function topFunction2() {
-  document.body.scrollTop = 1600; // For Safari
-  document.documentElement.scrollTop = 1600;
+document.querySelector('.card-container-noside').scrollIntoView({
+  behavior: 'smooth'
+});
+  // document.body.scrollTop = 1600; // For Safari
+  // document.documentElement.scrollTop = 1600;
 }
 </script>
+
+
+
+
