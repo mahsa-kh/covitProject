@@ -30,11 +30,11 @@
     </div>
   </div>
   <%end%>
-  <%if user_signed_in? && current_user.orders && !current_user.orders.last.nil? && !current_user.orders.last.paid%>
+ <%if user_signed_in?%>
   <div class="navbar-box-bag">
     <%= link_to show_cart_path, class: "link-to-txt" do %>
     <img src="<%= asset_path('bag.svg')%>" alt="">
-    <%= current_user.orders.last.order_items.count %>
+    <%= current_user.orders.last.order_items.count if current_user.orders && !current_user.orders.last.nil? && !current_user.orders.last.paid %>
     <% end %>
   </div>
   <div class="navbar-box-profile">
