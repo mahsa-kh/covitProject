@@ -2,12 +2,12 @@
   <div class="navbar-spc"></div>
   <div class="navbar-box-str">
     <%= link_to businesses_path, class: "link-to-white-solid" do %>
-      Stores
+    Stores
     <% end %>
   </div>
   <div class="navbar-box-abt">
     <%= link_to "#", class: "link-to-white-solid" do %>
-      About Us
+    About Us
     <% end %>
   </div>
   <div class="nav-logo">
@@ -15,52 +15,44 @@
   </div>
   <div class="navbar-box-srch">
     <%= form_tag businesses_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "txtfld-ghost-sm", placeholder: "Search" %>
+    <%= text_field_tag :query, params[:query], class: "txtfld-ghost-sm", placeholder: "Search" %>
     <% end %>
   </div>
   <%if user_signed_in? %>
-    <div class="navbar-box-lg"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "link-to" %></div>
+  <div class="navbar-box-lg"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "link-to-txt" %>
+  </div>
   <%else%>
-    <div class="navbar-box-lg dropdown" id="log-action"><img src="<%= asset_path('arrow.svg')%>" alt="" class="dropdown-toggle" data-toggle="dropdown">
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <div class="navbar-box-lg dropdown" id="log-action"><img src="<%= asset_path('arrow.svg')%>" alt=""
+      class="dropdown-toggle" data-toggle="dropdown">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <a class="dropdown-item look-style" href="/users/sign_in">Sign in</a>
       <a class="dropdown-item look-style" href="/users/sign_up">Register</a>
-      </div>
     </div>
+  </div>
   <%end%>
-  <%if user_signed_in? %>
-    <% if !current_user.orders.last.nil? %>
-      <% if !current_user.orders.last.paid.nil? && !current_user.orders.last.paid %>
-        <div class="navbar-box-bag">
-          <%= link_to  order_path(current_user.orders.last.id), class: "link-to" do %>
-            <img src="<%= asset_path('bag.svg')%>" alt="">
-          <% end %>
-        </div>
-      <%end%>
-    <%end%>
-    <div class="navbar-box-profile">
-      <%= link_to  edit_user_registration_path, class: "link-to" do %>
-        <img src="<%= asset_path('profile.svg')%>" alt="">
-      <% end %>
-    </div>
+  <%if user_signed_in?%>
+  <div class="navbar-box-bag">
+    <%= link_to show_cart_path, class: "link-to-txt" do %>
+    <img src="<%= asset_path('bag.svg')%>" alt="">
+    <%= current_user.orders.last.order_items.count if current_user.orders && !current_user.orders.last.nil? && !current_user.orders.last.paid %>
+    <% end %>
+  </div>
+  <div class="navbar-box-profile">
+    <%= link_to  edit_user_registration_path, class: "link-to-txt" do %>
+    <img src="<%= asset_path('profile.svg')%>" alt="">
+    <% end %>
+  </div>
   <%else%>
-    <div class="navbar-box-bag">
-      <%= link_to  root_path, class: "link-to" do %>
-        <img src="<%= asset_path('bag.svg')%>" alt="" id ="profile">
-      <% end %>
-      <%flash[:alert] = "You are not logged in"%>
-    </div>
-    <div class="navbar-box-bag">
-      <%= link_to "#", class: "link-to" do %>
-        <img src="<%= asset_path('bag.svg')%>" alt="">
-      <% end %>
-      <%flash[:alert] = "You are not logged in"%>
-    </div>
-    <div class="navbar-box-profile">
-      <%= link_to  "#", class: "link-to" do %>
-        <img src="<%= asset_path('profile.svg')%>" alt="">
-      <% end %>
-      <%flash[:alert] = "You are not logged in"%>
-    </div>
+  <div class="navbar-box-bag">
+    <%= link_to  show_cart_path, class: "link-to-txt" do %>
+    <img src="<%= asset_path('bag.svg')%>" alt="" id="profile">
+    <% end %>
+  </div>
+  <div class="navbar-box-profile">
+    <%= link_to  "#", class: "link-to-txt" do %>
+    <img src="<%= asset_path('profile.svg')%>" alt="">
+    <% end %>
+    <%flash[:alert] = "You are not logged in"%>
+  </div>
   <%end%>
 </div>
