@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @bussinesses_index_pundit = policy_scope(Business)
     if params[:query].present?
@@ -17,15 +18,17 @@ class BusinessesController < ApplicationController
       @businesses = @bussinesses_index_pundit
     end
 
-    @user = current_user # given by DEVICE!!
-    if !@user.orders.nil?
-      @orders = @user.orders
-      show_alert = @orders.any? do |ord|
-        (Date.today + 10) > ord.exp_date if ord.exp_date
+    @user = current_user
+    if user_signed_in? # given by DEVICE!!
+      if !@user.orders.nil?
+        @orders = @user.orders
+        show_alert = @orders.any? do |ord|
+          (Date.today + 10) > ord.exp_date if ord.exp_date
+        end
+         if show_alert
+           flash[:alert] = "One or more orders are going to expire within 10 days"
+         end
       end
-       if show_alert
-         flash[:alert] = "One or more orders are going to expire within 10 days"
-       end
     end
   end
 

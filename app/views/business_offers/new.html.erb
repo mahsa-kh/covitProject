@@ -13,8 +13,8 @@
     <% else %>
       <p>Maximum of 4 credit offer can be added to your page</p>
     <% end %>
-    <%  if @business.business_offers.any? %>
-      <%  @business.business_offers.each do |businessoffer| %>
+    <% if @business.business_offers.any? %>
+      <% @business.business_offers.each do |businessoffer| %>
         <div class="amount-discount">
           <div>
             <p> Amount </p>
