@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
           end
         return
         else
-          order = @orders_index_pundit.find(order_item.order_id)
+          order = @orders_index_pundit.where(order_item.order_id)
           @orders.push(order)
         return
         end
