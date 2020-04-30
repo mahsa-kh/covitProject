@@ -1,6 +1,13 @@
+<!-- app/views/businesses/show.html.erb -->
+<% content_for :meta_title, "#{@businesses.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @businesses.description %>
+<% if @business.photo.attached?  %>
+<%   content_for :meta_image, cl_image_path (@business.photo.key) %>
+
+   
 <%= render "/shared/businessOffers", business: @business %>
 <div class="centerd-btn-layer">
   <div class="line mt-4"></div>
 </div>
 
-<%= render "/shared/showSeveralBusCard", businesses: @businesses, text: "Places You Might Like", several: true %>
+<%= render "/shared/showSeveralBusCard", businesses: @businesses, text: "Places You Might Like" %>
