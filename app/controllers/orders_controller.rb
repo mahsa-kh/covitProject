@@ -21,37 +21,40 @@ class OrdersController < ApplicationController
             @orders.push(order)
           end
         end
+        return
       end
 
       business = Business.where("user_id = ?", current_user.id).last
       @order_items = business.order_items
       @order_items.each do |order_item|
         if params[:order_query].present?
-          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND state = 'pending' AND id = #{order_item.order_id} AND paid = true"
-          all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+          sql_query1 = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND state = 'pending' AND id = #{order_item.order_id} AND paid = true"
+          all_orders = @orders_index_pundit.where(sql_query1, order_query: "%#{params[:order_query]}%")
           sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND  state = 'paid' AND id = #{order_item.order_id} AND paid = true"
           all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
           all_orders.each do |order|
             @orders.push(order)
           end
+        return
         else
           order = @orders_index_pundit.find(order_item.order_id)
           @orders.push(order)
+        return
         end
       end
     else
       # @orders = Order.where("user_id = ?", current_user.id)
       if params[:order_query].present?
-        sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query AND state = 'pending' AND user_id = #{current_user.id} AND paid = true"
-        @orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+        sql_query1 = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query AND state = 'pending' AND user_id = #{current_user.id} AND paid = true"
+        @orders = @orders_index_pundit.where(sql_query1, order_query: "%#{params[:order_query]}%")
         sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT)  ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query AND state = 'paid' AND user_id = #{current_user.id} AND paid = true"
         @orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
-        # raise
+        return
       else
         @orders = @orders_index_pundit.where("user_id = ?", current_user.id)
+        return
       end
     end
-
   end
 
   def new
