@@ -33,12 +33,15 @@ class OrderItemsController < ApplicationController
     updated_amount = order.total_amount_cents - current_item_amount
     @order_item.destroy
     order.update(total_amount_cents: updated_amount)
-
+    if updated_amount == 0
+      updated_amount = 1
+    end
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
         name: "#{current_user.first_name} #{current_user.last_name}",
-        amount: order.total_amount_cents * 100,
+        # amount: order.total_amount_cents * 100,
+        amount: updated_amount * 100,
         currency: 'eur',
         quantity: 1
       }],
