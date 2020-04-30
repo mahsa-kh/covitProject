@@ -10,17 +10,15 @@
   right: 0%;
   top: 21.43%;
   bottom: 23.81%;
-
   font-size: 16px;
   line-height: 23px;
   text-align: center;
-
 }
 
 .button-primary {
   color: white;
   padding: 8px 24px;
-  background: #333333;
+  background-color: #333333;
   border: 1px solid #333333;
   width: 360px;
   height: 42px;
@@ -32,8 +30,8 @@
   font-size: 16px;
   line-height: 23px;
   text-align: center;
-
   grid-area: btn;
+  transition: 0.3s;
 }
 
 // .button-secondary-sm {
@@ -204,4 +202,3 @@
     text-decoration: none;
     color: white;
 }
-

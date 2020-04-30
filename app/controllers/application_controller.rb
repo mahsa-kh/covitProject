@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     # devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password])
@@ -48,10 +52,14 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    if current_user.owner
-      flash[:alert] = "Please login as user to perform this action."
+    if user_signed_in?
+      if current_user.owner
+        flash[:alert] = "Please login as user to perform this action."
+      else
+        flash[:alert] = "Only businesses are authorized to perform this action."
+      end
     else
-      flash[:alert] = "Only businesses are authorized to perform this action."
+      flash[:alert] = "Please create an account to perform this action."
     end
     redirect_to(request.referrer || root_path)
   end

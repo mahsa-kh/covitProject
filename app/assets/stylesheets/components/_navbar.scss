@@ -5,14 +5,13 @@
   grid-template-rows:  83px;
   grid-template-areas:
     "spc stores about logo search logout profile bag ";
-
   justify-items: center;
   align-items: center;
     font-size: 14px;
   line-height: 16px;
   margin-top: 5px;
+  border-bottom: 1px solid #333333;
 }
-
 .navbar-box-str {
   grid-area: stores;
   height: 45px;
@@ -21,13 +20,11 @@
   background-color: #94b0b9;
   margin-right: 3px;
   border-radius: 5px;
-
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .navbar-box-abt {
   grid-area: about;
   color: white;
@@ -42,16 +39,12 @@
   align-items: center;
 }
 
-
-
 .navbar-spc {
   grid-area: spc;
   height: 45px;
   width:30px;
   justify-self: center;
 }
-
-
 .nav-logo {
   height: 45px;
   width: 100%;
@@ -98,11 +91,11 @@
   justify-content: center;
   align-items: center;
   img {
-      align-self: center;
+      align-self: start;
       margin-left: 10px;
       margin-top: 10px;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
     }
     img:hover {
     opacity: 0.8;
@@ -143,12 +136,6 @@
     opacity: 0.8;
   }
 }
-
-.line {
-  width: 100%;
-  border-top: 1px solid #333333;
-}
-
 .look-style {
   font-family: karla;
   font-size: 14px;

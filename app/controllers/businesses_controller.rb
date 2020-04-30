@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :set_business, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @bussinesses_index_pundit = policy_scope(Business)
     if params[:query].present?
@@ -17,15 +18,17 @@ class BusinessesController < ApplicationController
       @businesses = @bussinesses_index_pundit
     end
 
-    @user = current_user # given by DEVICE!!
-    if !@user.orders.nil?
-      @orders = @user.orders
-      show_alert = @orders.any? do |ord|
-        (Date.today + 10) > ord.exp_date if ord.exp_date
+    @user = current_user
+    if user_signed_in? # given by DEVICE!!
+      if !@user.orders.nil?
+        @orders = @user.orders
+        show_alert = @orders.any? do |ord|
+          (Date.today + 10) > ord.exp_date if ord.exp_date
+        end
+         if show_alert
+           flash[:alert] = "One or more orders are going to expire within 10 days"
+         end
       end
-       if show_alert
-         flash[:alert] = "One or more orders are going to expire within 10 days"
-       end
     end
   end
 
@@ -37,7 +40,7 @@ class BusinessesController < ApplicationController
     @businesses = []
     @orders.each do |order|
       order.order_items.each do |order_item|
-        business = order_item.business_offer.business #  OrderItems belongs_to :business_offer  & BusinessOffers belongs_to :business,
+        business = order_item.business_offer.business #  OrderItems belongs_to :business_offer  & BusinessOffers belongs_to :business
         @businesses << business unless @businesses.include?(business)
       end
     end
@@ -55,7 +58,7 @@ class BusinessesController < ApplicationController
     @business.user_id = current_user.id
     authorize @business
     # @business.category_id = params[:category_id]
-    if @business.save!
+    if @business.save
       redirect_to new_business_business_offer_path(@business)
     else
       render :new

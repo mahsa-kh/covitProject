@@ -23,14 +23,14 @@
       <div class="sidebar">
         <div class="item-box-up">
           <div class="up-spc">
-            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+            <%= link_to "Your Profile", edit_user_registration_path, class: "link-to-txt" %>
           </div>
           <div class="up-spc">
-            <%= link_to "Transactions History", orders_path, class: "link-to" %>
+            <%= link_to "Transactions History", orders_path, class: "link-to-txt" %>
           </div>
         <% if !current_user.owner%>
           <div class="up-spc">
-            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to" %>
+            <%= link_to "Supported Businesses", businesses_helped_path, class: "link-to-txt" %>
           </div>
         <%end%>
         </div>
@@ -51,39 +51,62 @@
       </div>
     <%if orderView %>
       <div class="page-body-table">
-        <div class="order-cell" style=" font-weight: bold;width: 140px !important;">ORDER NUMBER</div>
-        <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
-        <div class="order-cell" style="font-weight: bold; width: 120px !important;">EXPIRY DATE</div>
-        <div class="order-cell" style="font-weight: bold; width: 130px !important;">TOTAL</div>
-        <div class="order-cell" style="font-weight: bold; width: 150px !important;">PAYMENT STATUS</div>
-        <div class="order-cell" style="font-weight: bold; width: 180px !important;">CONFIRMATION NO.</div>
-        <div class="order-cell" style="font-weight: bold; width: 190px !important;">PACK QUANTITY</div>
-        <div class="order-cell" style="font-weight: bold;">GIFT</div>
-
+        <div class="order-row">
+          <div class="order-cell" style=" font-weight: bold;width: 110px !important;">ORDER NUMBER</div>
+          <div class="order-cell" style="font-weight: bold; width: 110px !important;">ORDER DATE</div>
+          <div class="order-cell" style="font-weight: bold; width: 110px !important;">EXPIRY DATE</div>
+          <div class="order-cell" style="font-weight: bold; width: 90px !important;">TOTAL</div>
+          <div class="order-cell" style="font-weight: bold; width: 150px !important;">PAYMENT STATUS</div>
+          <div class="order-cell" style="font-weight: bold; width: 150px !important;">CONFIRMATION NO.</div>
+          <div class="order-cell" style="font-weight: bold; width: 120px !important;">PACK QUANTITY</div>
+          <div class="order-cell" style="font-weight: bold;">GIFT</div>
+        </div>
 
             <% orders.each do |order|%>
-            <div class="order-cell" style="width: 140px !important; color:#333333;"><%= order.id %></div>
-            <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.order_date %></div>
-            <div class="order-cell" style=" width: 120px !important; color:#333333;"><%= order.exp_date %></div>
-            <div class="order-cell" style=" width: 130px !important; color:#333333;"><%= order.total_amount_cents %></div>
-            <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.state %></div>
-            <div class="order-cell" style=" width: 180px !important; color:#333333;"><%= order.confirmation_no %></div>
-            <div class="order-cell" style=" width: 190px !important; color:#333333;"><%= order.order_items.count %> </div>
-            <div class="order-cell" style="width: 100px !important; color:#333333;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+            <div class="order-row">
+              <div class="order-cell" style="width: 110px !important; color:#333333;"><%= order.id %></div>
+              <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.order_date %></div>
+              <div class="order-cell" style=" width: 110px !important; color:#333333;"><%= order.exp_date %></div>
+              <div class="order-cell" style=" width: 90px !important; color:#333333;"><%= order.total_amount_cents %></div>
+              <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.state %></div>
+              <div class="order-cell" style=" width: 150px !important; color:#333333;"><%= order.confirmation_no %></div>
+              <div class="order-cell" style=" width: 120px !important; color:#333333;"><%= order.order_items.count %> </div>
+              <div class="order-cell" style="width: 110px !important; color:#333333;"><% if order.gift %> <i class="fas fa-gift" data-toggle="modal" data-target="#exampleModal"></i> <%end%>
+              </div>
             </div>
-
             <%end%>
       </div>
     <%end%>
         <%if card %>
       <div class="page-body-card">
-        <div class="card-container-noside">
+<%quantity=0%>
+<% empl = 0%>
+<%orders = Order.where(user_id: current_user)%>
+  <%if !orders.nil?%>
+  <%orders.each do |order|%>
+    <% order_items = order.order_items %>
+    <%order_items.each do |order_item|%>
+      <% quantity = quantity + order_item.quantity.to_i %>
+      <% empl = empl + order_item.business_offer.business.employee_no.to_i %>
+    <%end%>
+  <%end%>
+  <div class="msg-box">
+      <h3>Thank You!</h3>
+      <p>You have baught <strong><u> <%= quantity %> </u></strong> credits.
+      You have helped <strong><u> <%= empl %> </u></strong>number of employees!  </p>
+  </div>
+<%end%>
 
+
+
+
+        <div class="main-container-side-t">
+          <div class="card-container-side-t">
           <% businesses.each do |business| %>
-          <%= link_to business_path(business), class: "link-to" do %>
+          <%= link_to business_path(business), class: "link-to-txt" do %>
               <div class="card-container-item">
                 <div class="card">
-                  <%= cl_image_tag business.photo.key, class:"cl-img" %>
+                  <%= cl_image_tag business.photo.key, crop: :fill, class:"cl-img" %>
                   <div class="card-infos">
                     <div>
                       <h2><%= business.name %></h2>
@@ -103,6 +126,7 @@
       </div>
     <%end%>
     </div>
+  </div>
 
 
 

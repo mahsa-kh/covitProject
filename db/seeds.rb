@@ -73,7 +73,7 @@ users = User.where(owner: true)
 #     address: "User#{i}-Business@gmail.com",
 #     instagram: "insta:User#{i}-Business",
 #     description: "some description about User#{i}-Business",
-#     category_id: (Category.all).sample.id,
+#     category: Category.all.sampleCategory.all).sample.id,
 #     user_id: users.sample.id
 #   )
 #   business.user = User.all.sample  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
@@ -104,12 +104,13 @@ users = User.where(owner: true)
     instagram: "KurooSushi",
     description: "Kooroo Sushi is a family owened business. It was opened in 1999 in Milano. The owner is Mayoumi, who Moved to Milan in 95.
     She loves to share the tradition of Japanese food with other. ",
-    category_id: 1,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?sushi')
+  file = URI.open('https://source.unsplash.com/1200x1200/?sushi')
   business.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business.save!
 
@@ -129,12 +130,13 @@ users = User.where(owner: true)
     address: " Via Alessandro Tadino, 17, 20124 Milano MI",
     instagram: "AlhambraCafe",
     description: "This homey locale is brimming with all the ‘good’ stuff (ie food that is cruelty-free, healthy and honestly delicious). Run by a husband-and-wife team, it offers reinterpreted dishes from their homeland Eritrea ",
-    category_id: 1,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?cafe')
+  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
   business2.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business2.save!
 
@@ -156,12 +158,13 @@ users = User.where(owner: true)
     description: "We thought and designed this meeting place in the beating heart of Milan,
 between skyscrapers, banks, newspaper offices, multinationals' directions,
 as if it were an extension of our home. ",
-    category_id: 1,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?cafe')
+  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
   business3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business3.save!
 
@@ -181,12 +184,13 @@ as if it were an extension of our home. ",
     address: "Via Amerigo Vespucci, 1, 20124 Milano MI",
     instagram: "amamiristorante",
     description: "Professionalism and a lot of love! We are a close-knit working group that aims for excellence. From management, to cooking, to room service, we put experience and passion into our work.",
-    category_id: 1,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?Pizzeria')
+  file = URI.open('https://source.unsplash.com/1200x1200/?Pizzeria')
   business4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business4.save!
 
@@ -206,12 +210,13 @@ as if it were an extension of our home. ",
     address: "Via Napo Torriani, 5, Milan",
     instagram: "crazycatcafe",
     description: "The Crazy Cat Café was born from a great love, that for cats, and an unforgettable experience in a Neko Café in Osaka, Japan. In October 2015, the first and only Cat Café in Lombardy opens in Milan and wants to recreate the intimate atmosphere of Japanese neko cafés, ",
-    category_id: 1,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?cafe')
+  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
   business5.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business5.save!
 
@@ -232,12 +237,13 @@ as if it were an extension of our home. ",
     instagram: "Fisiodynamic",
     description: "At the Fisiodynamic Club, in via Maiocchi 8 in Milan (just 150 meters from the MM stop of Porta Venezia), there is everything you can wish for your efficiency, your leisure, your physical fitness.
 The large, welcoming and well-equipped gyms.",
-    category_id: 2,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?gym')
+  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
   business6.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business6.save!
 
@@ -258,12 +264,13 @@ The large, welcoming and well-equipped gyms.",
     instagram: "plus1gym",
     description: "Do they give you a nerd?
 We instead reward you! If you are a university student, enrolled in Plus 1 Gym Concept, for every 30 and Praise we give you 1 month more. ",
-    category_id: 2,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?gym')
+  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
   business7.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business7.save!
 
@@ -283,12 +290,13 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
     address: "Piazza S. Simpliciano, 7, 20121 Milan MI",
     instagram: "libreriadelmondooffeso",
     description: "Traditional book shop with slow-food eats, wine, aperitifs & coffee, plus outdoor seating. ",
-    category_id: 3,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?bookstore')
+  file = URI.open('https://source.unsplash.com/1200x1200/?bookstore')
   business8.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business8.save!
 
@@ -309,12 +317,13 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
     address: "Via Pietro Calvi, 29, 20129 Milan MI",
     instagram: "libreriadelledonne",
     description: "It is a living reality. It counts more than forty women among its permanent participants. In the years in which the bookshop was born, there was a need to have a place that emphasized women's thinking and writing. ",
-    category_id: 3,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?bookstore')
+  file = URI.open('https://source.unsplash.com/1200x1200/?bookstore')
   business9.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business9.save!
 
@@ -336,12 +345,13 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
     instagram: "blowhair",
     description: "Blow is harmony, energy, the perfect synergy between shapes and colors, personalization and attention to detail, professionalism and innovation.
 Simplicity and good taste are the basis of our style.",
-    category_id: 4,
+    employee_no: rand(3..12),
+    category: Category.all.sample,
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/800x800/?store')
+  file = URI.open('https://source.unsplash.com/1200x1200/?store')
   business10.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business10.save!
 
@@ -367,7 +377,7 @@ for i in 1..5 do
     owner_paid: Faker::Boolean.boolean,
     user_id: customers.sample.id,
     total_amount_cents: rand(400..500),
-    status: "paid",
+    state: "paid",
     gift: Faker::Boolean.boolean
     )
   order.save!

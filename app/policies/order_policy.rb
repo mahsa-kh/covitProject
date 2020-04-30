@@ -1,12 +1,12 @@
 class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(user: user)
+      scope.all
     end
   end
 
-  def show?
-    current_user_and_not_owner?
+  def show_cart?
+    !user.owner
   end
 
   def create?

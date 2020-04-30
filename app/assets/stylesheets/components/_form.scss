@@ -13,13 +13,13 @@
 
 
 .form-container-up {
-	width: 800px;
+	width: 747px;
 	margin: 100px auto;
 
  }
 
 
-.txtfld-ghost {
+.txtfield {
 	grid-area: txt;
 	color: #4A4A4A;
 	border: 1px solid #4A4A4A;
@@ -28,8 +28,10 @@
 	font-weight: lighter;
 	opacity: 0.6;
 	transition: opacity 0.3s ease;
-    height: 42px;
+  height: 42px;
 }
+
+
 
 
 .amount-discount {
@@ -59,5 +61,10 @@
   font-size: 20px;
   line-height: 23px;
   text-align: center;
+
+  transition: 0.3s;
+
 }
+
+
 
