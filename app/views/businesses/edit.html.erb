@@ -2,27 +2,37 @@
   <div class="sidebar">
     <div class="item-box-up">
       <div class="up-spc">
-        <%= link_to "Your Profile", edit_user_registration_path, class: "link-to" %>
+        <%= link_to "Your Profile", edit_user_registration_path, class: "link-to-txt" %>
       </div>
       <div class="up-spc">
-        <%= link_to "Transactions History", orders_path, class: "link-to" %>
+        <%= link_to "Transactions History", orders_path, class: "link-to-txt" %>
       </div>
     </div>
   </div>
   <div class="page-body-flat">
-    <%= simple_form_for @business do |f| %>
-      <%= f.input :name, placeholder: 'Name of Your Business', error: 'Name is mandatory, please specify one', required: true %>
-      <%= f.input :address, placeholder: 'Address of Your Business', required: true %>
-      <%= f.input :instagram, placeholder: 'Instagram Profile Link', required: true %>
-      <%= f.input :website, placeholder: 'Your Website url', required: true %>
-      <%= f.input :employee_no, placeholder: 'Number of employee we can help', required: true %>
-      <%= f.input :photo, as: :file, required: true  %>
-      <%= f.input :category_id, collection: Category.all, label_method:
-                  lambda {
-                   |category| "#{category.category_name}"
-                  }, required: true %>
-      <%= f.input :description, as: :text, placeholder: 'Write a catchy description here...', input_html: { maxlength: 200 }, hint: 'Max 200 characters.', required: true  %>
-      <%= f.button :submit %>
+    <%= simple_form_for @business, html: { method: :put }, remote: true, class: "txtfld-trans" do |f| %>
+      <div class="row">
+        <div class= "col-12 col-lg-6">
+          <%= f.input :name, as: :string, placeholder: 'Name of Your Business', error: 'Name is mandatory, please specify one', required: true, input_html: {class: "txtfield"} %>
+          <%= f.input :address,as: :string, placeholder: 'Address of Your Business', required: true, input_html: {class: "txtfield"} %>
+          <%= f.input :category_id, collection: Category.all, input_html: {class: "txtfield"}, label_method:
+                      lambda {
+                       |category| "#{category.category_name}"
+                      }, required: true %>
+          <%= f.input :description, as: :text, placeholder: 'Write a catchy description here...', input_html: { maxlength: 200 }, required: true, input_html: {class: "txtfield"}  %>
+        </div>
+        <div class= "col-12 col-lg-6">
+          <%= f.input :employee_no, input_html: {class: "txtfield"}, placeholder: 'Number of employee we can help', required: true %>
+          <%= f.input :instagram,as: :string, input_html: {class: "txtfield"}, placeholder: 'Instagram Profile Link', required: true %>
+          <%= f.input :website,as: :string, input_html: {class: "txtfield"}, placeholder: 'Your Website url', required: true %>
+          <%= f.input :photo, as: :file, required: true, input_html: {class: "txtfield"}   %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: "button-primary" %>
+      </div>
     <% end %>
   </div>
 </div>
+
+
