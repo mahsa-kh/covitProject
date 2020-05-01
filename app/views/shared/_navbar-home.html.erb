@@ -6,8 +6,8 @@
     <% end %>
   </div>
   <div class="navbar-box-abt">
-    <%= link_to "#", class: "link-to-white-solid" do %>
-    About Us
+    <%= link_to about_path, class: "link-to-white-solid" do %>
+      About Us
     <% end %>
   </div>
   <div class="nav-logo">
@@ -30,7 +30,7 @@
     </div>
   </div>
   <%end%>
- <%if user_signed_in?%>
+  <%if user_signed_in?%>
   <div class="navbar-box-bag">
     <%= link_to show_cart_path, class: "link-to-txt" do %>
     <img src="<%= asset_path('bag.svg')%>" alt="">

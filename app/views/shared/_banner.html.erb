@@ -1,7 +1,9 @@
 <div class="b-main-container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path('banner.jpg') %>);">
-    <div class="banner-container">
-      <h2>Help your favorite places to survive the COVID-19 crisis. <br>Get discounted credits to use in future.</h2>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2)), url(<%= asset_path('banner.jpg') %>);">
+    <div class="">
+      <h2 style="text-shadow: 1px 1px 6px black; text-align: left">Help your favorite places to survive the COVID-19 crisis. <br>Get discounted credits to use in future.</h2>
+      <br>
+      <br>
       <a class="button-blue" href="/businesses">Discover Places</a>
     </div>
       <div class="scroll1">
@@ -14,14 +16,16 @@
   <div class="banner-2">
     <div class="sec2">
       <h2>
+
           Hit two birds with one stone!! <br>
           Support your community and save money.
           <br><br>
           Browse in to your favorite local shop and buy credits.
 
+
       </h2>
       <div class="action-sec2 mt-1">
-            <%= link_to "Sign Up Here!",  new_user_registration_path , class: "link-to"%>
+            <%= link_to "Sign Up Here!",  new_user_registration_path , class: "link-to-txt"%>
        </div>
       <div class="scroll2">
         <img src="<%= asset_path('scroll.svg')%>" alt="" onclick="topFunction2()" id="myArrow2">

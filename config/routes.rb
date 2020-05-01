@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-
-mount StripeEvent::Engine, at: '/stripe-webhooks'
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
 
   devise_for :users
   root to: 'pages#home'
@@ -15,6 +14,7 @@ mount StripeEvent::Engine, at: '/stripe-webhooks'
   #   sessions: "users/sessions"
   # }
   get "/businesses/helped", to: "businesses#order_history_businesses", as: "businesses_helped"
+  get "/about", to: "pages#about", as: "about"
 
   resources :businesses, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :business_offers, shallow: true
