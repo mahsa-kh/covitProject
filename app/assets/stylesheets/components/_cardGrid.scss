@@ -31,7 +31,7 @@
     height: 30px;
     border-bottom: 1px solid #cccccc;
     font-size: 16px;
-
+    transition: 0.3s;
   }
 }
 
@@ -118,6 +118,6 @@
   grid-area: btn;
 }
 
-
-
-
+.main-container-side .cat-content .cat-box-sm:hover {
+  color: #333333;
+}
