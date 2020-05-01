@@ -14,31 +14,34 @@ class OrdersController < ApplicationController
     if current_user.owner
       @orders = []
       if params[:offer].present?
+        # GET BUSINESS ORDERS WHEN THERES A FILTER 
         order_items = OrderItem.where("business_offer_id = ?", params[:offer].to_i)
-        order_items.each do |item|
-          all_orders = @orders_index_pundit.where(id: item.order_id)
-          all_orders.each do |order|
-            @orders.push(order)
-          end
+        orders_raw = order_items.map do |order_item|
+          order_item.order
         end
-      end
-
-      business = Business.where("user_id = ?", current_user.id).last
-      @order_items = business.order_items
-      @order_items.each do |order_item|
+        @orders = orders_raw.uniq
+      else 
+        business = Business.where("user_id = ?", current_user.id).last
+        @order_items = business.order_items
         if params[:order_query].present?
-          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND state = 'pending' AND id = #{order_item.order_id} AND paid = true"
-          all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
-          sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND  state = 'paid' AND id = #{order_item.order_id} AND paid = true"
-          all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
-          all_orders.each do |order|
-            @orders.push(order)
+          @order_items.each do |order_item|
+            sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND state = 'pending' AND id = #{order_item.order_id} AND paid = true"
+            all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+            sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND  state = 'paid' AND id = #{order_item.order_id} AND paid = true"
+            all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
+            all_orders.each do |order|
+              @orders.push(order)
+            end
           end
         else
-          order = @orders_index_pundit.find(order_item.order_id)
-          @orders.push(order)
+          # GET BUSINESS ORDERS
+          orders_raw = @order_items.map do |order_item|
+            order_item.order
+          end
+          @orders = orders_raw.uniq
         end
       end
+      return
     else
       # @orders = Order.where("user_id = ?", current_user.id)
       if params[:order_query].present?
