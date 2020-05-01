@@ -365,6 +365,244 @@ Simplicity and good taste are the basis of our style.",
     j += 1
   end
 
+  # START OF CREATION OF NEW BUSINESSES FOR FOR PRESENTATION OF FRIDAY, MAY 1
+
+  business11 = Business.new(
+    name: "L'immagine Bistrot Ristorante",
+    website: "http://www.limmaginebistrot.it/",
+    address: "Via Varesina, 61, 20156 Milano MI",
+    instagram: "limmaginebistrot",
+    description: "Chopping boards with fried dumplings and grilled meat in an intimate place with jars of candy on the tables.",
+    employee_no: rand(6..20),
+    category: Category.find_by(category_name: "Cafe & Resturaunt"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?restaurant')
+  business11.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business11.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business11
+    )
+    j += 1
+  end
+
+  business12 = Business.new(
+    name: "Bar Bianco",
+    website: "https://www.barbiancomilano.com/",
+    address: "Viale Enrico Ibsen, 4, 20121 Milano MI",
+    instagram: "barbiancomilano",
+    description: "Bar with large and shaded outdoor area, free rickshaw ride and Mediterranean dishes.",
+    employee_no: rand(6..14),
+    category: Category.find_by(category_name: "Cafe & Resturaunt"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
+  business12.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business12.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business12
+    )
+    j += 1
+  end
+
+  business13 = Business.new(
+    name: "versolibri",
+    website: "http://www.libreriaverso.com/",
+    address: "Corso di Porta Ticinese, 40, 20123 Milano MI",
+    instagram: "versolibri",
+    description: "Independent bookshop (and bar) in Milan, in Corso di Porta Ticinese.",
+    employee_no: rand(8..15),
+    category: Category.find_by(category_name: "Bookstore"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?bookstore')
+  business13.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business13.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business13
+    )
+    j += 1
+  end
+
+  business14 = Business.new(
+    name: "Ligera Ink Tattoo Milano",
+    website: "https://www.ligeraink.it/",
+    address: "Via Jacopo Palma, 5, 20146 Milano MI",
+    instagram: "ligera_inktattoomilano",
+    description: "Collective Tattoo studio located in Milan.",
+    employee_no: rand(4..10),
+    category: Category.find_by(category_name: "Others"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?tattooer')
+  business14.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business14.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business14
+    )
+    j += 1
+  end
+
+  business15 = Business.new(
+    name: "WebFit Milano Turro",
+    website: "http://www.webfit.it/palestre/palestra-milano",
+    address: "Via Privata della Torre, 22, 20127 Milano MI",
+    instagram: "palestrewebfit",
+    description: "Innovative, dynamic and digital: 365/365 open, non-stop Digital Training courses, qualified instructors.",
+    employee_no: rand(10..20),
+    category: Category.find_by(category_name: "Gym"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
+  business15.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business15.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business15
+    )
+    j += 1
+  end
+
+  business16 = Business.new(
+    name: "Pizzium",
+    website: "https://www.pizzium.com/it/",
+    address: "Via Giulio Cesare Procaccini, 30, 20154 Milano MI",
+    instagram: "pizzium",
+    description: "The long journey of the real Neapolitan pizza combined with PDO, a pizza in constant evolution but with an identity of Neapolitan tradition.",
+    employee_no: rand(10..18),
+    category: Category.find_by(category_name: "Cafe & Resturaunt"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?Pizzeria')
+  business16.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business16.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business16
+    )
+    j += 1
+  end
+
+  business17 = Business.new(
+    name: "Moscow Mule",
+    website: "https://www.moscow-mule.it/",
+    address: "Via Teodosio, 60, 20131 Milano MI",
+    instagram: "moscowmulebar",
+    description: "Cocktails and aperitifs in a popular modern venue, including essential furnishings, exposed bricks and soft lighting.",
+    employee_no: rand(12..18),
+    category: Category.find_by(category_name: "Others"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?pub')
+  business17.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business17.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business17
+    )
+    j += 1
+  end
+
+  business18 = Business.new(
+    name: "Extro Parrucchieri Milano",
+    website: "https://www.extro.it/",
+    address: "Corso Magenta, 79, 20123 Milano MI",
+    instagram: "extroparrucchierimilano",
+    description: "We shape emotions.",
+    employee_no: rand(6..12),
+    category: Category.find_by(category_name: "Beauty Salon"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?store')
+  business18.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business18.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business18
+    )
+    j += 1
+  end
+
+  business19 = Business.new(
+    name: "Virgin Active Milano Bicocca",
+    website: "https://www.virginactive.it/club/milano",
+    address: "Viale Sarca, 232, 20126 Milano MI",
+    instagram: "virginactiveit",
+    description: "Virgin Active: a new concept of well-being that involves family and friends.",
+    employee_no: rand(20..30),
+    category: Category.find_by(category_name: "Gym"),
+    user_id: users.sample.id
+  )
+  # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
+  # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
+  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
+  business19.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  business19.save!
+
+  for j in 1..4 do
+    BusinessOffer.create(
+      offer_amount: rand(100..200),
+      discount: rand(10..20),
+      price_cents: rand(50..150),
+      business: business19
+    )
+    j += 1
+  end
+
+# END OF CREATION OF NEW BUSINESSES FOR FOR PRESENTATION OF FRIDAY, MAY 1
+
 puts "Businesses Created"
 
 puts "Orders Creation"
