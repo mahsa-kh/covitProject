@@ -6,9 +6,9 @@ class OrdersController < ApplicationController
     @orders_index_pundit = policy_scope(Order)
 
     if params[:payment] == "success"
-    current_user.orders.last.update(order_date: Date.new, exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
+    current_user.orders.last.update(order_date: Date.today, exp_date: Date.today + 30, state: 'pending', paid: true, owner_paid: true)
     elsif params[:payment] == "fail"
-    current_user.orders.last.update(order_date: Date.new, state: 'failed', paid: false, owner_paid: false)
+    current_user.orders.last.update(order_date: Date.today, state: 'failed', paid: false, owner_paid: false)
     end
 
     if current_user.owner
@@ -46,7 +46,6 @@ class OrdersController < ApplicationController
         @orders = @orders_index_pundit.where("user_id = ?", current_user.id)
       end
     end
-
   end
 
   def new
@@ -116,7 +115,7 @@ class OrdersController < ApplicationController
       # This needs to be total of dicscounted amount:
       updated_total_amount_cents += business_offer.price_cents * order_item.quantity
     end
-    @order.update(total_amount_cents: updated_total_amount_cents , order_date: Date.new)
+    @order.update(total_amount_cents: updated_total_amount_cents , order_date: Date.today)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
