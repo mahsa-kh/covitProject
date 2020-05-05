@@ -104,7 +104,7 @@ users = User.where(owner: true)
     instagram: "KurooSushi",
     description: "Kooroo Sushi is a family owened business. It was opened in 1999 in Milano. The owner is Mayoumi, who Moved to Milan in 95.
     She loves to share the tradition of Japanese food with other. ",
-    employee_no: rand(3..12),
+    employee_no: 11,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -130,7 +130,7 @@ users = User.where(owner: true)
     address: " Via Alessandro Tadino, 17, 20124 Milano MI",
     instagram: "AlhambraCafe",
     description: "This homey locale is brimming with all the ‘good’ stuff (ie food that is cruelty-free, healthy and honestly delicious). Run by a husband-and-wife team, it offers reinterpreted dishes from their homeland Eritrea ",
-    employee_no: rand(3..12),
+    employee_no: 7,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -158,7 +158,7 @@ users = User.where(owner: true)
     description: "We thought and designed this meeting place in the beating heart of Milan,
 between skyscrapers, banks, newspaper offices, multinationals' directions,
 as if it were an extension of our home. ",
-    employee_no: rand(3..12),
+    employee_no: 12,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -184,7 +184,7 @@ as if it were an extension of our home. ",
     address: "Via Amerigo Vespucci, 1, 20124 Milano MI",
     instagram: "amamiristorante",
     description: "Professionalism and a lot of love! We are a close-knit working group that aims for excellence. From management, to cooking, to room service, we put experience and passion into our work.",
-    employee_no: rand(3..12),
+    employee_no: 9,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -210,7 +210,7 @@ as if it were an extension of our home. ",
     address: "Via Napo Torriani, 5, Milan",
     instagram: "crazycatcafe",
     description: "The Crazy Cat Café was born from a great love, that for cats, and an unforgettable experience in a Neko Café in Osaka, Japan. In October 2015, the first and only Cat Café in Lombardy opens in Milan and wants to recreate the intimate atmosphere of Japanese neko cafés, ",
-    employee_no: rand(3..12),
+    employee_no: 6,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -237,7 +237,7 @@ as if it were an extension of our home. ",
     instagram: "Fisiodynamic",
     description: "At the Fisiodynamic Club, in via Maiocchi 8 in Milan (just 150 meters from the MM stop of Porta Venezia), there is everything you can wish for your efficiency, your leisure, your physical fitness.
 The large, welcoming and well-equipped gyms.",
-    employee_no: rand(3..12),
+    employee_no: 7,
     category: Category.find_by(category_name: "Gym"),
     user_id: users.sample.id
   )
@@ -264,7 +264,7 @@ The large, welcoming and well-equipped gyms.",
     instagram: "plus1gym",
     description: "Do they give you a nerd?
 We instead reward you! If you are a university student, enrolled in Plus 1 Gym Concept, for every 30 and Praise we give you 1 month more. ",
-    employee_no: rand(3..12),
+    employee_no: 8,
     category: Category.find_by(category_name: "Gym"),
     user_id: users.sample.id
   )
@@ -290,7 +290,7 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
     address: "Piazza S. Simpliciano, 7, 20121 Milan MI",
     instagram: "libreriadelmondooffeso",
     description: "Traditional book shop with slow-food eats, wine, aperitifs & coffee, plus outdoor seating. ",
-    employee_no: rand(3..12),
+    employee_no: 14,
     category: Category.find_by(category_name: "Bookstore"),
     user_id: users.sample.id
   )
@@ -317,7 +317,7 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
     address: "Via Pietro Calvi, 29, 20129 Milan MI",
     instagram: "libreriadelledonne",
     description: "It is a living reality. It counts more than forty women among its permanent participants. In the years in which the bookshop was born, there was a need to have a place that emphasized women's thinking and writing. ",
-    employee_no: rand(3..12),
+    employee_no: 6,
     category: Category.find_by(category_name: "Bookstore"),
     user_id: users.sample.id
   )
@@ -345,7 +345,7 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
     instagram: "blowhair",
     description: "Blow is harmony, energy, the perfect synergy between shapes and colors, personalization and attention to detail, professionalism and innovation.
 Simplicity and good taste are the basis of our style.",
-    employee_no: rand(3..12),
+    employee_no: 6,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -373,7 +373,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Varesina, 61, 20156 Milano MI",
     instagram: "limmaginebistrot",
     description: "Chopping boards with fried dumplings and grilled meat in an intimate place with jars of candy on the tables.",
-    employee_no: rand(6..20),
+    employee_no: 10,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -399,7 +399,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Enrico Ibsen, 4, 20121 Milano MI",
     instagram: "barbiancomilano",
     description: "Bar with large and shaded outdoor area, free rickshaw ride and Mediterranean dishes.",
-    employee_no: rand(6..14),
+    employee_no: 5,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -425,7 +425,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Corso di Porta Ticinese, 40, 20123 Milano MI",
     instagram: "versolibri",
     description: "Independent bookshop (and bar) in Milan, in Corso di Porta Ticinese.",
-    employee_no: rand(8..15),
+    employee_no: 8,
     category: Category.find_by(category_name: "Bookstore"),
     user_id: users.sample.id
   )
@@ -451,7 +451,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Jacopo Palma, 5, 20146 Milano MI",
     instagram: "ligera_inktattoomilano",
     description: "Collective Tattoo studio located in Milan.",
-    employee_no: rand(4..10),
+    employee_no: 9,
     category: Category.find_by(category_name: "Others"),
     user_id: users.sample.id
   )
@@ -477,7 +477,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Privata della Torre, 22, 20127 Milano MI",
     instagram: "palestrewebfit",
     description: "Innovative, dynamic and digital: 365/365 open, non-stop Digital Training courses, qualified instructors.",
-    employee_no: rand(10..20),
+    employee_no: 15,
     category: Category.find_by(category_name: "Gym"),
     user_id: users.sample.id
   )
@@ -503,7 +503,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Giulio Cesare Procaccini, 30, 20154 Milano MI",
     instagram: "pizzium",
     description: "The long journey of the real Neapolitan pizza combined with PDO, a pizza in constant evolution but with an identity of Neapolitan tradition.",
-    employee_no: rand(10..18),
+    employee_no: 12,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -529,7 +529,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Teodosio, 60, 20131 Milano MI",
     instagram: "moscowmulebar",
     description: "Cocktails and aperitifs in a popular modern venue, including essential furnishings, exposed bricks and soft lighting.",
-    employee_no: rand(12..18),
+    employee_no: 8,
     category: Category.find_by(category_name: "Others"),
     user_id: users.sample.id
   )
@@ -555,7 +555,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Corso Magenta, 79, 20123 Milano MI",
     instagram: "extroparrucchierimilano",
     description: "We shape emotions.",
-    employee_no: rand(6..12),
+    employee_no: 7,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -581,7 +581,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Sarca, 232, 20126 Milano MI",
     instagram: "virginactiveit",
     description: "Virgin Active: a new concept of well-being that involves family and friends.",
-    employee_no: rand(20..30),
+    employee_no: 20,
     category: Category.find_by(category_name: "Gym"),
     user_id: users.sample.id
   )
@@ -611,7 +611,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Corso Magenta, 10, 20123 Milano MI",
     instagram: "barberino_s",
     description: "Barberino's revives the refined atmosphere of a historic Italian barber shop, where time seems to stand still.",
-    employee_no: rand(8..12),
+    employee_no: 9,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -637,7 +637,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Piazza Alvar Aalto, 20124 Milano MI",
     instagram: "bullfrog_barbershop",
     description: "Bullfrog is a barbershop born in Milan in 2013 with the aim of becoming a reference point for grooming enthusiasts.",
-    employee_no: rand(10..18),
+    employee_no: 9,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -663,7 +663,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Piazzale Medaglie D'Oro, 2, 20135 Milano MI",
     instagram: "qcterme",
     description: "Thermal baths, wellness centers and charming hotels in Italy and worldwide. Revive your body and mind through water.",
-    employee_no: rand(15..20),
+    employee_no: 13,
     category: Category.find_by(category_name: "Others"),
     user_id: users.sample.id
   )
@@ -689,7 +689,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Papiniano, 22a, 20123 Milano MI",
     instagram: "milanocityink",
     description: "Milano City Ink was born with the aim of becoming a real collective of tattoo artists; inside it, together with the resident artists, some of the strongest names on the national scene.",
-    employee_no: rand(5..10),
+    employee_no: 8,
     category: Category.find_by(category_name: "Others"),
     user_id: users.sample.id
   )
@@ -741,7 +741,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Piave, 6, 20129 Milano MI",
     instagram: "basslinemusicshop",
     description: "Since 2009 your point of reference for music in Milan.",
-    employee_no: rand(5..10),
+    employee_no: 4,
     category: Category.find_by(category_name: "Others"),
     user_id: users.sample.id
   )
@@ -767,7 +767,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Monte Santo, 12, 20124 Milano MI",
     instagram: "thefriendspubmilano",
     description: "The Friends Pub is an authentic English pub, since 2000, in Milan.",
-    employee_no: rand(8..12),
+    employee_no: 11,
     category: Category.find_by(category_name: "Others"),
     user_id: users.sample.id
   )
@@ -793,7 +793,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Giuseppe Mazzini, 16, 20123 Milano MI",
     instagram: "alexim_hairstylist",
     description: "Italian luxury style in the heart of Milan. The new luxury of a tailored color.",
-    employee_no: rand(7..12),
+    employee_no: 10,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -819,7 +819,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Piazza Napoli, 7, 20146 Milano MI",
     instagram: "jeanlouisdavidfr",
     description: "Jean Louis David salon in Milan offers cutting techniques, colors and exclusive treatments for men and women.",
-    employee_no: rand(7..12),
+    employee_no: 9,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -845,7 +845,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Vitruvio, 43, 20124 Milano MI",
     instagram: "nails_deluxe_centro_estetico",
     description: "Nails center in Milan, Central Station area, specialized in gel nails reconstruction.",
-    employee_no: rand(4..6),
+    employee_no: 5,
     category: Category.find_by(category_name: "Beauty Salon"),
     user_id: users.sample.id
   )
@@ -897,7 +897,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Corsico, 12, 20144 Milano MI",
     instagram: "ugococktailbar",
     description: "We mix ingredients and spirits from all over the world to create a mix between different cultures, seeking the perfect balance in flavor and taste.",
-    employee_no: rand(8..10),
+    employee_no: 6,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -923,7 +923,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Alberto da Giussano, 2, 20145 Milano MI",
     instagram: "rufuscocktailbar",
     description: "Cocktail for passion. Pursuit of Perfection. Cocktail Bar & Cocktail Catering at home.",
-    employee_no: rand(5..9),
+    employee_no: 4,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -949,7 +949,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Panfilo Castaldi, 25, 20124 Milano MI",
     instagram: "kilburn_milano",
     description: "Cocktail Bar from London to Milan. The Important is to Drink Well!",
-    employee_no: rand(3..5),
+    employee_no: 5,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -975,7 +975,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Felice Casati, 5, 20124 Milano MI",
     instagram: "lacolubrina",
     description: "We host you every day 8-15 / 19.30-23.30 (closed Monday). Vegan and raw food, homemade with love!",
-    employee_no: rand(5..7),
+    employee_no: 7,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -1001,7 +1001,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Pietro Calvi, 29, 20129 Milano MI",
     instagram: "lespecialita",
     description: "Since 1977, Italian Pizza & cuisine.",
-    employee_no: rand(7..9),
+    employee_no: 8,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -1027,7 +1027,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Corso Sempione, 8, 20154 Milano MI",
     instagram: "jazzcafemilano",
     description: "Dine & Party experience!",
-    employee_no: rand(10..14),
+    employee_no: 12,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
@@ -1053,7 +1053,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Stelvio, 65, 20159 Milano MI",
     instagram: "getfitlifestylemilano",
     description: "10 Fitness Centers in Milan. Train with us!",
-    employee_no: rand(20..26),
+    employee_no: 14,
     category: Category.find_by(category_name: "Gym"),
     user_id: users.sample.id
   )
@@ -1079,7 +1079,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Viale Fulvio Testi, 29, 20126 Milano MI",
     instagram: "mcfit_it",
     description: "The #1 fitness centers in Europe! #TeamMcFIT",
-    employee_no: rand(24..27),
+    employee_no: 13,
     category: Category.find_by(category_name: "Gym"),
     user_id: users.sample.id
   )
@@ -1105,7 +1105,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Antonio Kramer, 20, 20129 Milano MI",
     instagram: "libreria_antigone_milano",
     description: "LGBT library specialized in gender study feminism, queer art and theory.",
-    employee_no: rand(3..4),
+    employee_no: 5,
     category: Category.find_by(category_name: "Bookstore"),
     user_id: users.sample.id
   )
@@ -1131,7 +1131,7 @@ Simplicity and good taste are the basis of our style.",
     address: "Via Panfilo Castaldi, 24, 20124 Milano MI",
     instagram: "bicerinmilano",
     description: "Wine is beauty, aesthetic moment, sharing, history and culture.",
-    employee_no: rand(4..6),
+    employee_no: 6,
     category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
