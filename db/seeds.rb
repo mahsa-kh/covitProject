@@ -530,7 +530,7 @@ Simplicity and good taste are the basis of our style.",
     instagram: "moscowmulebar",
     description: "Cocktails and aperitifs in a popular modern venue, including essential furnishings, exposed bricks and soft lighting.",
     employee_no: 8,
-    category: Category.find_by(category_name: "Others"),
+    category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
@@ -768,7 +768,7 @@ Simplicity and good taste are the basis of our style.",
     instagram: "thefriendspubmilano",
     description: "The Friends Pub is an authentic English pub, since 2000, in Milan.",
     employee_no: 11,
-    category: Category.find_by(category_name: "Others"),
+    category: Category.find_by(category_name: "Cafe & Resturaunt"),
     user_id: users.sample.id
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
