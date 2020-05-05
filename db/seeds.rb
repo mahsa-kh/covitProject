@@ -1157,7 +1157,7 @@ puts "Businesses Created"
 puts "Orders Creation"
 for i in 1..5 do
   order = Order.new(
-    order_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    order_date: Date.today,
     exp_date: Faker::Date.forward(days: 23),
     confirmation_no: Faker::Number.number(digits: 10), # it's a number not a text
     paid: Faker::Boolean.boolean,
@@ -1179,8 +1179,6 @@ for i in 1..5 do
   i += 1
 end
 puts "Orders Created"
-
-
 
 
 

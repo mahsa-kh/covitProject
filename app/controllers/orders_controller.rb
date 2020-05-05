@@ -2,31 +2,23 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:total_calculator, :update_total_amount_cents, :update_total_amount_cents_checkout, :update]
   before_action :total_calculator, only: [:update_total_amount_cents, :update_total_amount_cents_checkout]
 
-  def index
+def index
     @orders_index_pundit = policy_scope(Order)
-
     if params[:payment] == "success"
-    current_user.orders.last.update(order_date: Date.new, exp_date: Date.new + 30, state: 'pending', paid: true, owner_paid: true)
+    current_user.orders.last.update(order_date: Date.today, exp_date: Date.today + 30, state: 'pending', paid: true, owner_paid: true)
     elsif params[:payment] == "fail"
-    current_user.orders.last.update(order_date: Date.new, state: 'failed', paid: false, owner_paid: false)
+    current_user.orders.last.update(order_date: Date.today, state: 'failed', paid: false, owner_paid: false)
     end
-
     if current_user.owner
       @orders = []
-      if params[:offer].present?
-        order_items = OrderItem.where("business_offer_id = ?", params[:offer].to_i)
-        order_items.each do |item|
-          all_orders = @orders_index_pundit.where(id: item.order_id)
-          all_orders.each do |order|
-            @orders.push(order)
-          end
-        end
-      end
-
-      business = Business.where("user_id = ?", current_user.id).last
+      business = current_user.businesses.last
       @order_items = business.order_items
-      @order_items.each do |order_item|
-        if params[:order_query].present?
+      if params[:offer].present?
+        # GET BUSINESS ORDERS WHEN THERES A FILTER
+        order_items = @order_items.where(business_offer: BusinessOffer.find(params[:offer].to_i))
+        @orders = order_items.map { |order_item| order_item.order }.uniq
+      elsif params[:order_query].present?
+        @order_items.each do |order_item|
           sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND state = 'pending' AND id = #{order_item.order_id} AND paid = true"
           all_orders = @orders_index_pundit.where(sql_query, order_query: "%#{params[:order_query]}%")
           sql_query = "confirmation_no ILIKE :order_query OR CAST(total_amount_cents AS TEXT) ILIKE :order_query OR CAST(order_date AS TEXT) ILIKE :order_query OR CAST(exp_date AS TEXT) ILIKE :order_query AND  state = 'paid' AND id = #{order_item.order_id} AND paid = true"
@@ -34,11 +26,12 @@ class OrdersController < ApplicationController
           all_orders.each do |order|
             @orders.push(order)
           end
-        else
-          order = @orders_index_pundit.find(order_item.order_id)
-          @orders.push(order)
         end
+      else
+        # GET BUSINESS ORDERS
+        @orders = @order_items.map { |order_item| order_item.order }.uniq
       end
+      return
     else
       # @orders = Order.where("user_id = ?", current_user.id)
       if params[:order_query].present?
@@ -51,7 +44,6 @@ class OrdersController < ApplicationController
         @orders = @orders_index_pundit.where("user_id = ?", current_user.id)
       end
     end
-
   end
 
   def new
@@ -121,7 +113,7 @@ class OrdersController < ApplicationController
       # This needs to be total of dicscounted amount:
       updated_total_amount_cents += business_offer.price_cents * order_item.quantity
     end
-    @order.update(total_amount_cents: updated_total_amount_cents , order_date: Date.new)
+    @order.update(total_amount_cents: updated_total_amount_cents , order_date: Date.today)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],

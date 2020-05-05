@@ -13,7 +13,9 @@ html {
   height: 90vh;
   width: 100%;
   order: 1;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner .scroll1 {
@@ -32,6 +34,7 @@ img {
   color: white;
   font-weight: lighter;
   line-height: 44px !important;
+  text-align: center;
 }
 
 

@@ -1,5 +1,5 @@
 <!-- app/views/businesses/show.html.erb -->
-<% content_for :meta_title, "#{@businesses.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_title, "#{@business.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @business.description %>
 <% if @business.photo.attached?  %>
   <% content_for :meta_image, cl_image_path(@business.photo.key) %>
