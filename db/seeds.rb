@@ -110,7 +110,7 @@ users = User.where(owner: true)
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?sushi')
+  file = URI.open('https://source.unsplash.com/JorKKx5rvA0/1600x900')
   business.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business.save!
 
@@ -136,7 +136,7 @@ users = User.where(owner: true)
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
+  file = URI.open('https://source.unsplash.com/qE1jxYXiwOA/1600x900')
   business2.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business2.save!
 
@@ -164,7 +164,7 @@ as if it were an extension of our home. ",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
+  file = URI.open('https://source.unsplash.com/N_Y88TWmGwA/1600x900')
   business3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business3.save!
 
@@ -190,7 +190,7 @@ as if it were an extension of our home. ",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?Pizzeria')
+  file = URI.open('https://source.unsplash.com/cC0_UO1Obg4/1600x900')
   business4.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business4.save!
 
@@ -216,7 +216,7 @@ as if it were an extension of our home. ",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
+  file = URI.open('https://source.unsplash.com/I79Pgmhmy5M/1600x900')
   business5.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business5.save!
 
@@ -243,7 +243,7 @@ The large, welcoming and well-equipped gyms.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
+  file = URI.open('https://source.unsplash.com/R0y_bEUjiOM/1600x900')
   business6.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business6.save!
 
@@ -270,7 +270,7 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
+  file = URI.open('https://source.unsplash.com/h4i9G-de7Po/1600x900')
   business7.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business7.save!
 
@@ -296,7 +296,7 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?bookstore')
+  file = URI.open('https://source.unsplash.com/srTwM4rqXcU/1600x900')
   business8.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business8.save!
 
@@ -323,7 +323,7 @@ We instead reward you! If you are a university student, enrolled in Plus 1 Gym C
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?bookstore')
+  file = URI.open('https://source.unsplash.com/tv8PIPPY3rQ/1600x900')
   business9.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business9.save!
 
@@ -351,7 +351,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?store')
+  file = URI.open('https://source.unsplash.com/HEde-a_T4E8/1600x900')
   business10.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business10.save!
 
@@ -379,7 +379,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?restaurant')
+  file = URI.open('https://source.unsplash.com/d1ngW7SNehM/1600x900')
   business11.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business11.save!
 
@@ -405,7 +405,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?cafe')
+  file = URI.open('https://source.unsplash.com/jCFNWopXSpQ/1600x900')
   business12.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business12.save!
 
@@ -431,7 +431,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?bookstore')
+  file = URI.open('https://source.unsplash.com/Mc75C46Y49s/1600x900')
   business13.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business13.save!
 
@@ -457,7 +457,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?tattooer')
+  file = URI.open('https://source.unsplash.com/vKIc4k6dm10/1600x900')
   business14.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business14.save!
 
@@ -483,7 +483,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
+  file = URI.open('https://source.unsplash.com/HHXdPG_eTIQ/1600x900')
   business15.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business15.save!
 
@@ -509,7 +509,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?Pizzeria')
+  file = URI.open('https://source.unsplash.com/40OJLYVWeeM/1600x900')
   business16.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business16.save!
 
@@ -535,7 +535,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?pub')
+  file = URI.open('https://source.unsplash.com/b2pDjDp7VRM/1600x900')
   business17.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business17.save!
 
@@ -561,7 +561,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?store')
+  file = URI.open('https://source.unsplash.com/WXmHwPcFamo/1600x900')
   business18.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business18.save!
 
@@ -587,7 +587,7 @@ Simplicity and good taste are the basis of our style.",
   )
   # business.user = users.sample.id  # It's the same that writing business_offer_id: (BusinessOffer.all).sample.id,
   # business.category = Category.all.sample # business_offer_id: (BusinessOffer.all).sample.id,
-  file = URI.open('https://source.unsplash.com/1200x1200/?gym')
+  file = URI.open('https://source.unsplash.com/CQfNt66ttZM/1600x900')
   business19.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   business19.save!
 
