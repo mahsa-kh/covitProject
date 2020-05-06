@@ -39,6 +39,7 @@ gem 'stripe'
 gem 'stripe_event'
 gem 'cloudinary', '~> 1.12.0'
 gem "faker"
+gem "piet"
 
 group :development, :test do
   gem 'pry-byebug'

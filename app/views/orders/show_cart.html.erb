@@ -69,7 +69,7 @@
           <% order_items.each do |order_item|%>
     <div class="shop-list-container">
         <div class="item-pic">
-            <%= cl_image_tag order_item.business_offer.business.photo.key, height: 150, width: 100, crop: :fill, class:"cl-img" %>
+            <%= cl_image_tag order_item.business_offer.business.photo.key, :quality :auto, height: 150, width: 100, crop: :scale, class:"cl-img" %>
         </div>
         <div class="item-descrption">
          <p><strong style="color: #739C88; font-weight: bold"> Business name</strong>
